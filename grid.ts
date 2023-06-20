@@ -1,11 +1,13 @@
 
-export const emptyGrid = [[ null, null, null, null], 
-[ null, null, null, null],
-[ null, null, null, null],
-[ null, null, null, null]]
+export const emptyGrid = [
+  [ 0, 0, 0, 0], 
+  [ 0, 0, 0, 0], 
+  [ 0, 0, 0, 0], 
+  [ 0, 0, 0, 0]
+]
 
 class Grid {
-  activeGrid: number|null[][];
+  activeGrid: number[][];
   constructor(grid = emptyGrid) {
     this.activeGrid = grid
       
