@@ -18,6 +18,7 @@ export class NewGrid {
   yIndex: number;
   xIndex: number;
   nextLineFunction;
+  previousNumber: number;
 
   constructor(direction: "left" | "right" | "up" | "down") {
     switch (direction) {
@@ -60,14 +61,23 @@ export class NewGrid {
         this.nextLineFunction = this.nextLineHorizontal
         break;
     }
+    this.previousNumber = 0;
     this.activeGrid = emptyGrid()
     this.xIndex = this.xStartingIndex;
     this.yIndex = this.yStartingIndex;
   }
 
   addNumber = (number: number) => {
-    this.activeGrid[this.yIndex][this.xIndex] = number
-    this.xIndex += this.xIncrement;
+    if(number === 0){ throw new Error("This is a heros only zone: no zeros allowed"); }
+    if(number !== this.previousNumber){
+      this.activeGrid[this.yIndex][this.xIndex] = number
+      this.xIndex += this.xIncrement;
+      this.previousNumber = number
+    }
+    else{
+      this.activeGrid[this.yIndex][this.xIndex - this.xIncrement] = number * 2
+      this.previousNumber = 0
+    }
   }
 
   nextLine = () => {

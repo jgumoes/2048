@@ -62,4 +62,51 @@ describe('when swipping left', () => {
       [ 0, 0, 0, 0]
     ])
   })
+
+  test('elements can be merged', () => {
+    testGrid.addNumber(2)
+    testGrid.addNumber(2)
+    expect(testGrid.activeGrid).toStrictEqual([
+      [ 4, 0, 0, 0], 
+      [ 0, 0, 0, 0], 
+      [ 0, 0, 0, 0], 
+      [ 0, 0, 0, 0]
+    ])
+    testGrid.nextLine()
+    testGrid.addNumber(4)
+    testGrid.addNumber(4)
+    testGrid.addNumber(2)
+    testGrid.addNumber(2)
+    expect(testGrid.activeGrid).toStrictEqual([
+      [ 4, 0, 0, 0], 
+      [ 8, 4, 0, 0], 
+      [ 0, 0, 0, 0], 
+      [ 0, 0, 0, 0]
+    ])
+    testGrid.nextLine()
+    testGrid.addNumber(2)
+    testGrid.addNumber(2)
+    testGrid.addNumber(4)
+    expect(testGrid.activeGrid).toStrictEqual([
+      [ 4, 0, 0, 0], 
+      [ 8, 4, 0, 0], 
+      [ 4, 4, 0, 0], 
+      [ 0, 0, 0, 0]
+    ])
+    testGrid.nextLine()
+    testGrid.addNumber(2)
+    testGrid.addNumber(2)
+    testGrid.addNumber(2)
+    testGrid.addNumber(2)
+    testGrid.addNumber(4)
+    testGrid.addNumber(4)
+    testGrid.addNumber(8)
+    testGrid.addNumber(8)
+    expect(testGrid.activeGrid).toStrictEqual([
+      [ 4, 0, 0, 0], 
+      [ 8, 4, 0, 0], 
+      [ 4, 4, 0, 0], 
+      [ 4, 4, 8, 16]
+    ])
+  })
 })
