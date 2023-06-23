@@ -10,7 +10,9 @@ describe('initialises', () => {
 
 describe.each([
   ["left", importedTestGrids.left],
-  ["right", importedTestGrids.right]
+  ["right", importedTestGrids.right],
+  ["up", importedTestGrids.up],
+  ["down", importedTestGrids.down]
 ])('when swipping %s', (direction, resultGrid) => {
   let testGrid: NewGrid;
   beforeEach(() => {
