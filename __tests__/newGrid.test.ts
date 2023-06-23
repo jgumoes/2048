@@ -1,4 +1,5 @@
 import {NewGrid, emptyGrid } from "../grid";
+import * as importedTestGrids from './testGrids.json'
 
 describe('initialises', () => {
   test("with an empty grid", () => {
@@ -7,92 +8,47 @@ describe('initialises', () => {
   })
 })
 
-describe('when swipping left', () => {
+describe.each([
+  ["left", importedTestGrids.left],
+  ["right", importedTestGrids.right]
+])('when swipping %s', (direction, resultGrid) => {
   let testGrid: NewGrid;
   beforeEach(() => {
-    testGrid = new NewGrid("left")
+    testGrid = new NewGrid(<"left" | "right" | "up" | "down">direction)
   })
   test('new elements can be added on one line', () => {
     testGrid.addNumber(2);
-    // expect(testGrid.activeGrid).toStrictEqual([
-    //   [ 2, 0, 0, 0], 
-    //   [ 0, 0, 0, 0], 
-    //   [ 0, 0, 0, 0], 
-    //   [ 0, 0, 0, 0]
-    // ])
     testGrid.addNumber(4);
-    // expect(testGrid.activeGrid).toStrictEqual([
-    //   [ 2, 4, 0, 0], 
-    //   [ 0, 0, 0, 0], 
-    //   [ 0, 0, 0, 0], 
-    //   [ 0, 0, 0, 0]
-    // ])
     testGrid.addNumber(8);
-    expect(testGrid.activeGrid).toStrictEqual([
-      [ 2, 4, 8, 0], 
-      [ 0, 0, 0, 0], 
-      [ 0, 0, 0, 0], 
-      [ 0, 0, 0, 0]
-    ])
+    expect(testGrid.activeGrid).toStrictEqual(
+      resultGrid.swipping.oneLine
+    )
   })
 
   test('new elements can be added on different lines', () => {
     expect(testGrid.activeGrid).toStrictEqual(emptyGrid())
     testGrid.addNumber(2);
-    // expect(testGrid.activeGrid).toStrictEqual([
-    //   [ 2, 0, 0, 0], 
-    //   [ 0, 0, 0, 0], 
-    //   [ 0, 0, 0, 0], 
-    //   [ 0, 0, 0, 0]
-    // ])
     testGrid.nextLine()
     testGrid.addNumber(4);
-    // expect(testGrid.activeGrid).toStrictEqual([
-    //   [ 2, 0, 0, 0], 
-    //   [ 4, 0, 0, 0], 
-    //   [ 0, 0, 0, 0], 
-    //   [ 0, 0, 0, 0]
-    // ])
     testGrid.nextLine()
     testGrid.addNumber(8);
-    expect(testGrid.activeGrid).toStrictEqual([
-      [ 2, 0, 0, 0], 
-      [ 4, 0, 0, 0], 
-      [ 8, 0, 0, 0], 
-      [ 0, 0, 0, 0]
-    ])
+    expect(testGrid.activeGrid).toStrictEqual(
+      resultGrid.swipping.multiline
+    )
   })
 
   test('elements can be merged', () => {
     testGrid.addNumber(2)
     testGrid.addNumber(2)
-    expect(testGrid.activeGrid).toStrictEqual([
-      [ 4, 0, 0, 0], 
-      [ 0, 0, 0, 0], 
-      [ 0, 0, 0, 0], 
-      [ 0, 0, 0, 0]
-    ])
     testGrid.nextLine()
     testGrid.addNumber(4)
     testGrid.addNumber(4)
     testGrid.addNumber(2)
     testGrid.addNumber(2)
-    expect(testGrid.activeGrid).toStrictEqual([
-      [ 4, 0, 0, 0], 
-      [ 8, 4, 0, 0], 
-      [ 0, 0, 0, 0], 
-      [ 0, 0, 0, 0]
-    ])
     testGrid.nextLine()
     testGrid.addNumber(2)
     testGrid.addNumber(2)
     testGrid.addNumber(4)
-    expect(testGrid.activeGrid).toStrictEqual([
-      [ 4, 0, 0, 0], 
-      [ 8, 4, 0, 0], 
-      [ 4, 4, 0, 0], 
-      [ 0, 0, 0, 0]
-    ])
     testGrid.nextLine()
     testGrid.addNumber(2)
     testGrid.addNumber(2)
@@ -102,11 +58,8 @@ describe('when swipping left', () => {
     testGrid.addNumber(4)
     testGrid.addNumber(8)
     testGrid.addNumber(8)
-    expect(testGrid.activeGrid).toStrictEqual([
-      [ 4, 0, 0, 0], 
-      [ 8, 4, 0, 0], 
-      [ 4, 4, 0, 0], 
-      [ 4, 4, 8, 16]
-    ])
+    expect(testGrid.activeGrid).toStrictEqual(
+      resultGrid.merging
+    )
   })
 })
