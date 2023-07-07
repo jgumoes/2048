@@ -9,17 +9,17 @@ export const emptyGrid = () => [
 const gridSize = 4
 
 export class NewGrid {
-  activeGrid: number[][];
-  xIncrement: 1 | -1;
-  yIncrement: 1 | -1;
-  xStartingIndex: number;
-  yStartingIndex: number;
+  private _activeGrid: number[][];
+  private xIncrement: 1 | -1;
+  private yIncrement: 1 | -1;
+  private xStartingIndex: number;
+  private yStartingIndex: number;
 
-  yIndex: number;
-  xIndex: number;
-  nextLineFunction;
-  previousNumber: number;
-  addNumberFunction;
+  private yIndex: number;
+  private xIndex: number;
+  private nextLineFunction;
+  private previousNumber: number;
+  private addNumberFunction;
 
   constructor(direction: "left" | "right" | "up" | "down") {
     switch (direction) {
@@ -67,6 +67,11 @@ export class NewGrid {
     this.yIndex = this.yStartingIndex;
   }
 
+  get activeGrid() {
+    // console.log(this._activeGrid)
+    return this._activeGrid
+  }
+
   addNumber = (number: number) => {
     if(number === 0){ throw new Error("This is a heros only zone: no zeros allowed"); }
     this.addNumberFunction(number)
@@ -74,28 +79,29 @@ export class NewGrid {
 
   nextLine = () => {
     this.nextLineFunction()
+    this.previousNumber = 0
   }
 
   private addNumberHorizontal = (number: number) => {
     if(number !== this.previousNumber){
-      this.activeGrid[this.yIndex][this.xIndex] = number
+      this._activeGrid[this.yIndex][this.xIndex] = number
       this.xIndex += this.xIncrement;
       this.previousNumber = number
     }
     else{
-      this.activeGrid[this.yIndex][this.xIndex - this.xIncrement] = number * 2
+      this._activeGrid[this.yIndex][this.xIndex - this.xIncrement] = number * 2
       this.previousNumber = 0
     }
   }
 
   private addNumberVertical = (number: number) => {
     if(number !== this.previousNumber){
-      this.activeGrid[this.yIndex][this.xIndex] = number
+      this._activeGrid[this.yIndex][this.xIndex] = number
       this.yIndex += this.yIncrement;
       this.previousNumber = number
     }
     else{
-      this.activeGrid[this.yIndex - this.yIncrement][this.xIndex] = number * 2
+      this._activeGrid[this.yIndex - this.yIncrement][this.xIndex] = number * 2
       this.previousNumber = 0
     }
   }

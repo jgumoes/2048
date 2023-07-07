@@ -1,5 +1,5 @@
 import {NewGrid, emptyGrid } from "../grid";
-import * as importedTestGrids from './testGrids.json'
+import * as importedTestGrids from './newGridTestGrids.json'
 
 describe('initialises', () => {
   test("with an empty grid", () => {
@@ -39,7 +39,7 @@ describe.each([
     )
   })
 
-  test('elements can be merged', () => {
+  test('elements can be merged #1', () => {
     testGrid.addNumber(2)
     testGrid.addNumber(2)
     testGrid.nextLine()
@@ -61,7 +61,29 @@ describe.each([
     testGrid.addNumber(8)
     testGrid.addNumber(8)
     expect(testGrid.activeGrid).toStrictEqual(
-      resultGrid.merging
+      resultGrid.merging[0]
+    )
+  })
+
+  test('elements can be merged #2', ()=>{
+    testGrid.addNumber(2)
+    testGrid.addNumber(2)
+    testGrid.nextLine()
+    testGrid.addNumber(4)
+    testGrid.addNumber(2)
+    testGrid.addNumber(4)
+    testGrid.addNumber(8)
+    testGrid.nextLine()
+    testGrid.addNumber(8)
+    testGrid.addNumber(8)
+    testGrid.addNumber(8)
+    testGrid.addNumber(8)
+    testGrid.nextLine()
+    testGrid.addNumber(64)
+    testGrid.addNumber(32)
+    testGrid.addNumber(32)
+    expect(testGrid.activeGrid).toStrictEqual(
+      resultGrid.merging[1]
     )
   })
 })
