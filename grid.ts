@@ -153,6 +153,22 @@ class Grid {
     this.activeGrid = nextGrid.activeGrid
     console.log("active grid: ", this.activeGrid)
   }
+
+  swipeRight = () => {
+    this.oldGrid = this.activeGrid
+    let nextGrid = new NewGrid("right")
+    for(var y = 0; y < gridSize; y++){
+      var xLimit = gridSize - 1
+      for(var x = 0; x <= xLimit; x++){
+        if(this.oldGrid[y][xLimit - x] > 0){
+          nextGrid.addNumber(this.oldGrid[y][xLimit - x])
+        }
+      }
+      nextGrid.nextLine()
+    }
+    this.activeGrid = nextGrid.activeGrid
+    console.log("active grid: ", this.activeGrid)
+  }
 }
 
 export default Grid
