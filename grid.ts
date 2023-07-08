@@ -10,56 +10,38 @@ const gridSize = 4
 
 export class NewGrid {
   private _activeGrid: number[][];
-  private xIncrement: 1 | -1;
-  private yIncrement: 1 | -1;
-  private xStartingIndex: number;
-  private yStartingIndex: number;
+  private xIncrement: 1 | -1 = 1;
+  private yIncrement: 1 | -1 = 1;
+  private xStartingIndex: number = 0;
+  private yStartingIndex: number = 0;
 
   private yIndex: number;
   private xIndex: number;
-  private nextLineFunction;
+  private nextLineFunction = ()=>{};
   private previousNumber: number;
-  private addNumberFunction;
+  private addNumberFunction = (number: number)=>{};
 
   constructor(direction: "left" | "right" | "up" | "down") {
     switch (direction) {
       case "left":
-        this.xIncrement = 1
-        this.yIncrement = 1
-        this.xStartingIndex = 0
-        this.yStartingIndex = 0
-        this.nextLineFunction = this.nextLineHorizontal
-        this.addNumberFunction = this.addNumberHorizontal
+        this.setDirectionLeft()
         break;
     
       case "right":
-        this.xIncrement = -1
-        this.yIncrement = 1
-        this.xStartingIndex = gridSize -1
-        this.yStartingIndex = 0
-        this.nextLineFunction = this.nextLineHorizontal
-        this.addNumberFunction = this.addNumberHorizontal
+        this.setDirectionRight()
         break;
     
       case "up":
-        this.xIncrement = 1
-        this.yIncrement = 1
-        this.xStartingIndex = 0
-        this.yStartingIndex = 0
-        this.nextLineFunction = this.nextLineVertical
-        this.addNumberFunction = this.addNumberVertical
+        this.setDirectionUp()
         break;
         
       case "down":
-        this.xIncrement = 1
-        this.yIncrement = -1
-        this.xStartingIndex = 0
-        this.yStartingIndex = gridSize - 1
-        this.nextLineFunction = this.nextLineVertical
-        this.addNumberFunction = this.addNumberVertical
+        this.setDirectionDown()
         break;
+
       default:
-        throw new Error(`${direction} is not a valid direction`)
+       this.setDirectionLeft()
+       break
     }
     this.previousNumber = 0;
     this._activeGrid = emptyGrid()
@@ -67,14 +49,50 @@ export class NewGrid {
     this.yIndex = this.yStartingIndex;
   }
 
+  setDirectionLeft = () => {
+    this.xIncrement = 1
+    this.yIncrement = 1
+    this.xStartingIndex = 0
+    this.yStartingIndex = 0
+    this.nextLineFunction = this.nextLineHorizontal
+    this.addNumberFunction = this.addNumberHorizontal
+  }
+
+  setDirectionRight = () => {
+    this.xIncrement = -1
+    this.yIncrement = 1
+    this.xStartingIndex = gridSize -1
+    this.yStartingIndex = 0
+    this.nextLineFunction = this.nextLineHorizontal
+    this.addNumberFunction = this.addNumberHorizontal
+  }
+
+  setDirectionUp = () => {
+    this.xIncrement = 1
+    this.yIncrement = 1
+    this.xStartingIndex = 0
+    this.yStartingIndex = 0
+    this.nextLineFunction = this.nextLineVertical
+    this.addNumberFunction = this.addNumberVertical
+  }
+
+  setDirectionDown = () => {
+    this.xIncrement = 1
+    this.yIncrement = -1
+    this.xStartingIndex = 0
+    this.yStartingIndex = gridSize - 1
+    this.nextLineFunction = this.nextLineVertical
+    this.addNumberFunction = this.addNumberVertical
+  }
+
   get activeGrid() {
-    // console.log(this._activeGrid)
     return this._activeGrid
   }
 
   addNumber = (number: number) => {
-    if(number === 0){ throw new Error("This is a heros only zone: no zeros allowed"); }
-    this.addNumberFunction(number)
+    if(number !== 0){
+      this.addNumberFunction(number)
+    }
   }
 
   nextLine = () => {
@@ -128,84 +146,66 @@ class Grid {
   }
 
   swipe = (direction: "left" | "right" | "up" | "down") => {
+    this.oldGrid = this.activeGrid
+    let nextGrid = new NewGrid(direction)
     switch (direction) {
       case "left":
-        this.swipeLeft()
+        this.activeGrid = this.swipeLeft(nextGrid)
         break;
       case "right":
-        this.swipeRight()
+        this.activeGrid = this.swipeRight(nextGrid)
         break
       case "up":
-        this.swipeUp()
+        this.activeGrid = this.swipeUp(nextGrid)
         break
       case "down":
-        this.swipeDown()
+        this.activeGrid = this.swipeDown(nextGrid)
         break
       default:
         break;
     }
 }
 
-  swipeLeft = () => {
-    this.oldGrid = this.activeGrid
-    let nextGrid = new NewGrid("left")
+  swipeLeft = (nextGrid: NewGrid) => {
     for(var y = 0; y < gridSize; y++){
       for(var x = 0; x < gridSize; x++){
-        if(this.oldGrid[y][x] > 0){
-          nextGrid.addNumber(this.oldGrid[y][x])
-        }
+        nextGrid.addNumber(this.oldGrid[y][x])
       }
       nextGrid.nextLine()
     }
-    this.activeGrid = nextGrid.activeGrid
-    console.log("active grid: ", this.activeGrid)
+    return nextGrid.activeGrid
   }
 
-  swipeRight = () => {
-    this.oldGrid = this.activeGrid
-    let nextGrid = new NewGrid("right")
+  swipeRight = (nextGrid: NewGrid) => {
     for(var y = 0; y < gridSize; y++){
       var xLimit = gridSize - 1
       for(var x = 0; x <= xLimit; x++){
-        if(this.oldGrid[y][xLimit - x] > 0){
-          nextGrid.addNumber(this.oldGrid[y][xLimit - x])
-        }
+        nextGrid.addNumber(this.oldGrid[y][xLimit - x])
       }
       nextGrid.nextLine()
     }
-    this.activeGrid = nextGrid.activeGrid
-    console.log("active grid: ", this.activeGrid)
+    return nextGrid.activeGrid
   }
 
-  swipeUp = () => {
-    this.oldGrid = this.activeGrid
-    let nextGrid = new NewGrid("up")
+  swipeUp = (nextGrid: NewGrid) => {
     for(var x = 0; x < gridSize; x++){
       for(var y = 0; y < gridSize; y++){
-        if(this.oldGrid[y][x] > 0){
-          nextGrid.addNumber(this.oldGrid[y][x])
-        }
+        nextGrid.addNumber(this.oldGrid[y][x])
       }
       nextGrid.nextLine()
     }
-    this.activeGrid = nextGrid.activeGrid
-    console.log("active grid: ", this.activeGrid)
+    return nextGrid.activeGrid
   }
 
-  swipeDown = () => {
-    this.oldGrid = this.activeGrid
-    let nextGrid = new NewGrid("down")
+  swipeDown = (nextGrid: NewGrid) => {
     for(var x = 0; x < gridSize; x++){
       var yLimit = gridSize - 1
       for(var y = 0; y <= yLimit; y++){
-        if(this.oldGrid[yLimit - y][x] > 0){
-          nextGrid.addNumber(this.oldGrid[yLimit - y][x])
-        }
+        nextGrid.addNumber(this.oldGrid[yLimit - y][x])
       }
       nextGrid.nextLine()
     }
-    this.activeGrid = nextGrid.activeGrid
-    console.log("active grid: ", this.activeGrid)
+    return nextGrid.activeGrid
   }
 }
 
