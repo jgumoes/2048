@@ -134,6 +134,10 @@ class Grid {
         break;
       case "right":
         this.swipeRight()
+        break
+      case "up":
+        this.swipeUp()
+        break
       default:
         break;
     }
@@ -162,6 +166,21 @@ class Grid {
       for(var x = 0; x <= xLimit; x++){
         if(this.oldGrid[y][xLimit - x] > 0){
           nextGrid.addNumber(this.oldGrid[y][xLimit - x])
+        }
+      }
+      nextGrid.nextLine()
+    }
+    this.activeGrid = nextGrid.activeGrid
+    console.log("active grid: ", this.activeGrid)
+  }
+
+  swipeUp = () => {
+    this.oldGrid = this.activeGrid
+    let nextGrid = new NewGrid("up")
+    for(var x = 0; x < gridSize; x++){
+      for(var y = 0; y < gridSize; y++){
+        if(this.oldGrid[y][x] > 0){
+          nextGrid.addNumber(this.oldGrid[y][x])
         }
       }
       nextGrid.nextLine()

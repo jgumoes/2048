@@ -22,7 +22,8 @@ describe('initial grid', () => {
 
 describe.each([
   ["left", importedTestGrids.left],
-  ["right", importedTestGrids.right]
+  ["right", importedTestGrids.right],
+  ["up", importedTestGrids.up]
 ])('%s swiping moves and merges test grids', (swipeDirection, resultGrid) => {
   const direction= <"left" | "right" | "up" | "down">swipeDirection;
 
@@ -38,5 +39,12 @@ describe.each([
     grid.swipe(direction)
     console.log(grid.activeGrid)
     expect(grid.activeGrid).toStrictEqual(resultGrid["1"])
+  })
+
+  test("testGrid 2", () => {
+    let grid = new Grid(importedTestGrids.inputs["2"]);
+    grid.swipe(direction)
+    console.log(grid.activeGrid)
+    expect(grid.activeGrid).toStrictEqual(resultGrid["2"])
   })
 })
