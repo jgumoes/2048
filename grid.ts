@@ -127,8 +127,17 @@ class Grid {
     this.oldGrid = grid
   }
 
-//   swipe = (direction: "left" | "right" | "up" | "down") => {
-// }
+  swipe = (direction: "left" | "right" | "up" | "down") => {
+    switch (direction) {
+      case "left":
+        this.swipeLeft()
+        break;
+      case "right":
+        this.swipeRight()
+      default:
+        break;
+    }
+}
 
   swipeLeft = () => {
     this.oldGrid = this.activeGrid
