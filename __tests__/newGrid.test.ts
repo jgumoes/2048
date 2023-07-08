@@ -3,7 +3,7 @@ import * as importedTestGrids from './newGridTestGrids.json'
 
 describe('initialises', () => {
   test("with an empty grid", () => {
-    let testGrid = new NewGrid("left");
+    let testGrid = new NewGrid();
     expect(testGrid.activeGrid).toStrictEqual(emptyGrid())
   })
 })
@@ -16,7 +16,8 @@ describe.each([
 ])('when swipping %s', (direction, resultGrid) => {
   let testGrid: NewGrid;
   beforeEach(() => {
-    testGrid = new NewGrid(<"left" | "right" | "up" | "down">direction)
+    testGrid = new NewGrid()
+    testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
   })
   test('new elements can be added on one line', () => {
     testGrid.addNumber(2);
