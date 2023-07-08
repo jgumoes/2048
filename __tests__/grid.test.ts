@@ -1,26 +1,27 @@
 import Grid from "../grid";
-import {emptyGrid} from "../src/newGrid";
-import * as importedTestGrids from './testGrids.json'
+import {emptyGrid} from "../grid";
+import * as importedTestGridsJson from './testGrids.json'
+const importedTestGrids = importedTestGridsJson.gridList
 
 describe('initial grid', () => {
   test('is empty', () => {
     let grid = new Grid();
-    expect(grid.activeGrid).toBe(emptyGrid)
+    expect(grid.activeGrid).toStrictEqual(emptyGrid())
   });
 
   test('can be set', () => {
-    let testGrids = importedTestGrids.moveOnly;
-    let grid = new Grid(testGrids[0].init);
-    expect(grid.activeGrid).toBe(testGrids[0].init)
+    let testGrid = importedTestGrids[0].input;
+    let grid = new Grid(testGrid);
+    expect(grid.activeGrid).toBe(testGrid)
   })
 })
 
-describe("left swiping moves test grids", () => {
-  let testGrids = importedTestGrids.moveOnly;
+describe("left swiping moves and merges test grids", () => {
 
   test("testGrid0", () => {
-    let grid = new Grid(testGrids[0].init);
+    let grid = new Grid(importedTestGrids[0].input);
     grid.swipeLeft();
-    expect(grid.activeGrid).toBe(testGrids[0].left)
+    console.log(grid.activeGrid)
+    expect(grid.activeGrid).toStrictEqual(importedTestGrids[0].left)
   })
 })

@@ -62,7 +62,7 @@ export class NewGrid {
         throw new Error(`${direction} is not a valid direction`)
     }
     this.previousNumber = 0;
-    this.activeGrid = emptyGrid()
+    this._activeGrid = emptyGrid()
     this.xIndex = this.xStartingIndex;
     this.yIndex = this.yStartingIndex;
   }
@@ -120,14 +120,29 @@ export class NewGrid {
 
 class Grid {
   activeGrid: number[][];
+  oldGrid: number[][];
+
   constructor(grid = emptyGrid()) {
     this.activeGrid = grid
+    this.oldGrid = grid
   }
 
-  swipeLeft = () => {
-    for(var i = 0; i < 4; i++){
+//   swipe = (direction: "left" | "right" | "up" | "down") => {
+// }
 
+  swipeLeft = () => {
+    this.oldGrid = this.activeGrid
+    let nextGrid = new NewGrid("left")
+    for(var y = 0; y < gridSize; y++){
+      for(var x = 0; x < gridSize; x++){
+        if(this.oldGrid[y][x] > 0){
+          nextGrid.addNumber(this.oldGrid[y][x])
+        }
+      }
+      nextGrid.nextLine()
     }
+    this.activeGrid = nextGrid.activeGrid
+    console.log("active grid: ", this.activeGrid)
   }
 }
 
