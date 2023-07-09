@@ -31,28 +31,24 @@ describe.each([
   test("testGrid 0", () => {
     let grid = new Grid(importedTestGrids.inputs["0"]);
     grid.swipe(direction)
-    console.log(grid.activeGrid)
     expect(grid.activeGrid).toStrictEqual(resultGrid["0"])
   })
 
   test("testGrid 1", () => {
     let grid = new Grid(importedTestGrids.inputs["1"]);
     grid.swipe(direction)
-    console.log(grid.activeGrid)
     expect(grid.activeGrid).toStrictEqual(resultGrid["1"])
   })
 
   test("testGrid 2", () => {
     let grid = new Grid(importedTestGrids.inputs["2"]);
     grid.swipe(direction)
-    console.log(grid.activeGrid)
     expect(grid.activeGrid).toStrictEqual(resultGrid["2"])
   })
 
   test("testGrid 3", () => {
     let grid = new Grid(importedTestGrids.inputs["3"]);
     grid.swipe(direction)
-    console.log(grid.activeGrid)
     expect(grid.activeGrid).toStrictEqual(resultGrid["3"])
   })
 })
