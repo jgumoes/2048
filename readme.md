@@ -1,5 +1,5 @@
 # 2048 Clone
-I like the game, but I don't like the ads. Also, my brother keeps insisting I only beat the game by using the back button, so making a clone will help get him to shut up and recognise my intellectual authority.
+I like the game, but I don't like the ads. Also, my brother keeps insisting I only beat the game by using the back button, so I'm making a clone will help get him to shut up and recognise my intellectual authority.
 
 ## Back button
 
@@ -7,9 +7,9 @@ Inspired by a university coursework that led to me researching psychology journa
 
 ## Logic Approach
 
-For a given grid state, when a user swipes in a direction, the Grid class will iterate through the grid in the swipe direction i.e. "left" will go from top to bottom, left to right, and "up" will go bottom to top, left to right. Each element a line is added to the NewGrid class, which will construct a new grid with the numbers in the expected place, merging if necessary. React will read and draw the new grid state, and will the animations are running, a new number will be replace one of the zeros.
+For a given grid state, when a user swipes in a direction, the Grid class will iterate through the grid in the swipe direction i.e. "left" will go from top to bottom, left to right, and "up" will go bottom to top, left to right. Each element a line is added to the NewGrid class, which will construct a new grid with the numbers in the expected place, merging if necessary. React will read and draw the new grid state, and while the animations are running, a new number will replace one of the zeros.
 
-TODO: maybe all 4 directions should be pre-calculated, and the class just hands over the correct grid? This could improve performance after swiping, and test for end-game condition.
+TODO: maybe all 4 directions should be pre-calculated, and the class just hands over the correct grid? This could improve performance after swiping, and test for invalid swipes and the end-game condition.
 
 ### Inserting a new tile
 
