@@ -3,12 +3,13 @@ import {emptyGrid} from "../grid";
 import * as importedTestGrids from './testGrids.json'
 
 /* note: a good test grid should include the following:
+  0. it should be swipable in every direction, and the resulting grid should also be swipable in every direction
   1. a line that starts with a 0
   2. a line that contains {x, x, 2x}, that should result in {2x, 2x}
   3. a line that starts with the same number the previous line finished with (the previous number shouldn't've mergered) ((this was an actual bug))
   4. a line where a number moves without merging
 
-  I have made a grid for each direction that follows 1-3, but made result grids for every
+  I have made a grid for each direction that follows 0-3, but made result grids for every
   grid in each direction. This means that 4 is definitely covered, plus increases the chance
   of stumbling accross a new bug I haven't thought of yet.
 */
@@ -28,28 +29,15 @@ describe.each([
 ])('%s swiping once moves and merges test grids', (swipeDirection, resultGrid) => {
   const direction= <"left" | "right" | "up" | "down">swipeDirection;
 
-  test("testGrid 0", () => {
-    let grid = new Grid(importedTestGrids.inputs["0"]);
-    grid.swipe(direction)
-    expect(grid.activeGrid).toStrictEqual(resultGrid["0"])
-  })
+  class TestingGrid extends Grid{
+    // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
+    newTile = () => {}
+  }
 
-  test("testGrid 1", () => {
-    let grid = new Grid(importedTestGrids.inputs["1"]);
+  test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
+    let grid = new TestingGrid(importedTestGrids.inputs[index as keyof typeof importedTestGrids.inputs]);
     grid.swipe(direction)
-    expect(grid.activeGrid).toStrictEqual(resultGrid["1"])
-  })
-
-  test("testGrid 2", () => {
-    let grid = new Grid(importedTestGrids.inputs["2"]);
-    grid.swipe(direction)
-    expect(grid.activeGrid).toStrictEqual(resultGrid["2"])
-  })
-
-  test("testGrid 3", () => {
-    let grid = new Grid(importedTestGrids.inputs["3"]);
-    grid.swipe(direction)
-    expect(grid.activeGrid).toStrictEqual(resultGrid["3"])
+    expect(grid.activeGrid).toStrictEqual(resultGrid[index as keyof typeof resultGrid])
   })
 })
 
@@ -59,34 +47,63 @@ describe.each([
   ["right", importedTestGrids.right],
   ["up", importedTestGrids.up],
   ["down", importedTestGrids.down]
-])('grid moves and merges correctly when swiping %s ', (swipeDirection, resultGrid) => {
+])('grid moves and merges correctly when swiping %s ', (swipeDirection, resultGrids) => {
   const direction= <"left" | "right" | "up" | "down">swipeDirection;
+  const inputGrids = importedTestGrids.inputs
+  class TestingGrid extends Grid{
+    // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
+    newTile = () => {}
+  }
 
-  test("then left", () => {
-    let grid = new Grid(importedTestGrids.inputs["0"]);
+  test.each([
+    ["left", "0"],
+    ["right", "1"],
+    ["up", "2"],
+    ["down", "3"]
+  ])("then left", (swipeDirection2, index) => {
+    const direction2= <"left" | "right" | "up" | "down">swipeDirection2;
+    let grid = new TestingGrid(inputGrids[index as keyof typeof inputGrids]);
     grid.swipe(direction)
-    grid.swipe("left")
-    expect(grid.activeGrid).toStrictEqual(resultGrid.left)
+    grid.swipe(direction2)
+    expect(grid.activeGrid).toStrictEqual(resultGrids[direction2 as keyof typeof resultGrids])
   })
+})
 
-  test("then right", () => {
-    let grid = new Grid(importedTestGrids.inputs["1"]);
-    grid.swipe(direction)
-    grid.swipe("right")
-    expect(grid.activeGrid).toStrictEqual(resultGrid.right)
-  })
+describe.each([
+  ["left", importedTestGrids.left],
+  ["right", importedTestGrids.right],
+  ["up", importedTestGrids.up],
+  ["down", importedTestGrids.down]
+])('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (swipeDirection, resultGrids) => {
+  const direction= <"left" | "right" | "up" | "down">swipeDirection;
+  const inputGrids = importedTestGrids.inputs
 
-  test("then up", () => {
-    let grid = new Grid(importedTestGrids.inputs["2"]);
+  test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
+    let grid = new Grid(inputGrids[index as keyof typeof inputGrids]);
     grid.swipe(direction)
-    grid.swipe("up")
-    expect(grid.activeGrid).toStrictEqual(resultGrid.up)
-  })
 
-  test("then down", () => {
-    let grid = new Grid(importedTestGrids.inputs["3"]);
-    grid.swipe(direction)
-    grid.swipe("down")
-    expect(grid.activeGrid).toStrictEqual(resultGrid.down)
+    const closeResult = resultGrids[index as keyof typeof resultGrids]
+    var closeZeros = 0;
+    var gridZeros = 0;
+    var newTileValue = 0;
+    for(var y = 0; y < grid.gridSize; y++) {
+      for(var x = 0; x< grid.gridSize; x++){
+        if(closeResult[y][x] !== 0){
+          // all non-zero values in closeResult should match activeGrid 
+          expect(grid.activeGrid[y][x]).toEqual(closeResult[y][x])
+        }
+        else{
+          closeZeros++;
+          if(grid.activeGrid[y][x] !== 0){
+            newTileValue = grid.activeGrid[y][x]
+          }
+          else{
+            gridZeros++;
+          }
+        }
+      }
+    }
+    expect(closeZeros - gridZeros).toEqual(1) // only one zero-value tile should be different
+    expect([2, 4]).toContain(newTileValue)    // and that tile should be 2 or 4
   })
 })

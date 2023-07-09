@@ -277,6 +277,7 @@ class Grid {
   activeGrid: number[][];
   oldGrid: number[][];
   nextGrid: NewGrid;
+  gridSize = gridSize
 
   constructor(grid = emptyGrid()) {
     this.activeGrid = grid
@@ -316,7 +317,9 @@ class Grid {
       }
       this.nextGrid.nextLine()
     }
-    return this.nextGrid.activeGrid
+    this.activeGrid = this.nextGrid.activeGrid
+    this.newTile()
+    return this.activeGrid
   }
 
   swipeRight = () => {
@@ -329,7 +332,9 @@ class Grid {
       }
       this.nextGrid.nextLine()
     }
-    return this.nextGrid.activeGrid
+    this.activeGrid = this.nextGrid.activeGrid
+    this.newTile()
+    return this.activeGrid
   }
 
   swipeUp = () => {
@@ -341,7 +346,9 @@ class Grid {
       }
       this.nextGrid.nextLine()
     }
-    return this.nextGrid.activeGrid
+    this.activeGrid = this.nextGrid.activeGrid
+    this.newTile()
+    return this.activeGrid
   }
 
   swipeDown = () => {
@@ -354,7 +361,22 @@ class Grid {
       }
       this.nextGrid.nextLine()
     }
-    return this.nextGrid.activeGrid
+    this.activeGrid = this.nextGrid.activeGrid
+    this.newTile()
+    return this.activeGrid
+  }
+
+  /**
+   * this is a private method, you should not be using it
+   */
+  protected newTile = () => {
+    const c = this.nextGrid.newTileLocation()
+    if(Math.random() < 0.9){
+      this.activeGrid[c.y][c.x] = 2
+    }
+    else{
+      this.activeGrid[c.y][c.x] = 4
+    }
   }
 }
 
