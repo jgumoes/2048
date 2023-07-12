@@ -13,6 +13,18 @@
       "windows": {
         "program": "${workspaceFolder}/node_modules/jest/bin/jest"
       }
+    },
+    {
+      "name": "Debug newTileLocationTime.ts",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [
+        "${workspaceFolder}/__timers__/newTileLocationTime.ts"
+      ]
     }
   ]
 }
