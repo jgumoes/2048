@@ -1,7 +1,7 @@
 import Grid, {NewGrid} from "../grid";
 import * as importedTestGrids from '../__tests__/testGrids.json'
 
-const run = (endAfter = 10) => {
+const run = (endAfter = 20) => {
   let cumTime = 0
   let iterations = 0
   const startTime = Date.now()

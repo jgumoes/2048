@@ -39,8 +39,6 @@ export class NewGrid {
   private yIncrement: 1 | -1 = 1;
   private xStartingIndex: number = 0;
   private yStartingIndex: number = 0;
-  private xEndingIndex: number = gridSize - 1
-  private yEndingIndex: number = gridSize - 1
 
   private yIndex: number = 0;
   private xIndex: number = 0;
@@ -49,13 +47,8 @@ export class NewGrid {
   private addNumberFunction = (number: number)=>{};
 
   private newTileX = (chosen0: number) => {return {"x": gridSize, "y": gridSize}}
-  // private zerosCount = new Array(gridSize * gridSize).fill(
-  //   {
-  //     "x": gridSize,
-  //     "y": gridSize
-  //   }
-  // );
-  private zerosCount = new Array(gridSize).fill(gridSize)
+  private totalZerosCount = gridSize * gridSize;
+  private zerosCounts = new Array(gridSize).fill(gridSize)
   chooseA0: (nOfZeros: number) => number
 
   constructor (chooseA0Fn = chooseA0){
@@ -67,6 +60,8 @@ export class NewGrid {
     this._activeGrid = emptyGrid()
     this.xIndex = this.xStartingIndex;
     this.yIndex = this.yStartingIndex;
+    this.zerosCounts = new Array(gridSize).fill(gridSize)
+    this.totalZerosCount = gridSize * gridSize;
   }
 
   setDirectionLeft = () => {
@@ -74,9 +69,7 @@ export class NewGrid {
     this.yIncrement = 1
     this.xStartingIndex = 0
     this.yStartingIndex = 0
-    this.xEndingIndex = gridSize - 1
-    this.yEndingIndex = gridSize - 1
-    this.nextLineFunction = this.nextLineHorizontal
+    this.nextLineFunction = this.nextLineLeft
     this.addNumberFunction = this.addNumberHorizontal
     this.newTileX = this.newTileLeft
     this.resetGrid()
@@ -87,9 +80,7 @@ export class NewGrid {
     this.yIncrement = 1
     this.xStartingIndex = gridSize -1
     this.yStartingIndex = 0
-    this.xEndingIndex = 0
-    this.yEndingIndex = gridSize - 1
-    this.nextLineFunction = this.nextLineHorizontal
+    this.nextLineFunction = this.nextLineRight
     this.addNumberFunction = this.addNumberHorizontal
     this.newTileX = this.newTileRight
     this.resetGrid()
@@ -100,9 +91,7 @@ export class NewGrid {
     this.yIncrement = 1
     this.xStartingIndex = 0
     this.yStartingIndex = 0
-    this.xEndingIndex = gridSize - 1
-    this.yEndingIndex = gridSize - 1
-    this.nextLineFunction = this.nextLineVertical
+    this.nextLineFunction = this.nextLineUp
     this.addNumberFunction = this.addNumberVertical
     this.newTileX = this.newTileUp
     this.resetGrid()
@@ -113,9 +102,7 @@ export class NewGrid {
     this.yIncrement = -1
     this.xStartingIndex = 0
     this.yStartingIndex = gridSize - 1
-    this.xEndingIndex = gridSize - 1
-    this.yEndingIndex = 0
-    this.nextLineFunction = this.nextLineVertical
+    this.nextLineFunction = this.nextLineDown
     this.addNumberFunction = this.addNumberVertical
     this.newTileX = this.newTileDown
     this.resetGrid()
@@ -163,7 +150,7 @@ export class NewGrid {
   private addNumberHorizontal = (number: number) => {
     if(number !== this.previousNumber){
       this._activeGrid[this.yIndex][this.xIndex] = number
-      this.zerosCount[this.yIndex] -= 1
+      this.totalZerosCount -= 1
       this.xIndex += this.xIncrement;
       this.previousNumber = number
     }
@@ -176,7 +163,7 @@ export class NewGrid {
   private addNumberVertical = (number: number) => {
     if(number !== this.previousNumber){
       this._activeGrid[this.yIndex][this.xIndex] = number
-      this.zerosCount[this.xIndex] -= 1
+      this.totalZerosCount -= 1
       this.yIndex += this.yIncrement;
       this.previousNumber = number
     }
@@ -186,44 +173,45 @@ export class NewGrid {
     }
   }
 
-  private nextLineHorizontal = () => {
-    // while(this.xIndex !== this.xEndingIndex){
-    //   this.zerosLocations.push(
-    //     {
-    //       "x": this.xIndex,
-    //       "y": this.yIndex
-    //     }
-    //   )
-    //   this.xIndex += 1
-    // }
+  private nextLineLeft = () => {
+    this.zerosCounts[this.yIndex] = gridSize - this.xIndex
+    // this.zerosCounts.push(gridSize - this.xIndex)
     this.xIndex = this.xStartingIndex
     this.yIndex += this.yIncrement
   }
 
-  private nextLineVertical = () => {
-    // while(this.yIndex !== this.yEndingIndex){
-    //   this.zerosLocations.push(
-    //     {
-    //       "x": this.xIndex,
-    //       "y": this.yIndex
-    //     }
-    //   )
-    //   this.yIndex += 1
-    // }
+  private nextLineRight = () => {
+    this.zerosCounts[this.yIndex] = this.xIndex + 1
+    // this.zerosCounts.push(this.xIndex + 1)
+    this.xIndex = this.xStartingIndex
+    this.yIndex += this.yIncrement
+  }
+
+  private nextLineUp = () => {
+    this.zerosCounts[this.xIndex] = gridSize - this.yIndex
+    // this.zerosCounts.push(gridSize - this.yIndex)
+    this.xIndex += this.xIncrement
+    this.yIndex = this.yStartingIndex
+  }
+
+  private nextLineDown = () => {
+    this.zerosCounts[this.xIndex] = this.yIndex + 1
+    // this.zerosCounts.push(this.yIndex + 1)
     this.xIndex += this.xIncrement
     this.yIndex = this.yStartingIndex
   }
 
   newTileLocation = () => {
-    let nOfZeros = this.zerosCount.reduce((cum, x)=> cum + x, 0)
+    this.nextLine()
+    const nOfZeros = this.totalZerosCount - 1
     let chosen0 = this.chooseA0(nOfZeros)
     return this.newTileX(chosen0)
   }
 
   private newTileLeft = (chosen0: number) => {
     let y = 0
-    while( chosen0 > this.zerosCount[y]){
-      chosen0 -= this.zerosCount[y]
+    while( chosen0 > this.zerosCounts[y]){
+      chosen0 -= this.zerosCounts[y]
       y++
     }
 
@@ -235,8 +223,8 @@ export class NewGrid {
 
   private newTileRight = (chosen0: number) => {
     let y = 0
-    while( chosen0 > this.zerosCount[y]){
-      chosen0 -= this.zerosCount[y]
+    while( chosen0 > this.zerosCounts[y]){
+      chosen0 -= this.zerosCounts[y]
       y++
     }
 
@@ -248,8 +236,8 @@ export class NewGrid {
 
   private newTileUp = (chosen0: number) => {
     let x = 0
-    while( chosen0 > this.zerosCount[x]){
-      chosen0 -= this.zerosCount[x]
+    while( chosen0 > this.zerosCounts[x]){
+      chosen0 -= this.zerosCounts[x]
       x++
     }
 
@@ -261,8 +249,8 @@ export class NewGrid {
 
   private newTileDown = (chosen0: number) => {
     let x = 0
-    while( chosen0 > this.zerosCount[x]){
-      chosen0 -= this.zerosCount[x]
+    while( chosen0 > this.zerosCounts[x]){
+      chosen0 -= this.zerosCounts[x]
       x++
     }
 
