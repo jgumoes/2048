@@ -29,33 +29,37 @@ describe('initial grid', () => {
   });
 })
 
-describe.each([
-  [Direction.left, importedTestGrids.left],
-  [Direction.right, importedTestGrids.right],
-  [Direction.up, importedTestGrids.up],
-  [Direction.down, importedTestGrids.down]
-])('%s swiping once moves and merges test grids', (direction, resultGrid) => {
-
+describe.each(describeDirectionArray)('%s swiping once moves and merges test grids', (direction) => {
+  const resultGrids = importedTestGrids.resultGrids[direction]
   class TestingGrid extends Grid{
     // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
     placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {}
   }
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
-    let grid = new TestingGrid(importedTestGrids.inputs[index as keyof typeof importedTestGrids.inputs]);
+    let grid = new TestingGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]);
     grid.swipe(direction)
-    expect(grid.activeGrid).toStrictEqual(resultGrid[index as keyof typeof resultGrid])
+    expect(grid.activeGrid).toStrictEqual(resultGrids[index as keyof typeof resultGrids])
   })
+
+  const scores = importedTestGrids.scores[direction]
+  test.each(numberTestsArray)('and increases the score by the correct amount: testGrid %s', (index)=>{
+    const startingScore = Math.floor(Math.random() * 100)
+    let testGrid = new TestingGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs], startingScore);
+    expect(testGrid.currentScore).toBe(startingScore)
+    testGrid.swipe(direction)
+    expect(testGrid.currentScore).toBe(startingScore + scores[index as keyof typeof scores])
+  })
+
+  test.todo("but doesn't change backButtonCount")
+
 })
 
 /* the second swipe is to ensure Grid holds its own reference to activeGrid */
-describe.each([
-  [Direction.left, importedTestGrids.left],
-  [Direction.right, importedTestGrids.right],
-  [Direction.up, importedTestGrids.up],
-  [Direction.down, importedTestGrids.down]
-])('grid moves and merges correctly when swiping %s ', (direction, resultGrids) => {
-  const inputGrids = importedTestGrids.inputs
+describe.each(describeDirectionArray)('(double swipe) grid moves and merges correctly when swiping %s ', (direction) => {
+  const inputGrids = importedTestGrids.numberedInputs
+  const resultGrids = importedTestGrids.resultGrids[direction]
+
   class TestingGrid extends Grid{
     // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
     placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {}
@@ -74,13 +78,9 @@ describe.each([
   })
 })
 
-describe.each([
-  [Direction.left, importedTestGrids.left],
-  [Direction.right, importedTestGrids.right],
-  [Direction.up, importedTestGrids.up],
-  [Direction.down, importedTestGrids.down]
-])('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (direction, resultGrids) => {
-  const inputGrids = importedTestGrids.inputs
+describe.each(describeDirectionArray)('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (direction) => {
+  const inputGrids = importedTestGrids.numberedInputs
+  const resultGrids = importedTestGrids.resultGrids[direction]
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
     let grid = new Grid(inputGrids[index as keyof typeof inputGrids]);
@@ -112,13 +112,28 @@ describe.each([
   })
 })
 
-test.todo("when the grid can't be swiped %s, .swipe() will return false")
+describe.each(describeDirectionArray)("when the grid can't be swiped %s", (direction)=> {
+  test.todo(".swipe() will return false")
+
+  test.todo("the score won't change")
+
+  test.todo("backButtonCount won't change")
+})
 
 test.todo("when swiping %s into a losing game")
 
-describe("when the back button is press", ()=>{
-  test.todo("once")
-  test.todo("more than once")
+describe.each([
+  ["once", 1],
+  ["more than once", 5]
+])("when the back button is pressed %s", (title, count)=>{
+  test.todo("grid reverts to previous grid")
+
+  test.todo(".previousGrid becomes null")
+
+  test.todo("score reverts to previous score")
+
+  test.todo("backButtonCount increases by 1")
+
 })
 
 describe.each(describeDirectionArray)("if .swipe(%s) is called before nextGrids have finished computing, activeGrid updates correctly", (direction)=>{

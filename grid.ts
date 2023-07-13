@@ -195,7 +195,8 @@ const NewGridDirectionVariables: NewGridDirectionVariables_t = {
  *  the activeGrid is reset when a new direction is set.
  */
 export class NextGridMaker {
-  private nextGrid: number[][] = emptyGrid();
+  private _nextGrid: number[][] = emptyGrid();
+  private _mergeScore: number = 0;
 
   private index: {"x": number, "y": number};
   private previousNumber: number = 0;
@@ -213,7 +214,7 @@ export class NextGridMaker {
   private _canBeSwiped: boolean = true;
 
   readonly direction;
-  gridSize: number
+  readonly gridSize: number
 
   constructor (direction: Direction, grid: number[][], chooseA0Fn = chooseA0){
     // direction-specific setup
@@ -236,12 +237,16 @@ export class NextGridMaker {
 
   private resetGrid = () => {
     this.previousNumber = 0;
-    this.nextGrid = emptyGrid()
+    this._nextGrid = emptyGrid()
     this.index = {...this.startingIndex}
     this.zerosCounts = []
     this.totalZerosCount = 0
+    this._mergeScore = 0
   }
 
+  /**
+   * returns true if swiping in this direction is a valid move 
+   */
   get canBeSwiped() {
     return this._canBeSwiped
   }
@@ -250,9 +255,22 @@ export class NextGridMaker {
    * Get the grid that's the result of swiping in this direction
    */
   get activeGrid() {
-    return this.nextGrid
+    return this._nextGrid
   }
 
+  /**
+   * Get the score gained from merging in this direction
+   */
+  get mergeScore() {
+    return this._mergeScore
+  }
+
+  /**
+   * Update the class to use the grid currently on the game board.
+   * Will reset current variables, merge the grid in the relevant direction,
+   * find the merge score etc.
+   * Basically, when the user changes the game board, this method should be called
+   */
   public updateGrid(grid: number[][]) {
     this.resetGrid();
     switch (this.direction) {
@@ -302,13 +320,14 @@ export class NextGridMaker {
       return
     }
     if(number !== this.previousNumber){
-      this.nextGrid[this.index.y][this.index.x] = number
+      this._nextGrid[this.index.y][this.index.x] = number
       this.index.x += this.addNumberIncrement.x;
       this.index.y += this.addNumberIncrement.y
       this.previousNumber = number
     }
     else{
-      this.nextGrid[this.index.y - this.addNumberIncrement.y][this.index.x - this.addNumberIncrement.x] = number * 2
+      this._nextGrid[this.index.y - this.addNumberIncrement.y][this.index.x - this.addNumberIncrement.x] = number * 2
+      this._mergeScore += number * 2
       this.previousNumber = 0
     }
   }
@@ -337,15 +356,16 @@ export class NextGridMaker {
 
 class Grid {
   private _activeGrid: number[][];
-  _oldGrid: number[][];
-  nextGrids: {
+  private _oldGrid: number[][] | null = null;
+  private nextGrids: {
     [index in Direction]: NextGridMaker
   }
-  gridSize = gridSize
+  readonly gridSize = gridSize
+  private _currentScore: number
 
-  constructor(grid = emptyGrid()) {
+  constructor(grid = emptyGrid(), score = 0) {
     this._activeGrid = grid;
-    this._oldGrid = this._activeGrid
+    this._currentScore = score
     this.nextGrids = {
       "left": new NextGridMaker(Direction.left, grid = this._activeGrid),
       "right": new NextGridMaker(Direction.right, grid = this._activeGrid),
@@ -354,8 +374,11 @@ class Grid {
     }
   }
 
+  public get currentScore(): number {
+    return this._currentScore
+  }
   
-  public get oldGrid() : number[][] {
+  public get oldGrid() : number[][] | null {
     return this._oldGrid
   }
 
@@ -394,6 +417,7 @@ class Grid {
     const nextGrid = this.nextGrids[direction]
     if(nextGrid.canBeSwiped){
       this.updateActiveGrid(nextGrid.activeGrid)
+      this._currentScore += nextGrid.mergeScore
       this.placeNewTile(nextGrid.newTileLocation())
       this.updateNextGrids()
       return true

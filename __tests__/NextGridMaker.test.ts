@@ -14,25 +14,32 @@ const describeDirectionArray = [
 ]
 describe.each(describeDirectionArray)('when swipping %s:', (direction) => {
   let testGrid: NextGridMaker;
-  const resultGrid = importedTestGrids[direction]
+  const resultGrid = importedTestGrids.resultGrids[direction]
+  const scores = importedTestGrids.scores[direction]
   beforeEach(()=>{
     testGrid = new NextGridMaker(direction, emptyGrid())
   })
   test.each(["0", "1", "2", "3"])(`swiping once moves and merges test grids correctly: testGrid %s`, (index) => {
-    testGrid.updateGrid(importedTestGrids.inputs[index as keyof typeof importedTestGrids.inputs]);
+    testGrid.updateGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]);
     expect(testGrid.activeGrid).toStrictEqual(resultGrid[index as keyof typeof resultGrid])
   })
 
   test.each(numberTestsArray)('newTileLocation randomly produces a valid location: testGrid %s', (index) => {
-    testGrid.updateGrid(importedTestGrids.inputs[index as keyof typeof importedTestGrids.inputs]);
+    testGrid.updateGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]);
     const {x, y} = testGrid.newTileLocation()
     expect(testGrid.activeGrid[y][x]).toBe(0)
+  })
+
+  test.each(numberTestsArray)('the correct score is calculated: testGrid %s', (index)=>{
+    expect(testGrid.mergeScore).toBe(0)
+    testGrid.updateGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]);
+    expect(testGrid.mergeScore).toBe(scores[index as keyof typeof scores])
   })
 
 })
 
 describe.each(describeDirectionArray)('newTileLocation only produces valid locations when swipping %s', (direction) => {
-  const resultGrids = importedTestGrids[direction]
+  const resultGrids = importedTestGrids.resultGrids[direction]
   let testGrid: NextGridMaker;
   let numberOfZeros: number;
   let zeroIndex: number;
@@ -48,7 +55,7 @@ describe.each(describeDirectionArray)('newTileLocation only produces valid locat
   test.each(numberTestsArray)('testGrid %s', (testIndex) => {
     const resultNumberOfZeros = resultGrids[testIndex as keyof typeof resultGrids].flat().filter((value)=>value===0).length
     while(zeroIndex < resultNumberOfZeros){
-      testGrid.updateGrid(importedTestGrids.inputs[testIndex as keyof typeof importedTestGrids.inputs]);
+      testGrid.updateGrid(importedTestGrids.numberedInputs[testIndex as keyof typeof importedTestGrids.numberedInputs]);
       const {x, y} = testGrid.newTileLocation()
       expect(testGrid.activeGrid[y][x]).toBe(0)
       zeroIndex++
@@ -68,23 +75,20 @@ test("chooseA0 will not go out of bounds over X% of runs", ()=>{
   }
 })
 
-describe.each(describeDirectionArray)("when swiping %left, .canBeSwiped", (direction)=>{
+describe.each(describeDirectionArray)("when swiping %s, .canBeSwiped", (direction)=>{
   let testGrid: NextGridMaker
   beforeEach(()=>{
     testGrid = new NextGridMaker(direction, emptyGrid());
   })
   test(`is true when the grid can be swiped ${direction}`, ()=>{
-    const canBeSwiped = testGrid.updateGrid(importedTestGrids.inputs[0]);
+    const canBeSwiped = testGrid.updateGrid(importedTestGrids.numberedInputs[0]);
     expect(canBeSwiped).toBe(true)
     expect(testGrid.canBeSwiped).toBe(true)
   })
 
   test(`is false when the grid can't be swiped ${direction}`,()=>{
-    const canBeSwiped = testGrid.updateGrid(importedTestGrids.inputs.gameOver)
+    const canBeSwiped = testGrid.updateGrid(importedTestGrids.gameOverInputs.noSwipe)
     expect(canBeSwiped).toBe(false)
     expect(testGrid.canBeSwiped).toBe(false)
   })
 })
-
-
-test.todo("when swiping %s into a losing game")
