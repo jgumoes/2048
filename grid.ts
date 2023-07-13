@@ -362,6 +362,7 @@ class Grid {
   }
   readonly gridSize = gridSize
   private _currentScore: number
+  private _gameOver = false
 
   constructor(grid = emptyGrid(), score = 0) {
     this._activeGrid = grid;
@@ -372,6 +373,10 @@ class Grid {
       "up": new NextGridMaker(Direction.up, grid = this._activeGrid),
       "down": new NextGridMaker(Direction.down, grid = this._activeGrid),
     }
+  }
+
+  public get gameOver(){
+    return this._gameOver
   }
 
   public get currentScore(): number {
@@ -406,6 +411,15 @@ class Grid {
     for (const direction in Direction){
       this.nextGrids[<Direction>direction].updateGrid(this._activeGrid)
     }
+    this.testForGameOver()
+  }
+
+  private testForGameOver = () => {
+    let gameStillPlayable = !this._gameOver
+    for(const direction in Direction){
+      gameStillPlayable &&= this.nextGrids[<Direction>direction].canBeSwiped
+    }
+    this._gameOver = ! gameStillPlayable
   }
 
   /**

@@ -130,14 +130,41 @@ describe.each(describeDirectionArray)('2 or 4 should replace a zero after moving
 })
 
 describe.each(describeDirectionArray)("when the grid can't be swiped %s", (direction)=> {
-  test.todo(".swipe() will return false")
+  const startingScore = Math.floor(Math.random() * 100)
+  let testGrid: Grid
+  beforeAll(()=>{
+    testGrid = new Grid(importedTestGrids.gameOverInputs.noSwipe, startingScore)
+  })
 
-  test.todo("the score won't change")
+  test(".swipe() will return false", ()=>{
+    const canBeSwiped = testGrid.swipe(direction)
+    expect(canBeSwiped).toBe(false)
+  })
+
+  test("the score won't change", ()=>{
+    expect(testGrid.currentScore).toBe(startingScore)
+    testGrid.swipe(direction)
+    expect(testGrid.currentScore).toBe(startingScore)
+  })
 
   test.todo("backButtonCount won't change")
 })
 
-test.todo("when swiping %s into a losing game")
+describe.each(describeDirectionArray)("when swiping %s into a losing game", (direction)=>{
+  const startingGrid = importedTestGrids.gameOverInputs[direction]
+  let testGrid: Grid
+  beforeEach(()=>{
+    testGrid = new Grid(startingGrid, 0)
+  })
+
+  test("gameOver becomes true", ()=>{
+    expect(testGrid.gameOver).toBe(false)
+    testGrid.swipe(direction)
+    expect(testGrid.gameOver).toBe(true)
+  })
+
+  test.todo("pressing the back button still works though")
+})
 
 describe.each([
   ["once", 1],
