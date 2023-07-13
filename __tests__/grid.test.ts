@@ -1,4 +1,4 @@
-import Grid from "../grid";
+import Grid, { Direction } from "../grid";
 import {emptyGrid} from "../grid";
 import * as importedTestGrids from './testGrids.json'
 
@@ -22,16 +22,15 @@ describe('initial grid', () => {
 })
 
 describe.each([
-  ["left", importedTestGrids.left],
-  ["right", importedTestGrids.right],
-  ["up", importedTestGrids.up],
-  ["down", importedTestGrids.down]
-])('%s swiping once moves and merges test grids', (swipeDirection, resultGrid) => {
-  const direction= <"left" | "right" | "up" | "down">swipeDirection;
+  [Direction.left, importedTestGrids.left],
+  [Direction.right, importedTestGrids.right],
+  [Direction.up, importedTestGrids.up],
+  [Direction.down, importedTestGrids.down]
+])('%s swiping once moves and merges test grids', (direction, resultGrid) => {
 
   class TestingGrid extends Grid{
     // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
-    newTile = () => {}
+    placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {}
   }
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
@@ -43,12 +42,11 @@ describe.each([
 
 /* the second swipe is to ensure Grid holds its own reference to activeGrid */
 describe.each([
-  ["left", importedTestGrids.left],
-  ["right", importedTestGrids.right],
-  ["up", importedTestGrids.up],
-  ["down", importedTestGrids.down]
-])('grid moves and merges correctly when swiping %s ', (swipeDirection, resultGrids) => {
-  const direction= <"left" | "right" | "up" | "down">swipeDirection;
+  [Direction.left, importedTestGrids.left],
+  [Direction.right, importedTestGrids.right],
+  [Direction.up, importedTestGrids.up],
+  [Direction.down, importedTestGrids.down]
+])('grid moves and merges correctly when swiping %s ', (direction, resultGrids) => {
   const inputGrids = importedTestGrids.inputs
   class TestingGrid extends Grid{
     // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
@@ -56,12 +54,11 @@ describe.each([
   }
 
   test.each([
-    ["left", "0"],
-    ["right", "1"],
-    ["up", "2"],
-    ["down", "3"]
-  ])("then left", (swipeDirection2, index) => {
-    const direction2= <"left" | "right" | "up" | "down">swipeDirection2;
+    [Direction.left, "0"],
+    [Direction.right, "1"],
+    [Direction.up, "2"],
+    [Direction.down, "3"]
+  ])("then left", (direction2, index) => {
     let grid = new TestingGrid(inputGrids[index as keyof typeof inputGrids]);
     grid.swipe(direction)
     grid.swipe(direction2)
@@ -70,12 +67,11 @@ describe.each([
 })
 
 describe.each([
-  ["left", importedTestGrids.left],
-  ["right", importedTestGrids.right],
-  ["up", importedTestGrids.up],
-  ["down", importedTestGrids.down]
-])('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (swipeDirection, resultGrids) => {
-  const direction= <"left" | "right" | "up" | "down">swipeDirection;
+  [Direction.left, importedTestGrids.left],
+  [Direction.right, importedTestGrids.right],
+  [Direction.up, importedTestGrids.up],
+  [Direction.down, importedTestGrids.down]
+])('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (direction, resultGrids) => {
   const inputGrids = importedTestGrids.inputs
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {

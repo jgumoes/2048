@@ -1,4 +1,4 @@
-import Grid, {NewGrid} from "../grid";
+import Grid, {NextGridMaker} from "../grid";
 import * as importedTestGrids from '../__tests__/testGrids.json'
 
 const run = (endAfter = 20) => {
@@ -26,73 +26,73 @@ const timer = (setup: (params?: any )=> any, callback: (value: any)=>void) => {
   return Math.abs(end-start)
 }
 
-const testNewGrid = () => {
-  let time = 0;
-  [ "left", "right", "up", "down"]
-    .forEach((direction)=>{
-    time += timer(()=>new NewGrid(), (testGrid: NewGrid)=>{
-      testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
-      testGrid.addNumber(2);
-      testGrid.addNumber(4);
-      testGrid.addNumber(8);
-      testGrid.newTileLocation()
-    })
-    time += timer(()=>new NewGrid(), (testGrid: NewGrid)=>{
-      testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
-      testGrid.addNumber(2);
-      testGrid.nextLine()
-      testGrid.addNumber(4);
-      testGrid.nextLine()
-      testGrid.addNumber(8);
-      testGrid.newTileLocation()
-    })
-    time += timer(()=>new NewGrid(), (testGrid: NewGrid)=>{
-      testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
-      testGrid.addNumber(2)
-      testGrid.addNumber(2)
-      testGrid.nextLine()
-      testGrid.addNumber(4)
-      testGrid.addNumber(4)
-      testGrid.addNumber(2)
-      testGrid.addNumber(2)
-      testGrid.nextLine()
-      testGrid.addNumber(2)
-      testGrid.addNumber(2)
-      testGrid.addNumber(4)
-      testGrid.nextLine()
-      testGrid.addNumber(2)
-      testGrid.addNumber(2)
-      testGrid.addNumber(2)
-      testGrid.addNumber(2)
-      testGrid.addNumber(4)
-      testGrid.addNumber(4)
-      testGrid.addNumber(8)
-      testGrid.addNumber(8)
-      testGrid.newTileLocation()
-    })
-    time += timer(()=>new NewGrid(), (testGrid: NewGrid)=>{
-      testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
-      testGrid.addNumber(2)
-      testGrid.addNumber(2)
-      testGrid.nextLine()
-      testGrid.addNumber(4)
-      testGrid.addNumber(2)
-      testGrid.addNumber(4)
-      testGrid.addNumber(8)
-      testGrid.nextLine()
-      testGrid.addNumber(8)
-      testGrid.addNumber(8)
-      testGrid.addNumber(8)
-      testGrid.addNumber(8)
-      testGrid.nextLine()
-      testGrid.addNumber(64)
-      testGrid.addNumber(32)
-      testGrid.addNumber(32)
-      testGrid.newTileLocation()
-    })
-  })
-  return time
-}
+// const testNewGrid = () => {
+//   let time = 0;
+//   [ "left", "right", "up", "down"]
+//     .forEach((direction)=>{
+//     time += timer(()=>new NextGridMaker(), (testGrid: NextGridMaker)=>{
+//       testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
+//       testGrid.addNumber(2);
+//       testGrid.addNumber(4);
+//       testGrid.addNumber(8);
+//       testGrid.newTileLocation()
+//     })
+//     time += timer(()=>new NextGridMaker(), (testGrid: NextGridMaker)=>{
+//       testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
+//       testGrid.addNumber(2);
+//       testGrid.nextLine()
+//       testGrid.addNumber(4);
+//       testGrid.nextLine()
+//       testGrid.addNumber(8);
+//       testGrid.newTileLocation()
+//     })
+//     time += timer(()=>new NextGridMaker(), (testGrid: NextGridMaker)=>{
+//       testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(2)
+//       testGrid.nextLine()
+//       testGrid.addNumber(4)
+//       testGrid.addNumber(4)
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(2)
+//       testGrid.nextLine()
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(4)
+//       testGrid.nextLine()
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(4)
+//       testGrid.addNumber(4)
+//       testGrid.addNumber(8)
+//       testGrid.addNumber(8)
+//       testGrid.newTileLocation()
+//     })
+//     time += timer(()=>new NextGridMaker(), (testGrid: NextGridMaker)=>{
+//       testGrid.setDirection(<"left" | "right" | "up" | "down">direction)
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(2)
+//       testGrid.nextLine()
+//       testGrid.addNumber(4)
+//       testGrid.addNumber(2)
+//       testGrid.addNumber(4)
+//       testGrid.addNumber(8)
+//       testGrid.nextLine()
+//       testGrid.addNumber(8)
+//       testGrid.addNumber(8)
+//       testGrid.addNumber(8)
+//       testGrid.addNumber(8)
+//       testGrid.nextLine()
+//       testGrid.addNumber(64)
+//       testGrid.addNumber(32)
+//       testGrid.addNumber(32)
+//       testGrid.newTileLocation()
+//     })
+//   })
+//   return time
+// }
 
 const testGrid = () => {
   let time = 0;
