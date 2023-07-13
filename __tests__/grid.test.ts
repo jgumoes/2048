@@ -76,6 +76,23 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
     grid.swipe(direction2)
     expect(grid.activeGrid).toStrictEqual(resultGrids[direction2 as keyof typeof resultGrids])
   })
+
+  const scores = importedTestGrids.scores[direction]
+  test.each([
+    [Direction.left, "0"],
+    [Direction.right, "1"],
+    [Direction.up, "2"],
+    [Direction.down, "3"]
+  ])('and increases the score by the correct amount: testGrid %s', (direction2, index)=>{
+    const startingScore = Math.floor(Math.random() * 100)
+    let testGrid = new TestingGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs], startingScore);
+    expect(testGrid.currentScore).toBe(startingScore)
+    testGrid.swipe(direction)
+    testGrid.swipe(direction2)
+    expect(testGrid.currentScore).toBe(startingScore + scores[direction2])
+  })
+
+  test.todo("but doesn't change backButtonCount")
 })
 
 describe.each(describeDirectionArray)('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (direction) => {
