@@ -8,18 +8,179 @@ export const emptyGrid = () => [
 
 const gridSize = 4
 
-type coordinate_t = {
-  x: number,
-  y: number
+/**
+ * Compares two grids, and returns if they are different.
+ * gridA and gridB have same shape
+ */
+const areGridsDifferent = (gridA: number[][], gridB: number[][])=>{
+  // if(gridA.length !== gridB.length){ return false } // same number of rows
+  for(let y = 0; y < gridA.length; y++){
+    // if(gridA[y].length !== gridB[y].length){ return false } // same number of colomns
+    for(let x = 0; x < gridA[y].length; x++){
+      if(gridA[y][x] !== gridB[y][x]){
+        return true
+      }
+    }
+  }
+  return false
 }
 
 /**
  * Chooses a number between 1 and nOfZeros
- * @param nOfZeros
  * @returns 1 <= number <= nOfZeros}
  */
 export const chooseA0 = (nOfZeros: number) => {
-  return Math.floor(Math.random() * nOfZeros) + 1
+  return Math.floor(Math.random() * nOfZeros)
+}
+
+export enum Direction {
+  left = "left",
+  right = "right",
+  up = "up",
+  down = "down"
+}
+
+type directionVariables_t = {
+  addNumberIncrement: {
+      x: number;
+      y: number;
+  };
+  startingIndex: (gridSize: number) => {
+    x: number;
+    y: number;
+  };
+  nextLine: (
+    index: {
+      x: number;
+      y: number;
+    }, 
+    gridSize: number
+  ) => {
+    index: {
+      x: number;
+      y: number;
+    }, zeros: number
+  },
+  "newTile": (chosen0: number, line: number) => {
+    x: number,
+    y: number
+  }
+}
+
+
+type NewGridDirectionVariables_t = {
+  [index in Direction]: directionVariables_t
+}
+
+const NewGridDirectionVariables: NewGridDirectionVariables_t = {
+  "left": {
+    "addNumberIncrement": {
+      "x": 1,
+      "y": 0,
+    },
+    "startingIndex": (gridSize) => {
+      return {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "nextLine": (index, gridSize) => {
+      return {
+        "index": {
+          "x": 0,
+          "y": index.y + 1
+        },
+        "zeros": gridSize - index.x
+      }
+    },
+    "newTile": (chosen0: number, line: number) => {
+      return {
+        x: gridSize - 1 - chosen0,
+        y: line
+      }
+    }
+  },
+  "right": {
+    "addNumberIncrement": {
+      "x": -1,
+      "y": 0,
+    },
+    "startingIndex": (gridSize) => {
+      return {
+        "x": gridSize - 1,
+        "y": 0
+      }
+    },
+    "nextLine": (index, gridSize) => {
+      return {
+        "index": {
+          "x": gridSize - 1,
+          "y": index.y + 1
+        },
+        "zeros": index.x + 1
+      }
+    },
+    "newTile": (chosen0: number, line: number) => {
+      return {
+        x: chosen0,
+        y: line
+      }
+    }
+  },
+  "up": {
+    "addNumberIncrement": {
+      "x": 0,
+      "y": 1,
+    },
+    "startingIndex": (gridSize) => {
+      return {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "nextLine": (index, gridSize) => {
+      return {
+        "index": {
+          "x": index.x + 1,
+          "y": 0
+        },
+        "zeros": gridSize  - index.y
+      }
+    },
+    "newTile": (chosen0: number, line: number) => {
+      return {
+        x: line,
+        y: gridSize -1 - chosen0
+      }
+    }
+  },
+  "down": {
+    "addNumberIncrement": {
+      "x": 0,
+      "y": -1,
+    },
+    "startingIndex": (gridSize) => {
+      return {
+        "x": 0,
+        "y": gridSize - 1
+      }
+    },
+    "nextLine": (index, gridSize) => {
+      return {
+        "index": {
+          "x": index.x + 1,
+          "y": gridSize - 1
+        },
+        "zeros": index.y + 1
+      }
+    },
+    "newTile": (chosen0: number, line: number) => {
+      return {
+        x: line,
+        y: chosen0
+      }
+    }
+  },
 }
 
 /**
@@ -33,338 +194,220 @@ export const chooseA0 = (nOfZeros: number) => {
  * 
  *  the activeGrid is reset when a new direction is set.
  */
-export class NewGrid {
-  private _activeGrid: number[][] = emptyGrid();
-  private xIncrement: 1 | -1 = 1;
-  private yIncrement: 1 | -1 = 1;
-  private xStartingIndex: number = 0;
-  private yStartingIndex: number = 0;
+export class NextGridMaker {
+  private nextGrid: number[][] = emptyGrid();
 
-  private yIndex: number = 0;
-  private xIndex: number = 0;
-  private nextLineFunction = ()=>{};
+  private index: {"x": number, "y": number};
   private previousNumber: number = 0;
-  private addNumberFunction = (number: number)=>{};
 
-  private newTileX = (chosen0: number) => {return {"x": gridSize, "y": gridSize}}
-  private totalZerosCount = gridSize * gridSize;
-  private zerosCounts = new Array(gridSize).fill(gridSize)
-  chooseA0: (nOfZeros: number) => number
+  private totalZerosCount: number;
+  private zerosCounts: number[] = []
+  
+  private readonly addNumberIncrement: {"x": number, "y": number}
+  private readonly startingIndex: {"x": number, "y": number}
+  
+  private nextLineX: (index: { x: number; y: number }, gridSize: number) => { index: { x: number; y: number }; zeros: number }
+  private newTileX: (chosen0: number, line: number) => { x: number; y: number }
+  private chooseA0: (nOfZeros: number) => number
 
-  constructor (chooseA0Fn = chooseA0){
+  private _canBeSwiped: boolean = true;
+
+  readonly direction;
+  gridSize: number
+
+  constructor (direction: Direction, grid: number[][], chooseA0Fn = chooseA0){
+    // direction-specific setup
+    this.gridSize = grid.length
+    this.addNumberIncrement = NewGridDirectionVariables[direction].addNumberIncrement
+    this.startingIndex = NewGridDirectionVariables[direction].startingIndex(gridSize)
+    this.index = {...this.startingIndex}
+    this.nextLineX = NewGridDirectionVariables[direction].nextLine
+    this.newTileX = NewGridDirectionVariables[direction].newTile
+    this.direction = direction
+
+    // dependancy injection
     this.chooseA0 = chooseA0Fn
+    
+    // other setup
+    this.totalZerosCount = 0
+
+    this.updateGrid(grid)
   }
 
-  resetGrid = () => {
+  private resetGrid = () => {
     this.previousNumber = 0;
-    this._activeGrid = emptyGrid()
-    this.xIndex = this.xStartingIndex;
-    this.yIndex = this.yStartingIndex;
-    this.zerosCounts = new Array(gridSize).fill(gridSize)
-    this.totalZerosCount = gridSize * gridSize;
+    this.nextGrid = emptyGrid()
+    this.index = {...this.startingIndex}
+    this.zerosCounts = []
+    this.totalZerosCount = 0
   }
 
-  setDirectionLeft = () => {
-    this.xIncrement = 1
-    this.yIncrement = 1
-    this.xStartingIndex = 0
-    this.yStartingIndex = 0
-    this.nextLineFunction = this.nextLineLeft
-    this.addNumberFunction = this.addNumberHorizontal
-    this.newTileX = this.newTileLeft
-    this.resetGrid()
-  }
-
-  setDirectionRight = () => {
-    this.xIncrement = -1
-    this.yIncrement = 1
-    this.xStartingIndex = gridSize -1
-    this.yStartingIndex = 0
-    this.nextLineFunction = this.nextLineRight
-    this.addNumberFunction = this.addNumberHorizontal
-    this.newTileX = this.newTileRight
-    this.resetGrid()
-  }
-
-  setDirectionUp = () => {
-    this.xIncrement = 1
-    this.yIncrement = 1
-    this.xStartingIndex = 0
-    this.yStartingIndex = 0
-    this.nextLineFunction = this.nextLineUp
-    this.addNumberFunction = this.addNumberVertical
-    this.newTileX = this.newTileUp
-    this.resetGrid()
-  }
-
-  setDirectionDown = () => {
-    this.xIncrement = 1
-    this.yIncrement = -1
-    this.xStartingIndex = 0
-    this.yStartingIndex = gridSize - 1
-    this.nextLineFunction = this.nextLineDown
-    this.addNumberFunction = this.addNumberVertical
-    this.newTileX = this.newTileDown
-    this.resetGrid()
+  get canBeSwiped() {
+    return this._canBeSwiped
   }
 
   /**
-   * Convenience function for testing. The correct setDirectionX
-   * method should be called to avoid an unnecessary switch statement
-  */
-  setDirection = (direction: "left" | "right" | "up" | "down") => {
-    switch (direction) {
-      case "left":
-        this.setDirectionLeft()
+   * Get the grid that's the result of swiping in this direction
+   */
+  get activeGrid() {
+    return this.nextGrid
+  }
+
+  public updateGrid(grid: number[][]) {
+    this.resetGrid();
+    switch (this.direction) {
+      case Direction.left:
+        for(var y = 0; y < gridSize; y++){
+          for(var x = 0; x < gridSize; x++){
+            this.addNumber(grid[y][x])
+          }
+          this.nextLine()
+        }
         break;
-      case "right":
-        this.setDirectionRight()
+      case Direction.right:
+        for(var y = 0; y < gridSize; y++){
+          var xLimit = gridSize - 1
+          for(var x = 0; x <= xLimit; x++){
+            this.addNumber(grid[y][xLimit - x])
+          }
+          this.nextLine()
+        }
         break;
-      case "up":
-        this.setDirectionUp()
+      case Direction.up:
+        for(var x = 0; x < gridSize; x++){
+          for(var y = 0; y < gridSize; y++){
+            this.addNumber(grid[y][x])
+          }
+          this.nextLine()
+        }
         break;
-      case "down":
-        this.setDirectionDown()
+      case Direction.down:
+        for(var x = 0; x < gridSize; x++){
+          var yLimit = gridSize - 1
+          for(var y = 0; y <= yLimit; y++){
+            this.addNumber(grid[yLimit - y][x])
+          }
+          this.nextLine()
+        }
         break;
       default:
-        new Error(`{direction} is not a valid direction`)
         break;
     }
+    this._canBeSwiped = areGridsDifferent(this.activeGrid, grid)
+    return this._canBeSwiped
   }
 
-  get activeGrid() {
-    return this._activeGrid
-  }
-
-  addNumber = (number: number) => {
-    if(number !== 0){
-      this.addNumberFunction(number)
+  private addNumber = (number: number) => {
+    if(number === 0){
+      return
+    }
+    if(number !== this.previousNumber){
+      this.nextGrid[this.index.y][this.index.x] = number
+      this.index.x += this.addNumberIncrement.x;
+      this.index.y += this.addNumberIncrement.y
+      this.previousNumber = number
+    }
+    else{
+      this.nextGrid[this.index.y - this.addNumberIncrement.y][this.index.x - this.addNumberIncrement.x] = number * 2
+      this.previousNumber = 0
     }
   }
 
-  nextLine = () => {
-    this.nextLineFunction()
+  private nextLine = () => {
+    const {index, zeros} = this.nextLineX(this.index, gridSize)
+    this.index = index
+    this.totalZerosCount += zeros
+    this.zerosCounts.push(zeros)
     this.previousNumber = 0
   }
 
-  private addNumberHorizontal = (number: number) => {
-    if(number !== this.previousNumber){
-      this._activeGrid[this.yIndex][this.xIndex] = number
-      this.totalZerosCount -= 1
-      this.xIndex += this.xIncrement;
-      this.previousNumber = number
-    }
-    else{
-      this._activeGrid[this.yIndex][this.xIndex - this.xIncrement] = number * 2
-      this.previousNumber = 0
-    }
-  }
-
-  private addNumberVertical = (number: number) => {
-    if(number !== this.previousNumber){
-      this._activeGrid[this.yIndex][this.xIndex] = number
-      this.totalZerosCount -= 1
-      this.yIndex += this.yIncrement;
-      this.previousNumber = number
-    }
-    else{
-      this._activeGrid[this.yIndex - this.yIncrement][this.xIndex] = number * 2
-      this.previousNumber = 0
-    }
-  }
-
-  private nextLineLeft = () => {
-    this.zerosCounts[this.yIndex] = gridSize - this.xIndex
-    // this.zerosCounts.push(gridSize - this.xIndex)
-    this.xIndex = this.xStartingIndex
-    this.yIndex += this.yIncrement
-  }
-
-  private nextLineRight = () => {
-    this.zerosCounts[this.yIndex] = this.xIndex + 1
-    // this.zerosCounts.push(this.xIndex + 1)
-    this.xIndex = this.xStartingIndex
-    this.yIndex += this.yIncrement
-  }
-
-  private nextLineUp = () => {
-    this.zerosCounts[this.xIndex] = gridSize - this.yIndex
-    // this.zerosCounts.push(gridSize - this.yIndex)
-    this.xIndex += this.xIncrement
-    this.yIndex = this.yStartingIndex
-  }
-
-  private nextLineDown = () => {
-    this.zerosCounts[this.xIndex] = this.yIndex + 1
-    // this.zerosCounts.push(this.yIndex + 1)
-    this.xIndex += this.xIncrement
-    this.yIndex = this.yStartingIndex
-  }
-
-  newTileLocation = () => {
-    this.nextLine()
-    const nOfZeros = this.totalZerosCount - 1
+  public newTileLocation = () => {
+    const nOfZeros = this.totalZerosCount
     let chosen0 = this.chooseA0(nOfZeros)
-    return this.newTileX(chosen0)
-  }
 
-  private newTileLeft = (chosen0: number) => {
-    let y = 0
-    while( chosen0 > this.zerosCounts[y]){
-      chosen0 -= this.zerosCounts[y]
-      y++
+    let line = 0
+    while( chosen0 >= this.zerosCounts[line]){
+      chosen0 -= this.zerosCounts[line]
+      line++
     }
 
-    return {
-      x: gridSize - chosen0,
-      y: y
-    }
-  }
-
-  private newTileRight = (chosen0: number) => {
-    let y = 0
-    while( chosen0 > this.zerosCounts[y]){
-      chosen0 -= this.zerosCounts[y]
-      y++
-    }
-
-    return {
-      x: chosen0 - 1,
-      y: y
-    }
-  }
-
-  private newTileUp = (chosen0: number) => {
-    let x = 0
-    while( chosen0 > this.zerosCounts[x]){
-      chosen0 -= this.zerosCounts[x]
-      x++
-    }
-
-    return {
-      x: x,
-      y: gridSize - chosen0
-    }
-  }
-
-  private newTileDown = (chosen0: number) => {
-    let x = 0
-    while( chosen0 > this.zerosCounts[x]){
-      chosen0 -= this.zerosCounts[x]
-      x++
-    }
-
-    return {
-      x: x,
-      y: chosen0 - 1
-    }
+    return this.newTileX(chosen0, line)
   }
 }
 
 class Grid {
-  activeGrid: number[][];
-  oldGrid: number[][];
-  nextGrid: NewGrid;
+  private _activeGrid: number[][];
+  _oldGrid: number[][];
+  nextGrids: {
+    [index in Direction]: NextGridMaker
+  }
   gridSize = gridSize
 
   constructor(grid = emptyGrid()) {
-    this.activeGrid = grid
-    this.oldGrid = grid
-    this.nextGrid = new NewGrid()
+    this._activeGrid = grid;
+    this._oldGrid = this._activeGrid
+    this.nextGrids = {
+      "left": new NextGridMaker(Direction.left, grid = this._activeGrid),
+      "right": new NextGridMaker(Direction.right, grid = this._activeGrid),
+      "up": new NextGridMaker(Direction.up, grid = this._activeGrid),
+      "down": new NextGridMaker(Direction.down, grid = this._activeGrid),
+    }
+  }
+
+  
+  public get oldGrid() : number[][] {
+    return this._oldGrid
+  }
+
+  
+  public get activeGrid() : number[][] {
+    return this._activeGrid
+  }
+  
+  /**
+   * Updates the active grid in this class
+   * @param grid the new active grid
+   */
+  private updateActiveGrid = (grid: number[][]) => {
+    this._oldGrid = this._activeGrid
+    this._activeGrid = grid;
   }
 
   /**
-   * Convenience function for testing. Try to use the correct swipeX method if possible
-  */
-  swipe = (direction: "left" | "right" | "up" | "down") => {
-    switch (direction) {
-      case "left":
-        this.activeGrid = this.swipeLeft()
-        break;
-      case "right":
-        this.activeGrid = this.swipeRight()
-        break
-      case "up":
-        this.activeGrid = this.swipeUp()
-        break
-      case "down":
-        this.activeGrid = this.swipeDown()
-        break
-      default:
-        new Error(`{direction} is not a valid direction`)
-        break;
+   * Updates all the nextGrids with the current activeGrid.
+   * Important: .nextTileLocation() must be called before updating the grids!
+   */
+  private updateNextGrids = () => {
+    // TODO: this loop should happen after the swipe() has returned, while
+    // the app is re-drawing i.e. this loop should be asynchronious
+    for (const direction in Direction){
+      this.nextGrids[<Direction>direction].updateGrid(this._activeGrid)
     }
-}
-
-  swipeLeft = () => {
-    this.oldGrid = this.activeGrid
-    this.nextGrid.setDirectionLeft()
-    for(var y = 0; y < gridSize; y++){
-      for(var x = 0; x < gridSize; x++){
-        this.nextGrid.addNumber(this.oldGrid[y][x])
-      }
-      this.nextGrid.nextLine()
-    }
-    this.activeGrid = this.nextGrid.activeGrid
-    this.newTile()
-    return this.activeGrid
   }
 
-  swipeRight = () => {
-    this.oldGrid = this.activeGrid
-    this.nextGrid.setDirectionRight()
-    for(var y = 0; y < gridSize; y++){
-      var xLimit = gridSize - 1
-      for(var x = 0; x <= xLimit; x++){
-        this.nextGrid.addNumber(this.oldGrid[y][xLimit - x])
-      }
-      this.nextGrid.nextLine()
+  /**
+   * Swipe the grid in a direction.
+   * @param direction member of the Direction enum
+   * @returns if the swipe was successful
+   */
+  swipe = (direction: Direction) => {
+    const nextGrid = this.nextGrids[direction]
+    if(nextGrid.canBeSwiped){
+      this.updateActiveGrid(nextGrid.activeGrid)
+      this.placeNewTile(nextGrid.newTileLocation())
+      this.updateNextGrids()
+      return true
     }
-    this.activeGrid = this.nextGrid.activeGrid
-    this.newTile()
-    return this.activeGrid
-  }
-
-  swipeUp = () => {
-    this.oldGrid = this.activeGrid
-    this.nextGrid.setDirectionUp()
-    for(var x = 0; x < gridSize; x++){
-      for(var y = 0; y < gridSize; y++){
-        this.nextGrid.addNumber(this.oldGrid[y][x])
-      }
-      this.nextGrid.nextLine()
+    else{
+      return false
     }
-    this.activeGrid = this.nextGrid.activeGrid
-    this.newTile()
-    return this.activeGrid
-  }
-
-  swipeDown = () => {
-    this.oldGrid = this.activeGrid
-    this.nextGrid.setDirectionDown()
-    for(var x = 0; x < gridSize; x++){
-      var yLimit = gridSize - 1
-      for(var y = 0; y <= yLimit; y++){
-        this.nextGrid.addNumber(this.oldGrid[yLimit - y][x])
-      }
-      this.nextGrid.nextLine()
-    }
-    this.activeGrid = this.nextGrid.activeGrid
-    this.newTile()
-    return this.activeGrid
   }
 
   /**
    * this is a private method, you should not be using it
    */
-  protected newTile = () => {
-    const c = this.nextGrid.newTileLocation()
-    if(Math.random() < 0.9){
-      this.activeGrid[c.y][c.x] = 2
-    }
-    else{
-      this.activeGrid[c.y][c.x] = 4
-    }
+  protected placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {
+    this._activeGrid[newTileLocation.y][newTileLocation.x] = Math.random() < 0.9 ? 2 : 4
   }
 }
 
