@@ -14,6 +14,14 @@ import * as importedTestGrids from './testGrids.json'
   of stumbling accross a new bug I haven't thought of yet.
 */
 
+const numberTestsArray = ["0", "1", "2", "3"]
+const describeDirectionArray = [
+  Direction.left,
+  Direction.right,
+  Direction.up,
+  Direction.down
+]
+
 describe('initial grid', () => {
   test('is empty', () => {
     let grid = new Grid();
@@ -50,7 +58,7 @@ describe.each([
   const inputGrids = importedTestGrids.inputs
   class TestingGrid extends Grid{
     // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
-    newTile = () => {}
+    placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {}
   }
 
   test.each([
@@ -58,7 +66,7 @@ describe.each([
     [Direction.right, "1"],
     [Direction.up, "2"],
     [Direction.down, "3"]
-  ])("then left", (direction2, index) => {
+  ])("then %s", (direction2, index) => {
     let grid = new TestingGrid(inputGrids[index as keyof typeof inputGrids]);
     grid.swipe(direction)
     grid.swipe(direction2)
@@ -102,4 +110,19 @@ describe.each([
     expect(closeZeros - gridZeros).toEqual(1) // only one zero-value tile should be different
     expect([2, 4]).toContain(newTileValue)    // and that tile should be 2 or 4
   })
+})
+
+test.todo("when the grid can't be swiped %s, .swipe() will return false")
+
+test.todo("when swiping %s into a losing game")
+
+describe("when the back button is press", ()=>{
+  test.todo("once")
+  test.todo("more than once")
+})
+
+describe.each(describeDirectionArray)("if .swipe(%s) is called before nextGrids have finished computing, activeGrid updates correctly", (direction)=>{
+
+  test.todo(`if only nextGrid[${direction}] has been computed`)
+  test.todo(`if nextGrid[${direction}] hasn't been computed yet`)
 })
