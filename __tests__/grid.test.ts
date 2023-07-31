@@ -23,9 +23,29 @@ const describeDirectionArray = [
 ]
 
 describe('initial grid', () => {
-  test('is empty', () => {
-    let grid = new Grid();
-    expect(grid.activeGrid).toStrictEqual(emptyGrid())
+  test('is not empty', () => {
+    let grid = new Grid({gridSize: 4});
+
+    const closeResult = emptyGrid()
+    var closeZeros = 16;
+    var gridZeros = 0;
+    for(var y = 0; y < grid.gridSize; y++) {
+      for(var x = 0; x < grid.gridSize; x++){
+        if(closeResult[y][x] !== 0){
+          // all non-zero values in closeResult should match activeGrid 
+          expect(grid.activeGrid[y][x]).toEqual(closeResult[y][x])
+        }
+        else{
+          if(grid.activeGrid[y][x] !== 0){
+            expect([2, 4]).toContain(grid.activeGrid[y][x])
+          }
+          else{
+            gridZeros++;
+          }
+        }
+      }
+    }
+    expect(closeZeros - gridZeros).toEqual(2) // only one zero-value tile should be different
   });
 })
 
@@ -37,7 +57,7 @@ describe.each(describeDirectionArray)('%s swiping once moves and merges test gri
   }
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
-    let grid = new TestingGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]);
+    let grid = new TestingGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
     grid.swipe(direction)
     expect(grid.activeGrid).toStrictEqual(resultGrids[index as keyof typeof resultGrids])
   })
@@ -45,7 +65,10 @@ describe.each(describeDirectionArray)('%s swiping once moves and merges test gri
   const scores = importedTestGrids.scores[direction]
   test.each(numberTestsArray)('and increases the score by the correct amount: testGrid %s', (index)=>{
     const startingScore = Math.floor(Math.random() * 100)
-    let testGrid = new TestingGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs], startingScore);
+    let testGrid = new TestingGrid({
+      grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs],
+      score: startingScore
+    });
     expect(testGrid.currentScore).toBe(startingScore)
     testGrid.swipe(direction)
     expect(testGrid.currentScore).toBe(startingScore + scores[index as keyof typeof scores])
@@ -71,7 +94,7 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
     [Direction.up, "2"],
     [Direction.down, "3"]
   ])("then %s", (direction2, index) => {
-    let grid = new TestingGrid(inputGrids[index as keyof typeof inputGrids]);
+    let grid = new TestingGrid({grid: inputGrids[index as keyof typeof inputGrids]});
     grid.swipe(direction)
     grid.swipe(direction2)
     expect(grid.activeGrid).toStrictEqual(resultGrids[direction2 as keyof typeof resultGrids])
@@ -85,7 +108,10 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
     [Direction.down, "3"]
   ])('and increases the score by the correct amount: testGrid %s', (direction2, index)=>{
     const startingScore = Math.floor(Math.random() * 100)
-    let testGrid = new TestingGrid(importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs], startingScore);
+    let testGrid = new TestingGrid({
+      grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs],
+      score: startingScore
+    });
     expect(testGrid.currentScore).toBe(startingScore)
     testGrid.swipe(direction)
     testGrid.swipe(direction2)
@@ -100,7 +126,7 @@ describe.each(describeDirectionArray)('2 or 4 should replace a zero after moving
   const resultGrids = importedTestGrids.resultGrids[direction]
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
-    let grid = new Grid(inputGrids[index as keyof typeof inputGrids]);
+    let grid = new Grid({grid: inputGrids[index as keyof typeof inputGrids]});
     grid.swipe(direction)
 
     const closeResult = resultGrids[index as keyof typeof resultGrids]
@@ -133,7 +159,10 @@ describe.each(describeDirectionArray)("when the grid can't be swiped %s", (direc
   const startingScore = Math.floor(Math.random() * 100)
   let testGrid: Grid
   beforeAll(()=>{
-    testGrid = new Grid(importedTestGrids.gameOverInputs.noSwipe, startingScore)
+    testGrid = new Grid({
+      grid: importedTestGrids.gameOverInputs.noSwipe,
+      score: startingScore
+    })
   })
 
   test(".swipe() will return false", ()=>{
@@ -154,7 +183,7 @@ describe.each(describeDirectionArray)("when swiping %s into a losing game", (dir
   const startingGrid = importedTestGrids.gameOverInputs[direction]
   let testGrid: Grid
   beforeEach(()=>{
-    testGrid = new Grid(startingGrid, 0)
+    testGrid = new Grid({grid: startingGrid, score: 0})
   })
 
   test("gameOver becomes true", ()=>{
@@ -181,7 +210,7 @@ describe.each([
 })
 
 describe.each(describeDirectionArray)("if .swipe(%s) is called before nextGrids have finished computing, activeGrid updates correctly", (direction)=>{
-
+  // actually, it would be better for all swiping to be rejected until the animations have completed.
   test.todo(`if only nextGrid[${direction}] has been computed`)
   test.todo(`if nextGrid[${direction}] hasn't been computed yet`)
 })

@@ -26,8 +26,8 @@ const areGridsDifferent = (gridA: number[][], gridB: number[][])=>{
 }
 
 /**
- * Chooses a number between 1 and nOfZeros
- * @returns 1 <= number <= nOfZeros}
+ * Chooses a number between 0 and nOfZeros - 1
+ * @returns 0 <= number < nOfZeros}
  */
 export const chooseA0 = (nOfZeros: number) => {
   return Math.floor(Math.random() * nOfZeros)
@@ -360,19 +360,56 @@ class Grid {
   private nextGrids: {
     [index in Direction]: NextGridMaker
   }
-  readonly gridSize = gridSize
+  readonly gridSize: number;
   private _currentScore: number
   private _gameOver = false
 
-  constructor(grid = emptyGrid(), score = 0) {
-    this._activeGrid = grid;
-    this._currentScore = score
-    this.nextGrids = {
-      "left": new NextGridMaker(Direction.left, grid = this._activeGrid),
-      "right": new NextGridMaker(Direction.right, grid = this._activeGrid),
-      "up": new NextGridMaker(Direction.up, grid = this._activeGrid),
-      "down": new NextGridMaker(Direction.down, grid = this._activeGrid),
+  /**
+   * 
+   * @param grid a valid grid to start with, if loading from save. otherwise optional
+   * @param score initial score. defaults to 0
+   * @param gridSize defaults to 4. if grid is given, grid.length is used instead
+   */
+  constructor(params: {grid?: number[][], score?: number, gridSize?: number} = {score: 0, gridSize: 4}) {
+    if(params.grid === undefined){
+      this.gridSize = params.gridSize || 4
+      this._activeGrid = emptyGrid()
+      this.fillInitialGrid()
     }
+    else{
+      this._activeGrid = params.grid;
+      this.gridSize = this._activeGrid.length
+    }
+    this._currentScore = params.score || 0
+
+    this.nextGrids = {
+      "left": new NextGridMaker(Direction.left, this._activeGrid),
+      "right": new NextGridMaker(Direction.right, this._activeGrid),
+      "up": new NextGridMaker(Direction.up, this._activeGrid),
+      "down": new NextGridMaker(Direction.down, this._activeGrid),
+    }
+  }
+
+  private fillInitialGrid = () => {
+    const z1 = {
+      x: chooseA0(gridSize),
+      y: chooseA0(gridSize)
+    }
+
+    let z2 = {
+      x: chooseA0(gridSize),
+      y: chooseA0(gridSize)
+    }
+
+    while((z1.x === z2.x) && (z1.y === z2.y)){
+      z2 = {
+        x: chooseA0(gridSize),
+        y: chooseA0(gridSize)
+      }
+    }
+
+    this.placeNewTile(z1)
+    this.placeNewTile(z2)
   }
 
   public get gameOver(){
