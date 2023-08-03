@@ -1,16 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import Grid, { Direction } from './grid';
+import { useWindowDimensions, StyleSheet, Text, View } from 'react-native';
+import Grid, { Direction, emptyGrid } from './grid';
 import { useState } from 'react';
 import { Gesture, GestureDetector, GestureHandlerRootView, RectButton, Directions as gestureDirections } from 'react-native-gesture-handler';
 
-function Tile({value}:{value: number}) {
-  const styleIndex: tileNumber_t = value;
+function Tile({value, gridSides}:{value: number, gridSides: number}) {
+  const styleIndex: tileNumber_t = Object.keys(tileBackgroundColours).includes(String(value)) ? String(value) : '4096'
 
-  const valueString = value || ''
+  const valueString = value ? String(value) : ''
+
+  const fontMultiplier = valueString.length <= 4 ? 20 : 15
+  const fontSize = (gridSides * fontMultiplier)/245
   return(
-    <View style={[styles.tile, tileNumberStyles[styleIndex]]}>
-      <Text style={styles.tileText}>
+    <View style={[styles.tile, tileBackgroundColours[styleIndex]]}>
+      <Text style={[styles.tileText, tileTextColours[styleIndex], {fontSize: fontSize}]} >
         {valueString}
       </Text>
     </View>
@@ -23,21 +26,26 @@ function Tile({value}:{value: number}) {
  * @returns 
  */
 function GridView4({grid}: {grid: Grid}) {
-  const gridSides = Dimensions.get("window").width
+  
+  const sidesX = useWindowDimensions().width * 0.95
+  const sidesY = useWindowDimensions().height * 0.7
+  const gridSides =  sidesX < sidesY ? sidesX : sidesY
+  console.log("window sides: ", sidesX, sidesY)
+  console.log("gridSides: ", gridSides)
 
   return(
     <View style={[styles.gridView, {height: gridSides, width: gridSides}]}>
       <View style={styles.gridRow}>
-        {grid.activeGrid[0].map((value, index) => <Tile value={value} key={'0' + index} />)}
+        {grid.activeGrid[0].map((value, index) => <Tile value={value} gridSides={gridSides} key={'0' + index} />)}
       </View>
       <View style={styles.gridRow}>
-        {grid.activeGrid[1].map((value, index) => <Tile value={value} key={'1' + index} />)}
+        {grid.activeGrid[1].map((value, index) => <Tile value={value} gridSides={gridSides} key={'1' + index} />)}
       </View>
       <View style={styles.gridRow}>
-        {grid.activeGrid[2].map((value, index) => <Tile value={value} key={'2' + index} />)}
+        {grid.activeGrid[2].map((value, index) => <Tile value={value} gridSides={gridSides} key={'2' + index} />)}
       </View>
       <View style={styles.gridRow}>
-        {grid.activeGrid[3].map((value, index) => <Tile value={value} key={'3' + index} />)}
+        {grid.activeGrid[3].map((value, index) => <Tile value={value} gridSides={gridSides} key={'3' + index} />)}
       </View>
     </View>
   )
@@ -58,8 +66,22 @@ function findSwipeDirection({dx, dy}:{dx: number, dy:number}) {
   }
 }
 
+function colorTestGrid() {
+  let grid = emptyGrid();
+  let number = 0
+  for(let y = 0; y < 4; y++){
+    for(let x = 0; x<4; x++){
+      grid[y][x] = 2**number;
+      number++;
+    }
+  }
+  grid[0][0] = 0
+  return grid
+}
+
 export default function App() {
-  const [grid, setGrid] = useState(new Grid({gridSize: 4}))
+  // const [grid, setGrid] = useState(new Grid({gridSize: 4}))
+  const [grid, setGrid] = useState(new Grid({grid: colorTestGrid()}))
 
   const [initialTouch, setInitialTouch] = useState({x:0, y:0})
   const [swipeDirection, setSwipeDirection] = useState<Direction | "none">("none")
@@ -95,46 +117,122 @@ export default function App() {
   );
 }
 
+const textColours = {
+  white: 'rgb(249, 246, 241)',
+  black: 'rgb(119, 110, 101)'
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'beige',
+    backgroundColor: 'rgb(251, 248, 239)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   gridView: {
-    backgroundColor: 'grey',
-    justifyContent: 'space-around',
-    margin: 10,
+    backgroundColor: 'rgb(187, 173, 160)',
+    justifyContent: 'space-evenly',
+    borderRadius: 10
   },
   gridRow: {
     flexDirection: 'row',
-    height: '20%',
-    justifyContent: 'space-around',
+    height: '22%',
+    justifyContent: 'space-evenly',
   },
   tile: {
     backgroundColor: 'white',
-    // height: '20%',
-    width: '20%',
+    width: '22%',
     justifyContent: 'center',
     textAlign: 'center',
+    borderRadius: 10,
   },
   tileText: {
-    color: 'black',
-    fontSize: 26,
+    textAlign: 'center',
   }
 });
 
-const tileNumberStyles = StyleSheet.create({
-  0: {
-    backgroundColor: '#b5b5b5',
+const tileBackgroundColours = StyleSheet.create({
+  '0': {
+    backgroundColor: 'rgb(214, 205, 196)',
   },
-  2: {
-    backgroundColor: '#e9e9e9',
+  '2': {
+    backgroundColor: 'rgb(238, 228, 218)',
   },
-  4: {
-    backgroundColor: '#e1e1c6',
+  '4': {
+    backgroundColor: 'rgb(236, 224, 200)',
   },
+  '8': {
+    backgroundColor: 'rgb(242, 177, 121)',
+  },
+  '16': {
+    backgroundColor: 'rgb(245, 149, 99)',
+  },
+  '32': {
+    backgroundColor: 'rgb(245, 124, 95)',
+  },
+  '64': {
+    backgroundColor: 'rgb(246, 93, 59)',
+  },
+  '128': {
+    backgroundColor: 'rgb(237, 206, 113)',
+  },
+  '256': {
+    backgroundColor: 'rgb(237, 204, 97)',
+  },
+  '512': {
+    backgroundColor: 'rgb(236, 200, 80)',
+  },
+  '1024': {
+    backgroundColor: 'rgb(237, 197, 63)',
+  },
+  '2048': {
+    backgroundColor: 'rgb(238, 194, 46)',
+  },
+  '4096': {
+    backgroundColor: 'black',
+  }
 })
 
-type tileNumber_t = keyof typeof tileNumberStyles;
+const tileTextColours = StyleSheet.create({
+  '0': {
+    color: textColours.black,
+  },
+  '2': {
+    color: textColours.black,
+  },
+  '4': {
+    color: textColours.black,
+  },
+  '8': {
+    color: textColours.white,
+  },
+  '16': {
+    color: textColours.white,
+  },
+  '32': {
+    color: textColours.white,
+  },
+  '64': {
+    color: textColours.white,
+  },
+  '128': {
+    color: textColours.white,
+  },
+  '256': {
+    color: textColours.white,
+  },
+  '512': {
+    color: textColours.white,
+  },
+  '1024': {
+    color: textColours.white,
+  },
+  '2048': {
+    color: textColours.white,
+  },
+  '4096': {
+    color: textColours.white,
+  }
+})
+
+type tileNumber_t = keyof typeof tileBackgroundColours;
