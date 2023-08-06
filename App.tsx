@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useWindowDimensions, StyleSheet, Text, View } from 'react-native';
 import Grid, { Direction, emptyGrid } from './grid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Gesture, GestureDetector, GestureHandlerRootView, RectButton, Directions as gestureDirections } from 'react-native-gesture-handler';
 
 function Tile({value, gridSides}:{value: number, gridSides: number}) {
@@ -20,6 +20,15 @@ function Tile({value, gridSides}:{value: number, gridSides: number}) {
   )
 }
 
+function GameOverOverlay({gridSides}: {gridSides: number}) {
+  const fontSize = gridSides * 70 / 530
+  return(
+    <View style={styles.gameOver}>
+      <Text style={[styles.gameOverText, {fontSize: fontSize}]}>Game Over</Text>
+    </View>
+  )
+}
+
 /**
  * Creates and views a 4x4 grid
  * @param param0 
@@ -34,18 +43,21 @@ function GridView4({grid}: {grid: Grid}) {
   console.log("gridSides: ", gridSides)
 
   return(
-    <View style={[styles.gridView, {height: gridSides, width: gridSides}]}>
-      <View style={styles.gridRow}>
-        {grid.activeGrid[0].map((value, index) => <Tile value={value} gridSides={gridSides} key={'0' + index} />)}
-      </View>
-      <View style={styles.gridRow}>
-        {grid.activeGrid[1].map((value, index) => <Tile value={value} gridSides={gridSides} key={'1' + index} />)}
-      </View>
-      <View style={styles.gridRow}>
-        {grid.activeGrid[2].map((value, index) => <Tile value={value} gridSides={gridSides} key={'2' + index} />)}
-      </View>
-      <View style={styles.gridRow}>
-        {grid.activeGrid[3].map((value, index) => <Tile value={value} gridSides={gridSides} key={'3' + index} />)}
+    <View style={[{height: gridSides, width: gridSides}]}>
+      {grid.isGameOver && <GameOverOverlay gridSides={gridSides} />}
+      <View style={[styles.gridView, {height: gridSides, width: gridSides}]}>
+        <View style={styles.gridRow}>
+          {grid.activeGrid[0].map((value, index) => <Tile value={value} gridSides={gridSides} key={'0' + index} />)}
+        </View>
+        <View style={styles.gridRow}>
+          {grid.activeGrid[1].map((value, index) => <Tile value={value} gridSides={gridSides} key={'1' + index} />)}
+        </View>
+        <View style={styles.gridRow}>
+          {grid.activeGrid[2].map((value, index) => <Tile value={value} gridSides={gridSides} key={'2' + index} />)}
+        </View>
+        <View style={styles.gridRow}>
+          {grid.activeGrid[3].map((value, index) => <Tile value={value} gridSides={gridSides} key={'3' + index} />)}
+        </View>
       </View>
     </View>
   )
@@ -122,6 +134,7 @@ const textColours = {
   black: 'rgb(119, 110, 101)'
 }
 
+const gridViewBorderRadius = 10
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -132,7 +145,7 @@ const styles = StyleSheet.create({
   gridView: {
     backgroundColor: 'rgb(187, 173, 160)',
     justifyContent: 'space-evenly',
-    borderRadius: 10
+    borderRadius: gridViewBorderRadius
   },
   gridRow: {
     flexDirection: 'row',
@@ -148,6 +161,20 @@ const styles = StyleSheet.create({
   },
   tileText: {
     textAlign: 'center',
+  },
+  gameOver: {
+    backgroundColor: 'grey',
+    opacity: 0.8,
+    zIndex: 100,
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: gridViewBorderRadius
+  },
+  gameOverText: {
+    color: 'white',
   }
 });
 

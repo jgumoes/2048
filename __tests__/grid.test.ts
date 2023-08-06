@@ -187,9 +187,9 @@ describe.each(describeDirectionArray)("when swiping %s into a losing game", (dir
   })
 
   test("gameOver becomes true", ()=>{
-    expect(testGrid.gameOver).toBe(false)
+    expect(testGrid.isGameOver).toBe(false)
     testGrid.swipe(direction)
-    expect(testGrid.gameOver).toBe(true)
+    expect(testGrid.isGameOver).toBe(true)
   })
 
   test.todo("pressing the back button still works though")

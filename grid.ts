@@ -412,7 +412,7 @@ class Grid {
     this.placeNewTile(z2)
   }
 
-  public get gameOver(){
+  public get isGameOver(){
     return this._gameOver
   }
 
