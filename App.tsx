@@ -3,8 +3,10 @@ import { useWindowDimensions, StyleSheet, Text, View, Modal } from 'react-native
 import Grid, { Direction, colorTestGrid } from './grid';
 import { useState } from 'react';
 import { Gesture, GestureDetector, GestureHandlerRootView, RectButton } from 'react-native-gesture-handler';
-import ResetSquare from './assets/restart-square.svg'
 import { observer } from 'mobx-react-lite';
+
+import ResetSquare from './assets/restart-square.svg'
+import UndoSquare from './assets/undo.svg'
 
 function Tile({value, gridSides}:{value: number, gridSides: number}) {
   const styleIndex: tileNumber_t = Object.keys(tileBackgroundColours).includes(String(value)) ? String(value) : '4096'
@@ -86,7 +88,7 @@ function GameInfoBar({grid}: {grid: Grid}) {
   const onResetSquarePress = () => setShowResetBoardModal(true)
 
   return(
-    <View>
+    <View style={styles.gameInfoBar}>
       <Modal
         animationType='slide'
         transparent={true}
@@ -105,6 +107,13 @@ function GameInfoBar({grid}: {grid: Grid}) {
           </View>
         </View>
       </Modal>
+      <View>
+        <Text>Score: {grid.currentScore}</Text>
+        <Text>Undo Button Count: {grid.undoCount}</Text>
+      </View>
+      <RectButton onPress={()=>{grid.undo()}} >
+        <UndoSquare width={100} height={100} />
+      </RectButton>
       <RectButton onPress={onResetSquarePress} >
         <ResetSquare width={100} height={100} />
       </RectButton>
@@ -180,6 +189,9 @@ const styles = StyleSheet.create({
   },
   tileText: {
     textAlign: 'center',
+  },
+  gameInfoBar: {
+    flexDirection: 'row'
   },
   gameOver: {
     backgroundColor: 'grey',

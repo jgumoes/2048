@@ -370,13 +370,17 @@ export class NextGridMaker {
 
 class Grid {
   protected _activeGrid = observable.array<number[]>([[]]);
-  private _oldGrid: number[][] | null = null;
+  private _previousGrid = observable.array<number[]>([[]]);
+  private _previousScore = 0;
   private nextGrids: {
     [index in Direction]: NextGridMaker
   }
   readonly gridSize: number;
   private _currentScore: number
   private _isGameOver = false
+
+  private _undoButtonCount = 0
+  private _allowUndo = true
 
   /**
    * 
@@ -395,6 +399,7 @@ class Grid {
       this.gridSize = this._activeGrid.length
     }
     this._currentScore = params.score || 0
+    this._previousScore = this._currentScore
 
     this.nextGrids = {
       "left": new NextGridMaker(Direction.left, this._activeGrid),
@@ -403,21 +408,41 @@ class Grid {
       "down": new NextGridMaker(Direction.down, this._activeGrid),
     }
 
+    this._allowUndo = false;
+    
     makeObservable<this, "updateActiveGrid" | "testForGameOver" | "_activeGrid" | "_isGameOver">(this, {
       _activeGrid: observable,
       updateActiveGrid: action,
       testForGameOver: action,
       _isGameOver: observable,
-      reset: action
+      reset: action,
+      undo: action
     })
   }
 
+  public get undoCount(){
+    return this._undoButtonCount
+  }
+  public undo = () =>{
+    if(this._allowUndo){
+      this._allowUndo = false
+      this._activeGrid.replace(this._previousGrid.slice());
+      this._previousGrid.replace([[]]);
+      this._currentScore = this._previousScore
+      this._undoButtonCount += 1
+      this._isGameOver = false
+      this.updateNextGrids()
+    }
+  }
+
   public reset =() => {
-    this._oldGrid = null;
+    this._previousGrid.replace([[]]);
     this._activeGrid.replace(emptyGrid());
     this.fillInitialGrid()
     this._currentScore = 0;
+    this._previousScore = this._currentScore
     this._isGameOver = false
+    this._allowUndo = false
     this.updateNextGrids()
   }
 
@@ -452,7 +477,7 @@ class Grid {
   }
   
   public get oldGrid() : number[][] | null {
-    return this._oldGrid
+    return this._previousGrid
   }
 
   
@@ -465,7 +490,7 @@ class Grid {
    * @param grid the new active grid
    */
   private updateActiveGrid = (grid: number[][]) => {
-    this._oldGrid = this._activeGrid
+    this._previousGrid.replace(this._activeGrid)
     this._activeGrid.replace(grid);
   }
 
@@ -496,9 +521,11 @@ class Grid {
    * @returns if the swipe was successful
    */
   swipe = (direction: Direction) => {
+    this._allowUndo = true
     const nextGrid = this.nextGrids[direction]
     if(nextGrid.canBeSwiped){
       this.updateActiveGrid(nextGrid.activeGrid)
+      this._previousScore = this._currentScore
       this._currentScore += nextGrid.mergeScore
       this.placeNewTile(nextGrid.newTileLocation())
       this.updateNextGrids()

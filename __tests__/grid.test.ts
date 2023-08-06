@@ -74,8 +74,12 @@ describe.each(describeDirectionArray)('%s swiping once moves and merges test gri
     expect(testGrid.currentScore).toBe(startingScore + scores[index as keyof typeof scores])
   })
 
-  test.todo("but doesn't change backButtonCount")
-
+  test.each(["0", "1", "2", "3"])("but doesn't change backButtonCount", (index) => {
+    let testGrid = new TestingGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
+    const backButtonCount = testGrid.undoCount
+    testGrid.swipe(direction)
+    expect(testGrid.undoCount).toBe(backButtonCount)
+  })
 })
 
 /* the second swipe is to ensure Grid holds its own reference to activeGrid */
@@ -118,7 +122,18 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
     expect(testGrid.currentScore).toBe(startingScore + scores[direction2])
   })
 
-  test.todo("but doesn't change backButtonCount")
+  test.each([
+    [Direction.left, "0"],
+    [Direction.right, "1"],
+    [Direction.up, "2"],
+    [Direction.down, "3"]
+  ])("and %s but doesn't change backButtonCount", (direction2, index)=>{
+    let testGrid = new TestingGrid({grid: inputGrids[index as keyof typeof inputGrids]});
+    const backButtonCount = testGrid.undoCount
+    testGrid.swipe(direction)
+    testGrid.swipe(direction2)
+    expect(testGrid.undoCount).toBe(backButtonCount)
+  })
 })
 
 describe.each(describeDirectionArray)('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (direction) => {
@@ -176,14 +191,18 @@ describe.each(describeDirectionArray)("when the grid can't be swiped %s", (direc
     expect(testGrid.currentScore).toBe(startingScore)
   })
 
-  test.todo("backButtonCount won't change")
+  test("backButtonCount won't change", ()=>{
+    const backButtonCount = testGrid.undoCount
+    testGrid.swipe(direction)
+    expect(testGrid.undoCount).toBe(backButtonCount)
+  })
 })
 
 describe.each(describeDirectionArray)("when swiping %s into a losing game", (direction)=>{
   const startingGrid = importedTestGrids.gameOverInputs[direction]
   let testGrid: Grid
   beforeEach(()=>{
-    testGrid = new Grid({grid: startingGrid, score: 0})
+    testGrid = new Grid({grid: startingGrid, score: 10000})
   })
 
   test("gameOver becomes true", ()=>{
@@ -192,7 +211,15 @@ describe.each(describeDirectionArray)("when swiping %s into a losing game", (dir
     expect(testGrid.isGameOver).toBe(true)
   })
 
-  test.todo("pressing the back button still works though")
+  test("pressing the back button still works though", () =>{
+    const backButtonCount = testGrid.undoCount
+    const score = testGrid.currentScore
+    testGrid.swipe(direction)
+    testGrid.undo()
+    expect(testGrid.currentScore).toBe(score)
+    expect(testGrid.undoCount).toBe(backButtonCount + 1)
+    expect(testGrid.isGameOver).toBe(false)
+  })
 })
 
 describe('reseting the grid', ()=>{
@@ -228,10 +255,6 @@ describe('reseting the grid', ()=>{
     ])
   })
 
-  test('nullifies the old grid', ()=>{
-    expect(testGrid.oldGrid).toBe(null)
-  })
-
   test('isGameOver is false', ()=>{
     expect(testGrid.isGameOver).toBe(false)
   })
@@ -245,21 +268,58 @@ describe('reseting the grid', ()=>{
     expect(testGrid.activeGrid).toStrictEqual(importedTestGrids.afterResetGrids[direction])
   })
 
-  test.todo('resets the back button count')
+  test('resets the back button count', () => {
+    expect(testGrid.undoCount).toBe(0)
+  })
+
+  test('pressing the back button does nothing', () => {
+    // more specifically, doesn't raise an error
+    const activeGrid = testGrid.activeGrid
+    testGrid.undo();
+    expect(testGrid.undoCount).toBe(0)
+    expect(testGrid.activeGrid).toStrictEqual(activeGrid)
+  })
 })
 
 describe.each([
   ["once", 1],
   ["more than once", 5]
 ])("when the back button is pressed %s", (title, count)=>{
-  test.todo("grid reverts to previous grid")
+  let testGrid: Grid
+  const initialGrid = importedTestGrids.numberedInputs[0]
+  const initialScore = 10000
+  beforeEach(()=>{
+    testGrid = new Grid({
+      grid: initialGrid,
+      score: initialScore
+    })
+    testGrid.swipe(Direction.left)
+    for(let i = 0; i < count; i++){ testGrid.undo() }
+  })
 
-  test.todo(".previousGrid becomes null")
+  test("grid reverts to previous grid", () => {
+    expect(testGrid.activeGrid).toStrictEqual(initialGrid)
+  })
 
-  test.todo("score reverts to previous score")
+  test("score reverts to previous score", () =>{
+    expect(testGrid.currentScore).toBe(initialScore)
+  })
 
-  test.todo("backButtonCount increases by 1")
+  test("backButtonCount increases by 1", () =>{
+    expect(testGrid.undoCount).toBe(1)
+  })
 
+  test("nothing happens when the grid is fresh", ()=>{
+    // more specifically, no uncaught errors occur
+    testGrid = new Grid({
+      grid: initialGrid,
+      score: initialScore
+    })
+    for(let i = 0; i < count; i++){ testGrid.undo() }
+    expect(testGrid.activeGrid).toStrictEqual(initialGrid)
+    expect(testGrid.currentScore).toBe(initialScore)
+    expect(testGrid.undoCount).toBe(0)
+  })
 })
 
 describe.each(describeDirectionArray)("if .swipe(%s) is called before nextGrids have finished computing, activeGrid updates correctly", (direction)=>{
