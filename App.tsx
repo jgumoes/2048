@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { useWindowDimensions, StyleSheet, Text, View } from 'react-native';
-import Grid, { Direction, emptyGrid } from './grid';
-import { useEffect, useState } from 'react';
-import { Gesture, GestureDetector, GestureHandlerRootView, RectButton, Directions as gestureDirections } from 'react-native-gesture-handler';
+import { useWindowDimensions, StyleSheet, Text, View, Modal } from 'react-native';
+import Grid, { Direction, colorTestGrid } from './grid';
+import { useState } from 'react';
+import { Gesture, GestureDetector, GestureHandlerRootView, RectButton } from 'react-native-gesture-handler';
+import ResetSquare from './assets/restart-square.svg'
+import { observer } from 'mobx-react-lite';
 
 function Tile({value, gridSides}:{value: number, gridSides: number}) {
   const styleIndex: tileNumber_t = Object.keys(tileBackgroundColours).includes(String(value)) ? String(value) : '4096'
@@ -34,13 +36,14 @@ function GameOverOverlay({gridSides}: {gridSides: number}) {
  * @param param0 
  * @returns 
  */
-function GridView4({grid}: {grid: Grid}) {
+const GridView4 = observer(({grid}: {grid: Grid}) => {
   
   const sidesX = useWindowDimensions().width * 0.95
   const sidesY = useWindowDimensions().height * 0.7
   const gridSides =  sidesX < sidesY ? sidesX : sidesY
   console.log("window sides: ", sidesX, sidesY)
   console.log("gridSides: ", gridSides)
+  console.log("is game over: ", grid.isGameOver)
 
   return(
     <View style={[{height: gridSides, width: gridSides}]}>
@@ -61,7 +64,7 @@ function GridView4({grid}: {grid: Grid}) {
       </View>
     </View>
   )
-}
+})
 
 function findSwipeDirection({dx, dy}:{dx: number, dy:number}) {
   if(Math.abs(dx) > Math.abs(dy)){
@@ -78,17 +81,35 @@ function findSwipeDirection({dx, dy}:{dx: number, dy:number}) {
   }
 }
 
-function colorTestGrid() {
-  let grid = emptyGrid();
-  let number = 0
-  for(let y = 0; y < 4; y++){
-    for(let x = 0; x<4; x++){
-      grid[y][x] = 2**number;
-      number++;
-    }
-  }
-  grid[0][0] = 0
-  return grid
+function GameInfoBar({grid}: {grid: Grid}) {
+  const [showResetBoardModal, setShowResetBoardModal] = useState(false)
+  const onResetSquarePress = () => setShowResetBoardModal(true)
+
+  return(
+    <View>
+      <Modal
+        animationType='slide'
+        transparent={true}
+        visible={showResetBoardModal}
+        onRequestClose={() => setShowResetBoardModal(false)}
+      >
+        <View style={styles.resetBoardModal}>
+          <Text style={styles.resetBoardModalText}>Are you sure you want to reset?</Text>
+          <View>
+            <RectButton onPress={() => setShowResetBoardModal(false)}>
+            <Text style={styles.resetBoardModalText}>no</Text>
+            </RectButton>
+            <RectButton onPress={()=> {grid.reset(); setShowResetBoardModal(false);}}>
+            <Text style={styles.resetBoardModalText}>yes</Text>
+            </RectButton>
+          </View>
+        </View>
+      </Modal>
+      <RectButton onPress={onResetSquarePress} >
+        <ResetSquare width={100} height={100} />
+      </RectButton>
+    </View>
+  )
 }
 
 export default function App() {
@@ -96,7 +117,6 @@ export default function App() {
   const [grid, setGrid] = useState(new Grid({grid: colorTestGrid()}))
 
   const [initialTouch, setInitialTouch] = useState({x:0, y:0})
-  const [swipeDirection, setSwipeDirection] = useState<Direction | "none">("none")
 
   const swipeResponder = Gesture.Pan()
     .minDistance(100)
@@ -112,7 +132,6 @@ export default function App() {
         dy: e.absoluteY - initialTouch.y
       })
       grid.swipe(direction)
-      setSwipeDirection(direction)
       setInitialTouch({x: 0, y: 0})
     })
   
@@ -120,7 +139,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <GestureHandlerRootView style={styles.container}>
-        <Text>Swipe Direction: {swipeDirection}</Text>
+        <GameInfoBar grid={grid} />
         <GestureDetector  gesture={swipeResponder}>
           <GridView4 grid={grid}/>
         </GestureDetector >
@@ -175,6 +194,16 @@ const styles = StyleSheet.create({
   },
   gameOverText: {
     color: 'white',
+  },
+  resetBoardModal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'gray',
+    opacity: 0.8,
+    height: '100%',
+  },
+  resetBoardModalText: {
+    fontSize: 30
   }
 });
 

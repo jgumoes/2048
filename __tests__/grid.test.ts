@@ -1,4 +1,4 @@
-import Grid, { Direction } from "../grid";
+import Grid, { Direction, colorTestGrid } from "../grid";
 import {emptyGrid} from "../grid";
 import * as importedTestGrids from './testGrids.json'
 
@@ -193,6 +193,59 @@ describe.each(describeDirectionArray)("when swiping %s into a losing game", (dir
   })
 
   test.todo("pressing the back button still works though")
+})
+
+describe('reseting the grid', ()=>{
+  class TestingGrid extends Grid{
+    placeTileCalls = 0;
+    placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {
+      if(this.placeTileCalls === 0){
+        this._activeGrid[1][1] = 2
+      }
+      if(this.placeTileCalls === 0){
+        this._activeGrid[2][2] = 2
+      }
+      this.placeTileCalls += 1
+    }
+  }
+
+  let testGrid: TestingGrid
+  beforeEach(()=>{
+    testGrid = new TestingGrid({grid: colorTestGrid(), score: 500000})
+    testGrid.reset()
+  })
+
+  test('resets the active grid', ()=>{
+    const nonZeroTiles = testGrid.activeGrid.flat().filter(value => value > 0)
+    expect(nonZeroTiles.length).toBe(2)
+    expect([2, 4]).toContain(nonZeroTiles[0])
+    expect([2, 4]).toContain(nonZeroTiles[1])
+    expect(testGrid.activeGrid).toStrictEqual([
+      [ 0, 0, 0, 0], 
+      [ 0, 2, 0, 0], 
+      [ 0, 0, 2, 0], 
+      [ 0, 0, 0, 0]
+    ])
+  })
+
+  test('nullifies the old grid', ()=>{
+    expect(testGrid.oldGrid).toBe(null)
+  })
+
+  test('isGameOver is false', ()=>{
+    expect(testGrid.isGameOver).toBe(false)
+  })
+
+  test('resets the score', ()=>{
+    expect(testGrid.currentScore).toBe(0)
+  })
+
+  test.each(describeDirectionArray)('resets the %s nextGrid', (direction)=>{
+    testGrid.swipe(direction);
+    expect(testGrid.activeGrid).toStrictEqual(importedTestGrids.afterResetGrids[direction])
+  })
+
+  test.todo('resets the back button count')
 })
 
 describe.each([

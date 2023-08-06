@@ -1,3 +1,4 @@
+import {action, makeObservable, observable} from "mobx"
 
 export const emptyGrid = () => [
   [ 0, 0, 0, 0], 
@@ -5,6 +6,19 @@ export const emptyGrid = () => [
   [ 0, 0, 0, 0], 
   [ 0, 0, 0, 0]
 ]
+
+export const colorTestGrid =() => {
+  let grid = emptyGrid();
+  let number = 0
+  for(let y = 0; y < 4; y++){
+    for(let x = 0; x<4; x++){
+      grid[y][x] = 2**number;
+      number++;
+    }
+  }
+  grid[0][0] = 0
+  return grid
+}
 
 const gridSize = 4
 
@@ -355,14 +369,14 @@ export class NextGridMaker {
 }
 
 class Grid {
-  private _activeGrid: number[][];
+  protected _activeGrid = observable.array<number[]>([[]]);
   private _oldGrid: number[][] | null = null;
   private nextGrids: {
     [index in Direction]: NextGridMaker
   }
   readonly gridSize: number;
   private _currentScore: number
-  private _gameOver = false
+  private _isGameOver = false
 
   /**
    * 
@@ -373,11 +387,11 @@ class Grid {
   constructor(params: {grid?: number[][], score?: number, gridSize?: number} = {score: 0, gridSize: 4}) {
     if(params.grid === undefined){
       this.gridSize = params.gridSize || 4
-      this._activeGrid = emptyGrid()
+      this._activeGrid.replace(emptyGrid())
       this.fillInitialGrid()
     }
     else{
-      this._activeGrid = params.grid;
+      this._activeGrid.replace(params.grid);
       this.gridSize = this._activeGrid.length
     }
     this._currentScore = params.score || 0
@@ -388,6 +402,23 @@ class Grid {
       "up": new NextGridMaker(Direction.up, this._activeGrid),
       "down": new NextGridMaker(Direction.down, this._activeGrid),
     }
+
+    makeObservable<this, "updateActiveGrid" | "testForGameOver" | "_activeGrid" | "_isGameOver">(this, {
+      _activeGrid: observable,
+      updateActiveGrid: action,
+      testForGameOver: action,
+      _isGameOver: observable,
+      reset: action
+    })
+  }
+
+  public reset =() => {
+    this._oldGrid = null;
+    this._activeGrid.replace(emptyGrid());
+    this.fillInitialGrid()
+    this._currentScore = 0;
+    this._isGameOver = false
+    this.updateNextGrids()
   }
 
   private fillInitialGrid = () => {
@@ -413,7 +444,7 @@ class Grid {
   }
 
   public get isGameOver(){
-    return this._gameOver
+    return this._isGameOver
   }
 
   public get currentScore(): number {
@@ -435,7 +466,7 @@ class Grid {
    */
   private updateActiveGrid = (grid: number[][]) => {
     this._oldGrid = this._activeGrid
-    this._activeGrid = grid;
+    this._activeGrid.replace(grid);
   }
 
   /**
@@ -452,11 +483,11 @@ class Grid {
   }
 
   private testForGameOver = () => {
-    let gameStillPlayable = !this._gameOver
+    let gameStillPlayable = false
     for(const direction in Direction){
-      gameStillPlayable &&= this.nextGrids[<Direction>direction].canBeSwiped
+      gameStillPlayable ||= this.nextGrids[<Direction>direction].canBeSwiped
     }
-    this._gameOver = ! gameStillPlayable
+    this._isGameOver = ! gameStillPlayable
   }
 
   /**
