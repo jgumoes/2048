@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { useWindowDimensions, StyleSheet, Text, View, Modal } from 'react-native';
+import { useWindowDimensions, StyleSheet, Text, View, Modal, SafeAreaView } from 'react-native';
 import Grid, { Direction, colorTestGrid } from './grid';
 import { useState } from 'react';
-import { Gesture, GestureDetector, GestureHandlerRootView, RectButton } from 'react-native-gesture-handler';
+import { Gesture, GestureDetector, GestureHandlerRootView, RectButton, gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import { observer } from 'mobx-react-lite';
 
 import ResetSquare from './assets/restart-square.svg'
@@ -68,6 +68,8 @@ const GridView4 = observer(({grid}: {grid: Grid}) => {
   )
 })
 
+const WrappedGridView4 = gestureHandlerRootHOC(GridView4)
+
 function findSwipeDirection({dx, dy}:{dx: number, dy:number}) {
   if(Math.abs(dx) > Math.abs(dy)){
     if(dx > 0){
@@ -83,10 +85,30 @@ function findSwipeDirection({dx, dy}:{dx: number, dy:number}) {
   }
 }
 
+const ResetBoardModal = ({onYes, onNo}: {onYes: () => void, onNo: () => void}) => {
+  return(
+    <View style={styles.resetBoardModal}>
+      <Text style={styles.resetBoardModalText}>Are you sure you want to reset?</Text>
+      <View>
+        <RectButton onPress={onNo}>
+        <Text style={styles.resetBoardModalText}>no</Text>
+        </RectButton>
+        <RectButton onPress={onYes}>
+        <Text style={styles.resetBoardModalText}>yes</Text>
+        </RectButton>
+      </View>
+    </View>
+  )
+}
+
+const WrappedResetBoardModal = gestureHandlerRootHOC(ResetBoardModal)
+
 function GameInfoBar({grid}: {grid: Grid}) {
   const [showResetBoardModal, setShowResetBoardModal] = useState(false)
   const onResetSquarePress = () => setShowResetBoardModal(true)
 
+  const onNoCallback = () => {console.log('user pressed no'); setShowResetBoardModal(false);}
+  const onYesCallback = ()=> {console.log('user pressed yes'); grid.reset(); setShowResetBoardModal(false);}
   return(
     <View style={styles.gameInfoBar}>
       <Modal
@@ -95,17 +117,7 @@ function GameInfoBar({grid}: {grid: Grid}) {
         visible={showResetBoardModal}
         onRequestClose={() => setShowResetBoardModal(false)}
       >
-        <View style={styles.resetBoardModal}>
-          <Text style={styles.resetBoardModalText}>Are you sure you want to reset?</Text>
-          <View>
-            <RectButton onPress={() => setShowResetBoardModal(false)}>
-            <Text style={styles.resetBoardModalText}>no</Text>
-            </RectButton>
-            <RectButton onPress={()=> {grid.reset(); setShowResetBoardModal(false);}}>
-            <Text style={styles.resetBoardModalText}>yes</Text>
-            </RectButton>
-          </View>
-        </View>
+        <WrappedResetBoardModal onNo={onNoCallback} onYes={onYesCallback} />
       </Modal>
       <View>
         <Text>Score: {grid.currentScore}</Text>
@@ -121,10 +133,7 @@ function GameInfoBar({grid}: {grid: Grid}) {
   )
 }
 
-export default function App() {
-  // const [grid, setGrid] = useState(new Grid({gridSize: 4}))
-  const [grid, setGrid] = useState(new Grid({grid: colorTestGrid()}))
-
+function GameBoard({grid}: {grid: Grid}) {
   const [initialTouch, setInitialTouch] = useState({x:0, y:0})
 
   const swipeResponder = Gesture.Pan()
@@ -132,6 +141,7 @@ export default function App() {
     .maxPointers(1)
     .onBegin((e) => {
       // when screen is first touched
+      console.log("touch begin: ", Date.now())
       setInitialTouch({x: e.absoluteX, y: e.absoluteY})
     })
     .onStart((e) => {
@@ -140,20 +150,34 @@ export default function App() {
         dx: e.absoluteX - initialTouch.x, 
         dy: e.absoluteY - initialTouch.y
       })
-      grid.swipe(direction)
+      const now = Date.now()
+      console.log("now: ", now)
+      grid.swipe(direction) // this is nerfing performance
+      console.log("swipe time: ", Date.now() - now)
       setInitialTouch({x: 0, y: 0})
     })
+
+  console.log("rerendered: ", Date.now())
+  return(
+    <View>
+      <GameInfoBar grid={grid} />
+      <GestureDetector  gesture={swipeResponder}>
+        <WrappedGridView4 grid={grid}/>
+      </GestureDetector >
+    </View>
+  )
+}
+export default function App() {
+  // const [grid, setGrid] = useState(new Grid({gridSize: 4}))
+  const [grid, setGrid] = useState(new Grid({grid: colorTestGrid()}))
   
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <GestureHandlerRootView style={styles.container}>
-        <GameInfoBar grid={grid} />
-        <GestureDetector  gesture={swipeResponder}>
-          <GridView4 grid={grid}/>
-        </GestureDetector >
+    <SafeAreaView style={[styles.container]}>
+        <StatusBar style="auto" hidden={false} />
+      <GestureHandlerRootView style={[styles.container, {marginTop: 80}]}>
+        <GameBoard grid={grid} />
       </GestureHandlerRootView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -173,7 +197,8 @@ const styles = StyleSheet.create({
   gridView: {
     backgroundColor: 'rgb(187, 173, 160)',
     justifyContent: 'space-evenly',
-    borderRadius: gridViewBorderRadius
+    borderRadius: gridViewBorderRadius,
+    alignSelf: 'center'
   },
   gridRow: {
     flexDirection: 'row',

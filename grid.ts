@@ -410,13 +410,14 @@ class Grid {
 
     this._allowUndo = false;
     
-    makeObservable<this, "updateActiveGrid" | "testForGameOver" | "_activeGrid" | "_isGameOver">(this, {
+    makeObservable<this, "updateActiveGrid" | "testForGameOver" | "_activeGrid" | "_isGameOver" | "placeNewTile">(this, {
       _activeGrid: observable,
       updateActiveGrid: action,
       testForGameOver: action,
       _isGameOver: observable,
       reset: action,
-      undo: action
+      undo: action,
+      placeNewTile: action
     })
   }
 
@@ -490,7 +491,7 @@ class Grid {
    * @param grid the new active grid
    */
   private updateActiveGrid = (grid: number[][]) => {
-    this._previousGrid.replace(this._activeGrid)
+    this._previousGrid.replace(this._activeGrid.slice())
     this._activeGrid.replace(grid);
   }
 
