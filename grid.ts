@@ -444,6 +444,7 @@ class Grid {
     this._previousScore = this._currentScore
     this._isGameOver = false
     this._allowUndo = false
+    this._undoButtonCount = 0
     this.updateNextGrids()
   }
 
