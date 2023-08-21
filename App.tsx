@@ -8,7 +8,7 @@ import { tileBackgroundColours, styles, tileTextColours } from './AppStyles';
 import GameInfoBar from './GameInfoBar';
 
 function Tile({value, gridSides}:{value: number, gridSides: number}) {
-  const styleIndex: tileNumber_t = Object.keys(tileBackgroundColours).includes(String(value)) ? String(value) : '4096'
+  const styleIndex: tileNumber_t = Object.keys(tileBackgroundColours).includes(String(value))? String(value) as tileNumber_t : '4096'
 
   const valueString = value ? String(value) : ''
 
