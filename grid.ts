@@ -541,7 +541,7 @@ class Grid {
   /**
    * this is a private method, you should not be using it
    */
-  protected placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {
+  protected placeNewTile(newTileLocation: {'x': number, 'y': number}) {
     this._activeGrid[newTileLocation.y][newTileLocation.x] = Math.random() < 0.9 ? 2 : 4
   }
 }

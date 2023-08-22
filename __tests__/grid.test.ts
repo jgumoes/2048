@@ -53,7 +53,7 @@ describe.each(describeDirectionArray)('%s swiping once moves and merges test gri
   const resultGrids = importedTestGrids.resultGrids[direction]
   class TestingGrid extends Grid{
     // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
-    placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {}
+    placeNewTile(newTileLocation: {'x': number, 'y': number}){}
   }
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
@@ -89,7 +89,7 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
 
   class TestingGrid extends Grid{
     // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
-    placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {}
+    placeNewTile(newTileLocation: {'x': number, 'y': number}){}
   }
 
   test.each([
