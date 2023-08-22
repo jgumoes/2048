@@ -7,7 +7,7 @@ export const textColours = {
 }
 
 export const gridViewBorderRadius = 10
-export const styles = StyleSheet.create({
+export const appStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgb(251, 248, 239)',
@@ -34,11 +34,11 @@ export const styles = StyleSheet.create({
   },
   tileText: {
     textAlign: 'center',
-  },
-  gameInfoBar: {
-    flexDirection: 'row'
-  },
-  gameOver: {
+  }
+});
+
+export const gameOverStyles = StyleSheet.create({
+  overlay: {
     backgroundColor: 'grey',
     opacity: 0.8,
     zIndex: 100,
@@ -49,20 +49,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: gridViewBorderRadius
   },
-  gameOverText: {
+  text: {
     color: 'white',
   },
-  resetBoardModal: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'gray',
-    opacity: 0.8,
-    height: '100%',
-  },
-  resetBoardModalText: {
-    fontSize: 30
-  }
-});
+})
 
 export const tileBackgroundColours = StyleSheet.create({
   '0': {

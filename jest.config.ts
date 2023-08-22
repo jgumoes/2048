@@ -1,11 +1,12 @@
 /*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
+* For a detailed explanation regarding each configuration property and type check, visit:
+* https://jestjs.io/docs/configuration
+*/
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 
 export default {
-  preset: 'ts-jest',
+  preset: 'react-native',
+
   testEnvironment: 'node',
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -79,16 +80,16 @@ export default {
   // ],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "mjs",
-  //   "cjs",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "json",
-  //   "node"
-  // ],
+  moduleFileExtensions: [
+    "js",
+    "mjs",
+    "cjs",
+    "jsx",
+    "ts",
+    "tsx",
+    "json",
+    "node"
+  ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
@@ -135,16 +136,16 @@ export default {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: [],
+  "setupFiles": ["./node_modules/react-native-gesture-handler/jestSetup.js"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  "setupFilesAfterEnv": ['@testing-library/jest-native/extend-expect'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
-  // snapshotSerializers: [],
+  snapshotSerializers: ['@relmify/jest-serializer-strip-ansi/always'],
 
   // The test environment that will be used for testing
   // testEnvironment: "jest-environment-node",
@@ -167,7 +168,12 @@ export default {
   // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
-  // testRegex: [],
+  testRegex: [
+    "(/__tests__/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "(/__tests__/.*|(\\.|/)(test|spec))\\.ts?$",
+    "(/__tests__/.*|(\\.|/)(test|spec))\\.js?$",
+  ],
 
   // This option allows the use of a custom results processor
   // testResultsProcessor: undefined,
@@ -176,13 +182,20 @@ export default {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
+  transform: {
+    '^.+\\.jsx$': 'babel-jest',
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: 'tsconfig.json',
+      },
+    ],
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  // transformIgnorePatterns: [
-  //   "\\\\node_modules\\\\",
-  //   "\\.pnp\\.[^\\\\]+$"
-  // ],
+  transformIgnorePatterns: [
+    'node_modules/(?!(@react-native|react-native|react-native-vector-icons|react-native-config|@react-native-async-storage)/)',
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
