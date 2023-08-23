@@ -1,5 +1,6 @@
 import Grid, { Direction, colorTestGrid } from "../grid";
 import {emptyGrid} from "../grid";
+import { ControlledPlaceGrid, NoPlaceGrid } from "./helpers/gridMocks";
 import * as importedTestGrids from './testGrids.json'
 
 /* note: a good test grid should include the following:
@@ -51,13 +52,10 @@ describe('initial grid', () => {
 
 describe.each(describeDirectionArray)('%s swiping once moves and merges test grids', (direction) => {
   const resultGrids = importedTestGrids.resultGrids[direction]
-  class TestingGrid extends Grid{
-    // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
-    placeNewTile(newTileLocation: {'x': number, 'y': number}){}
-  }
+  
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
-    let grid = new TestingGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
+    let grid = new NoPlaceGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
     grid.swipe(direction)
     expect(grid.activeGrid).toStrictEqual(resultGrids[index as keyof typeof resultGrids])
   })
@@ -65,7 +63,7 @@ describe.each(describeDirectionArray)('%s swiping once moves and merges test gri
   const scores = importedTestGrids.scores[direction]
   test.each(numberTestsArray)('and increases the score by the correct amount: testGrid %s', (index)=>{
     const startingScore = Math.floor(Math.random() * 100)
-    let testGrid = new TestingGrid({
+    let testGrid = new NoPlaceGrid({
       grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs],
       score: startingScore
     });
@@ -75,7 +73,7 @@ describe.each(describeDirectionArray)('%s swiping once moves and merges test gri
   })
 
   test.each(["0", "1", "2", "3"])("but doesn't change backButtonCount", (index) => {
-    let testGrid = new TestingGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
+    let testGrid = new NoPlaceGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
     const backButtonCount = testGrid.undoCount
     testGrid.swipe(direction)
     expect(testGrid.undoCount).toBe(backButtonCount)
@@ -87,18 +85,13 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
   const inputGrids = importedTestGrids.numberedInputs
   const resultGrids = importedTestGrids.resultGrids[direction]
 
-  class TestingGrid extends Grid{
-    // why use spyOn when you can use inheritance babyeee! also spyOn didn't work, this is the only way to stop a new tile being added to the active grid
-    placeNewTile(newTileLocation: {'x': number, 'y': number}){}
-  }
-
   test.each([
     [Direction.left, "0"],
     [Direction.right, "1"],
     [Direction.up, "2"],
     [Direction.down, "3"]
   ])("then %s", (direction2, index) => {
-    let grid = new TestingGrid({grid: inputGrids[index as keyof typeof inputGrids]});
+    let grid = new NoPlaceGrid({grid: inputGrids[index as keyof typeof inputGrids]});
     grid.swipe(direction)
     grid.swipe(direction2)
     expect(grid.activeGrid).toStrictEqual(resultGrids[direction2 as keyof typeof resultGrids])
@@ -112,7 +105,7 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
     [Direction.down, "3"]
   ])('and increases the score by the correct amount: testGrid %s', (direction2, index)=>{
     const startingScore = Math.floor(Math.random() * 100)
-    let testGrid = new TestingGrid({
+    let testGrid = new NoPlaceGrid({
       grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs],
       score: startingScore
     });
@@ -128,7 +121,7 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
     [Direction.up, "2"],
     [Direction.down, "3"]
   ])("and %s but doesn't change backButtonCount", (direction2, index)=>{
-    let testGrid = new TestingGrid({grid: inputGrids[index as keyof typeof inputGrids]});
+    let testGrid = new NoPlaceGrid({grid: inputGrids[index as keyof typeof inputGrids]});
     const backButtonCount = testGrid.undoCount
     testGrid.swipe(direction)
     testGrid.swipe(direction2)
@@ -223,22 +216,10 @@ describe.each(describeDirectionArray)("when swiping %s into a losing game", (dir
 })
 
 describe('reseting the grid', ()=>{
-  class TestingGrid extends Grid{
-    placeTileCalls = 0;
-    placeNewTile = (newTileLocation: {'x': number, 'y': number}) => {
-      if(this.placeTileCalls === 0){
-        this._activeGrid[1][1] = 2
-      }
-      if(this.placeTileCalls === 0){
-        this._activeGrid[2][2] = 2
-      }
-      this.placeTileCalls += 1
-    }
-  }
 
-  let testGrid: TestingGrid
+  let testGrid: ControlledPlaceGrid
   beforeEach(()=>{
-    testGrid = new TestingGrid({grid: colorTestGrid(), score: 500000})
+    testGrid = new ControlledPlaceGrid({grid: colorTestGrid(), score: 500000})
     testGrid.reset()
   })
 
