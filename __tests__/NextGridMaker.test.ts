@@ -1,5 +1,5 @@
 import { NextGridMaker, Direction, emptyGrid, chooseA0 } from "../grid";
-import * as importedTestGrids from './testGrids.json'
+import importedTestGrids from './helpers/testGrids'
 
 // Note: beforeAll should be used to instantiate the NextGridMaker classes
 // .updateGrid() should clear everything every time it's called,
