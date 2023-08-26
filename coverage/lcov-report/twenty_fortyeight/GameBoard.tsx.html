@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.31% </span>
+                <span class="strong">59.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/47</span>
+                <span class='fraction'>28/47</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">64.28% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/14</span>
+                <span class='fraction'>9/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.54% </span>
+                <span class="strong">63.63% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/11</span>
+                <span class='fraction'>7/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.31% </span>
+                <span class="strong">59.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/47</span>
+                <span class='fraction'>28/47</span>
             </div>
         
             
@@ -194,15 +194,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">160x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">160x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">160x</span>
+<span class="cline-any cline-yes">160x</span>
+<span class="cline-any cline-yes">160x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -210,8 +208,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,28 +225,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -314,11 +314,11 @@ import { appStyles, gameOverStyles, tileBackgroundColours, tileTextColours } fro
 type tileNumber_t = keyof typeof tileBackgroundColours;
 &nbsp;
 function Tile({value, gridSides}:{value: number, gridSides: number}) {
-  const styleIndex: tileNumber_t = Object.keys(tileBackgroundColours).includes(String(value))? String(value) as tileNumber_t : <span class="branch-1 cbranch-no" title="branch not covered" >'4096'</span>
+  const styleIndex: tileNumber_t = Object.keys(tileBackgroundColours).includes(String(value))? String(value) as tileNumber_t : '4096'
 &nbsp;
   const valueString = value ? String(value) : ''
 &nbsp;
-  const fontMultiplier = valueString.length &lt;= 4 ? 20 : <span class="branch-1 cbranch-no" title="branch not covered" >15</span>
+  const fontMultiplier = valueString.length &lt;= 4 ? 20 : 15
   const fontSize = (gridSides * fontMultiplier)/245
   return(
     &lt;View style={[appStyles.tile, tileBackgroundColours[styleIndex]]}&gt;
@@ -329,9 +329,9 @@ function Tile({value, gridSides}:{value: number, gridSides: number}) {
   )
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >GameOverOverlay(</span>{gridSides}: {gridSides: number}) {
-  const fontSize = <span class="cstat-no" title="statement not covered" >gridSides * 70 / 530</span>
-<span class="cstat-no" title="statement not covered" >  return(</span>
+function EndGameOverlay({gridSides}: {gridSides: number}) {
+  const fontSize = gridSides * 70 / 530
+  return(
     &lt;View style={gameOverStyles.overlay}&gt;
       &lt;Text style={[gameOverStyles.text, {fontSize: fontSize}]}&gt;Game Over&lt;/Text&gt;
     &lt;/View&gt;
@@ -354,7 +354,7 @@ export const GridView4 = observer(({grid}: {grid: Grid}) =&gt; {
 &nbsp;
   return(
     &lt;View style={[{height: gridSides, width: gridSides}]}&gt;
-      {grid.isGameOver &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;GameOverOverlay gridSides={gridSides} /&gt;}</span>
+      {grid.isGameOver &amp;&amp; &lt;EndGameOverlay gridSides={gridSides} /&gt;}
       &lt;View style={[appStyles.gridView, {height: gridSides, width: gridSides}]}&gt;
         &lt;View style={appStyles.gridRow}&gt;
           {grid.activeGrid[0].map((value, index) =&gt; &lt;Tile value={value} gridSides={gridSides} key={'0' + index} /&gt;)}
@@ -373,7 +373,7 @@ export const GridView4 = observer(({grid}: {grid: Grid}) =&gt; {
   )
 })
 &nbsp;
-const WrappedGridView4 = gestureHandlerRootHOC(GridView4)
+export const WrappedGridView4 = gestureHandlerRootHOC(GridView4)
 &nbsp;
 function <span class="fstat-no" title="function not covered" >findSwipeDirection(</span>{dx, dy}:{dx: number, dy:number}) {
 <span class="cstat-no" title="statement not covered" >  if(Math.abs(dx) &gt; Math.abs(dy)){</span>
@@ -430,7 +430,7 @@ export default function <span class="fstat-no" title="function not covered" >Gam
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-22T18:01:14.306Z
+                at 2023-08-26T21:12:13.940Z
             </div>
         <script src="../prettify.js"></script>
         <script>

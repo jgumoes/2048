@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GridView4 renders correctly 1`] = `
+exports[`GridView4 renders 1`] = `
 <View
   style={
     [
       {
-        "height": 712.5,
-        "width": 712.5,
+        "height": 530,
+        "width": 530,
       },
     ]
   }
@@ -14,12 +14,6 @@ exports[`GridView4 renders correctly 1`] = `
   <View
     style={
       [
-        {
-          "alignSelf": "center",
-          "backgroundColor": "rgb(187, 173, 160)",
-          "borderRadius": 10,
-          "justifyContent": "space-evenly",
-        },
         {
           "height": 712.5,
           "width": 712.5,
@@ -29,589 +23,614 @@ exports[`GridView4 renders correctly 1`] = `
   >
     <View
       style={
-        {
-          "flexDirection": "row",
-          "height": "22%",
-          "justifyContent": "space-evenly",
-        }
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
       }
     >
       <View
         style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
           }
-        />
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
         }
       >
-        <Text
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(238, 228, 218)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(214, 205, 196)",
               },
             ]
           }
         >
-          2
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        />
-      </View>
-    </View>
-    <View
-      style={
-        {
-          "flexDirection": "row",
-          "height": "22%",
-          "justifyContent": "space-evenly",
-        }
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(236, 224, 200)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(238, 228, 218)",
               },
             ]
           }
         >
-          4
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(236, 224, 200)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(236, 224, 200)",
               },
             ]
           }
         >
-          4
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        />
-      </View>
-    </View>
-    <View
-      style={
-        {
-          "flexDirection": "row",
-          "height": "22%",
-          "justifyContent": "space-evenly",
-        }
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(242, 177, 121)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(242, 177, 121)",
               },
             ]
           }
         >
-          8
-        </Text>
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(236, 224, 200)",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
         }
       >
-        <Text
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(245, 149, 99)",
               },
             ]
           }
         >
-          4
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(242, 177, 121)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            16
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(245, 124, 95)",
               },
             ]
           }
         >
-          8
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(245, 149, 99)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            32
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(246, 93, 59)",
               },
             ]
           }
         >
-          16
-        </Text>
-      </View>
-    </View>
-    <View
-      style={
-        {
-          "flexDirection": "row",
-          "height": "22%",
-          "justifyContent": "space-evenly",
-        }
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(246, 93, 59)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            64
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(237, 206, 113)",
               },
             ]
           }
         >
-          64
-        </Text>
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            128
+          </Text>
+        </View>
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(242, 177, 121)",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
         }
       >
-        <Text
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(237, 204, 97)",
               },
             ]
           }
         >
-          8
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(245, 124, 95)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            256
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(236, 200, 80)",
               },
             ]
           }
         >
-          32
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(245, 124, 95)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            512
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(237, 197, 63)",
               },
             ]
           }
         >
-          32
-        </Text>
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            1024
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 194, 46)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2048
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "black",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4096
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "black",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8192
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "black",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 43.62244897959184,
+                },
+              ]
+            }
+          >
+            16384
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "black",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 43.62244897959184,
+                },
+              ]
+            }
+          >
+            32768
+          </Text>
+        </View>
       </View>
     </View>
   </View>
 </View>
 `;
 
-exports[`renders correctly 1`] = `
+exports[`GridView4 renders EndGameOverlay when swiping down into an end game 1`] = `
 <View
   style={
     [
       {
-        "height": 712.5,
-        "width": 712.5,
+        "height": 530,
+        "width": 530,
       },
     ]
   }
@@ -620,11 +639,629 @@ exports[`renders correctly 1`] = `
     style={
       [
         {
-          "alignSelf": "center",
-          "backgroundColor": "rgb(187, 173, 160)",
-          "borderRadius": 10,
-          "justifyContent": "space-evenly",
+          "height": 712.5,
+          "width": 712.5,
         },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(214, 205, 196)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`GridView4 renders EndGameOverlay when swiping down into an end game 2`] = `
+<View
+  style={
+    [
+      {
+        "height": 530,
+        "width": 530,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
         {
           "height": 712.5,
           "width": 712.5,
@@ -635,575 +1272,4472 @@ exports[`renders correctly 1`] = `
     <View
       style={
         {
-          "flexDirection": "row",
-          "height": "22%",
-          "justifyContent": "space-evenly",
+          "alignItems": "center",
+          "backgroundColor": "grey",
+          "borderRadius": 10,
+          "height": "100%",
+          "justifyContent": "center",
+          "opacity": 0.8,
+          "position": "absolute",
+          "width": "100%",
+          "zIndex": 100,
         }
       }
     >
-      <View
+      <Text
         style={
           [
             {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
+              "color": "white",
             },
             {
-              "backgroundColor": "rgb(214, 205, 196)",
+              "fontSize": 94.10377358490567,
             },
           ]
         }
       >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(238, 228, 218)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        >
-          2
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        />
-      </View>
+        Game Over
+      </Text>
     </View>
     <View
       style={
-        {
-          "flexDirection": "row",
-          "height": "22%",
-          "justifyContent": "space-evenly",
-        }
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
       }
     >
       <View
         style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(236, 224, 200)",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
         }
       >
-        <Text
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(238, 228, 218)",
               },
             ]
           }
         >
-          4
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(236, 224, 200)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(242, 177, 121)",
               },
             ]
           }
         >
-          4
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(214, 205, 196)",
-            },
-          ]
-        }
-      >
-        <Text
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(236, 224, 200)",
               },
             ]
           }
-        />
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
       </View>
     </View>
+  </View>
+</View>
+`;
+
+exports[`GridView4 renders EndGameOverlay when swiping left into an end game 1`] = `
+<View
+  style={
+    [
+      {
+        "height": 530,
+        "width": 530,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "height": 712.5,
+          "width": 712.5,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(214, 205, 196)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`GridView4 renders EndGameOverlay when swiping left into an end game 2`] = `
+<View
+  style={
+    [
+      {
+        "height": 530,
+        "width": 530,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "height": 712.5,
+          "width": 712.5,
+        },
+      ]
+    }
+  >
     <View
       style={
         {
-          "flexDirection": "row",
-          "height": "22%",
-          "justifyContent": "space-evenly",
+          "alignItems": "center",
+          "backgroundColor": "grey",
+          "borderRadius": 10,
+          "height": "100%",
+          "justifyContent": "center",
+          "opacity": 0.8,
+          "position": "absolute",
+          "width": "100%",
+          "zIndex": 100,
         }
       }
     >
-      <View
+      <Text
         style={
           [
             {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
+              "color": "white",
             },
             {
-              "backgroundColor": "rgb(242, 177, 121)",
+              "fontSize": 94.10377358490567,
             },
           ]
         }
       >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        >
-          8
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(236, 224, 200)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(119, 110, 101)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        >
-          4
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(242, 177, 121)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        >
-          8
-        </Text>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(245, 149, 99)",
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "textAlign": "center",
-              },
-              {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
-              },
-            ]
-          }
-        >
-          16
-        </Text>
-      </View>
+        Game Over
+      </Text>
     </View>
     <View
       style={
-        {
-          "flexDirection": "row",
-          "height": "22%",
-          "justifyContent": "space-evenly",
-        }
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
       }
     >
       <View
         style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(246, 93, 59)",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
         }
       >
-        <Text
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(236, 224, 200)",
               },
             ]
           }
         >
-          64
-        </Text>
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(242, 177, 121)",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
         }
       >
-        <Text
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(238, 228, 218)",
               },
             ]
           }
         >
-          8
-        </Text>
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(245, 124, 95)",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
         }
       >
-        <Text
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(236, 224, 200)",
               },
             ]
           }
         >
-          32
-        </Text>
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
       </View>
       <View
         style={
-          [
-            {
-              "backgroundColor": "white",
-              "borderRadius": 10,
-              "justifyContent": "center",
-              "textAlign": "center",
-              "width": "22%",
-            },
-            {
-              "backgroundColor": "rgb(245, 124, 95)",
-            },
-          ]
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
         }
       >
-        <Text
+        <View
           style={
             [
               {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
                 "textAlign": "center",
+                "width": "22%",
               },
               {
-                "color": "rgb(249, 246, 241)",
-              },
-              {
-                "fontSize": 58.16326530612245,
+                "backgroundColor": "rgb(238, 228, 218)",
               },
             ]
           }
         >
-          32
-        </Text>
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`GridView4 renders EndGameOverlay when swiping right into an end game 1`] = `
+<View
+  style={
+    [
+      {
+        "height": 530,
+        "width": 530,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "height": 712.5,
+          "width": 712.5,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(214, 205, 196)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`GridView4 renders EndGameOverlay when swiping right into an end game 2`] = `
+<View
+  style={
+    [
+      {
+        "height": 530,
+        "width": 530,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "height": 712.5,
+          "width": 712.5,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "grey",
+          "borderRadius": 10,
+          "height": "100%",
+          "justifyContent": "center",
+          "opacity": 0.8,
+          "position": "absolute",
+          "width": "100%",
+          "zIndex": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "white",
+            },
+            {
+              "fontSize": 94.10377358490567,
+            },
+          ]
+        }
+      >
+        Game Over
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`GridView4 renders EndGameOverlay when swiping up into an end game 1`] = `
+<View
+  style={
+    [
+      {
+        "height": 530,
+        "width": 530,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "height": 712.5,
+          "width": 712.5,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(214, 205, 196)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`GridView4 renders EndGameOverlay when swiping up into an end game 2`] = `
+<View
+  style={
+    [
+      {
+        "height": 530,
+        "width": 530,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "height": 712.5,
+          "width": 712.5,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "backgroundColor": "grey",
+          "borderRadius": 10,
+          "height": "100%",
+          "justifyContent": "center",
+          "opacity": 0.8,
+          "position": "absolute",
+          "width": "100%",
+          "zIndex": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "white",
+            },
+            {
+              "fontSize": 94.10377358490567,
+            },
+          ]
+        }
+      >
+        Game Over
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "backgroundColor": "rgb(187, 173, 160)",
+            "borderRadius": 10,
+            "justifyContent": "space-evenly",
+          },
+          {
+            "height": 712.5,
+            "width": 712.5,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "height": "22%",
+            "justifyContent": "space-evenly",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(242, 177, 121)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(249, 246, 241)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            8
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(238, 228, 218)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "white",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "textAlign": "center",
+                "width": "22%",
+              },
+              {
+                "backgroundColor": "rgb(236, 224, 200)",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "textAlign": "center",
+                },
+                {
+                  "color": "rgb(119, 110, 101)",
+                },
+                {
+                  "fontSize": 58.16326530612245,
+                },
+              ]
+            }
+          >
+            4
+          </Text>
+        </View>
       </View>
     </View>
   </View>

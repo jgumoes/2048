@@ -24,7 +24,7 @@ function Tile({value, gridSides}:{value: number, gridSides: number}) {
   )
 }
 
-function GameOverOverlay({gridSides}: {gridSides: number}) {
+function EndGameOverlay({gridSides}: {gridSides: number}) {
   const fontSize = gridSides * 70 / 530
   return(
     <View style={gameOverStyles.overlay}>
@@ -49,7 +49,7 @@ export const GridView4 = observer(({grid}: {grid: Grid}) => {
 
   return(
     <View style={[{height: gridSides, width: gridSides}]}>
-      {grid.isGameOver && <GameOverOverlay gridSides={gridSides} />}
+      {grid.isGameOver && <EndGameOverlay gridSides={gridSides} />}
       <View style={[appStyles.gridView, {height: gridSides, width: gridSides}]}>
         <View style={appStyles.gridRow}>
           {grid.activeGrid[0].map((value, index) => <Tile value={value} gridSides={gridSides} key={'0' + index} />)}
@@ -68,7 +68,7 @@ export const GridView4 = observer(({grid}: {grid: Grid}) => {
   )
 })
 
-const WrappedGridView4 = gestureHandlerRootHOC(GridView4)
+export const WrappedGridView4 = gestureHandlerRootHOC(GridView4)
 
 function findSwipeDirection({dx, dy}:{dx: number, dy:number}) {
   if(Math.abs(dx) > Math.abs(dy)){
