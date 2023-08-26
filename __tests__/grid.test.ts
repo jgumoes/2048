@@ -2,6 +2,7 @@ import Grid, { Direction, colorTestGrid } from "../grid";
 import {emptyGrid} from "../grid";
 import { ControlledPlaceGrid, NoPlaceGrid } from "./helpers/gridMocks";
 import importedTestGrids from './helpers/testGrids'
+import { directionValueArray, numberTestsArray } from "./helpers/values";
 
 /* note: a good test grid should include the following:
   0. it should be swipable in every direction, and the resulting grid should also be swipable in every direction
@@ -14,14 +15,6 @@ import importedTestGrids from './helpers/testGrids'
   grid in each direction. This means that 4 is definitely covered, plus increases the chance
   of stumbling accross a new bug I haven't thought of yet.
 */
-
-const numberTestsArray = ["0", "1", "2", "3"]
-const describeDirectionArray = [
-  Direction.left,
-  Direction.right,
-  Direction.up,
-  Direction.down
-]
 
 describe('initial grid', () => {
   test('is not empty', () => {
@@ -48,9 +41,31 @@ describe('initial grid', () => {
     }
     expect(closeZeros - gridZeros).toEqual(2) // only one zero-value tile should be different
   });
+
+  test('can have an end game grid', () => {
+    // shouldn't happen, but more reliable to make sure
+    let testGrid = new Grid({grid: importedTestGrids.gameOverInputs.noSwipe})
+    expect(testGrid.isGameOver).toBe(true)
+  })
+
+  test('can accept score and back button count values', () => {
+    const testGrid = new Grid({grid: colorTestGrid(), score: 40200, undoCount: 22})
+    expect(testGrid.currentScore).toBe(40200)
+    expect(testGrid.undoCount).toBe(22)
+  })
+
+  test('can be initialised with only gridSize', () => {
+    const testGrid = new Grid({gridSize: 4})
+    expect(testGrid.currentScore).toBe(0)
+    expect(testGrid.undoCount).toBe(0)
+    expect(testGrid.oldGrid).toStrictEqual([[]])
+    expect(testGrid.activeGrid.flat().reduce((accumulator, currentValue) => {
+      return currentValue === 0 ? accumulator + 1 : accumulator
+    }, 0)).toBe(14)
+  })
 })
 
-describe.each(describeDirectionArray)('%s swiping once moves and merges test grids', (direction) => {
+describe.each(directionValueArray)('%s swiping once moves and merges test grids', (direction) => {
   const resultGrids = importedTestGrids.resultGrids[direction]
   
 
@@ -81,7 +96,7 @@ describe.each(describeDirectionArray)('%s swiping once moves and merges test gri
 })
 
 /* the second swipe is to ensure Grid holds its own reference to activeGrid */
-describe.each(describeDirectionArray)('(double swipe) grid moves and merges correctly when swiping %s ', (direction) => {
+describe.each(directionValueArray)('(double swipe) grid moves and merges correctly when swiping %s ', (direction) => {
   const inputGrids = importedTestGrids.numberedInputs
   const resultGrids = importedTestGrids.resultGrids[direction]
 
@@ -129,7 +144,7 @@ describe.each(describeDirectionArray)('(double swipe) grid moves and merges corr
   })
 })
 
-describe.each(describeDirectionArray)('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (direction) => {
+describe.each(directionValueArray)('2 or 4 should replace a zero after moving and merging a grid, when swiping %s', (direction) => {
   const inputGrids = importedTestGrids.numberedInputs
   const resultGrids = importedTestGrids.resultGrids[direction]
 
@@ -163,7 +178,7 @@ describe.each(describeDirectionArray)('2 or 4 should replace a zero after moving
   })
 })
 
-describe.each(describeDirectionArray)("when the grid can't be swiped %s", (direction)=> {
+describe.each(directionValueArray)("when the grid can't be swiped %s", (direction)=> {
   const startingScore = Math.floor(Math.random() * 100)
   let testGrid: Grid
   beforeAll(()=>{
@@ -191,7 +206,7 @@ describe.each(describeDirectionArray)("when the grid can't be swiped %s", (direc
   })
 })
 
-describe.each(describeDirectionArray)("when swiping %s into a losing game", (direction)=>{
+describe.each(directionValueArray)("when swiping %s into a losing game", (direction)=>{
   const startingGrid = importedTestGrids.gameOverInputs[direction]
   let testGrid: Grid
   beforeEach(()=>{
@@ -244,7 +259,7 @@ describe('reseting the grid', ()=>{
     expect(testGrid.currentScore).toBe(0)
   })
 
-  test.each(describeDirectionArray)('resets the %s nextGrid', (direction)=>{
+  test.each(directionValueArray)('resets the %s nextGrid', (direction)=>{
     testGrid.swipe(direction);
     expect(testGrid.activeGrid).toStrictEqual(importedTestGrids.afterResetGrids[direction])
   })
@@ -303,7 +318,7 @@ describe.each([
   })
 })
 
-describe.each(describeDirectionArray)("if .swipe(%s) is called before nextGrids have finished computing, activeGrid updates correctly", (direction)=>{
+describe.each(directionValueArray)("if .swipe(%s) is called before nextGrids have finished computing, activeGrid updates correctly", (direction)=>{
   // actually, it would be better for all swiping to be rejected until the animations have completed.
   test.todo(`if only nextGrid[${direction}] has been computed`)
   test.todo(`if nextGrid[${direction}] hasn't been computed yet`)

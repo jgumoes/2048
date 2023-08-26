@@ -379,7 +379,7 @@ class Grid {
   private _currentScore: number
   private _isGameOver = false
 
-  private _undoButtonCount = 0
+  private _undoButtonCount: number
   private _allowUndo = true
 
   /**
@@ -388,7 +388,7 @@ class Grid {
    * @param score initial score. defaults to 0
    * @param gridSize defaults to 4. if grid is given, grid.length is used instead
    */
-  constructor(params: {grid?: number[][], score?: number, gridSize?: number} = {score: 0, gridSize: 4}) {
+  constructor(params: {grid?: number[][], score?: number, gridSize?: number, undoCount?: number} = {score: 0, gridSize: 4, undoCount: 0}) {
     if(params.grid === undefined){
       this.gridSize = params.gridSize || 4
       this._activeGrid.replace(emptyGrid())
@@ -401,12 +401,15 @@ class Grid {
     this._currentScore = params.score || 0
     this._previousScore = this._currentScore
 
+    this._undoButtonCount = params.undoCount || 0;
+
     this.nextGrids = {
       "left": new NextGridMaker(Direction.left, this._activeGrid),
       "right": new NextGridMaker(Direction.right, this._activeGrid),
       "up": new NextGridMaker(Direction.up, this._activeGrid),
       "down": new NextGridMaker(Direction.down, this._activeGrid),
     }
+    this.testForGameOver()
 
     this._allowUndo = false;
     
