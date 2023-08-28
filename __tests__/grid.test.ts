@@ -1,5 +1,4 @@
-import Grid, { Direction, colorTestGrid } from "../grid";
-import {emptyGrid} from "../grid";
+import Grid, { Direction, colorTestGrid, emptyGrid } from "../src/grid";
 import { ControlledPlaceGrid, NoPlaceGrid } from "./helpers/gridMocks";
 import importedTestGrids from './helpers/testGrids'
 import { directionValueArray, numberTestsArray } from "./helpers/values";

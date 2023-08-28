@@ -1,13 +1,13 @@
 import { act, render, screen } from '@testing-library/react-native'
 
-import { Direction, colorTestGrid } from '../grid';
+import { Direction, colorTestGrid } from '../src/grid';
 import { OnlyPlace2Grid as Grid } from './helpers/gridMocks';
 import importedTestGrids from './helpers/testGrids'
 
-import GameBoard from '../GameBoard';
+import GameBoard from '../src/GameBoard';
 import { directionValueArray } from './helpers/values';
 
-jest.mock('../SVGIcons', () => {
+jest.mock('../src/SVGIcons', () => {
   return{
     ResetSquare: () => {
       return <view />
@@ -61,7 +61,7 @@ describe('GameBoard', () => {
     expect(screen.getByText(`Score: ${secondTestScore}`)).toBeOnTheScreen()
     expect(screen.toJSON()).toMatchSnapshot()
   })
-  
+
   test.todo('updates score when user swipes x')
 
   test.todo('updates undo count when Undo button is pressed')

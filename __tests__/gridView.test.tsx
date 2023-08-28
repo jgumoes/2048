@@ -1,14 +1,14 @@
 import { act, render, screen } from '@testing-library/react-native'
 
-import Grid, { Direction, colorTestGrid } from '../grid';
+import Grid, { Direction, colorTestGrid } from '../src/grid';
 import { OnlyPlace2Grid } from './helpers/gridMocks';
 import importedTestGrids from './helpers/testGrids'
 
-import GameBoard, { GridView4 } from '../GameBoard';
+import GameBoard, { GridView4 } from '../src/GameBoard';
 import { View } from 'react-native';
 import { directionValueArray } from './helpers/values';
 
-jest.mock('../SVGIcons', () => {
+jest.mock('../src/SVGIcons', () => {
   return{
     ResetSquare: () => {
       return <view />
