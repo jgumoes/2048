@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1693252157726" clover="3.2.0">
-  <project timestamp="1693252157726" name="All files">
-    <metrics statements="304" coveredstatements="284" conditionals="50" coveredconditionals="40" methods="65" coveredmethods="61" elements="419" coveredelements="385" complexity="0" loc="304" ncloc="304" packages="4" files="11" classes="11"/>
+<coverage generated="1693252906351" clover="3.2.0">
+  <project timestamp="1693252906351" name="All files">
+    <metrics statements="304" coveredstatements="283" conditionals="50" coveredconditionals="40" methods="65" coveredmethods="61" elements="419" coveredelements="384" complexity="0" loc="304" ncloc="304" packages="4" files="11" classes="11"/>
     <package name="twenty_fortyeight">
       <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="D:\Scripts\React\twenty_fortyeight\App.tsx">
@@ -71,7 +71,7 @@
       </file>
     </package>
     <package name="twenty_fortyeight.src">
-      <metrics statements="266" coveredstatements="246" conditionals="48" coveredconditionals="38" methods="59" coveredmethods="55"/>
+      <metrics statements="266" coveredstatements="245" conditionals="48" coveredconditionals="38" methods="59" coveredmethods="55"/>
       <file name="GameBoard.tsx" path="D:\Scripts\React\twenty_fortyeight\src\GameBoard.tsx">
         <metrics statements="45" coveredstatements="30" conditionals="14" coveredconditionals="9" methods="12" coveredmethods="9"/>
         <line num="1" count="4" type="stmt"/>
@@ -152,7 +152,7 @@
         <line num="4" count="1" type="stmt"/>
       </file>
       <file name="grid.ts" path="D:\Scripts\React\twenty_fortyeight\src\grid.ts">
-        <metrics statements="196" coveredstatements="192" conditionals="32" coveredconditionals="27" methods="40" coveredmethods="40"/>
+        <metrics statements="196" coveredstatements="191" conditionals="32" coveredconditionals="27" methods="40" coveredmethods="40"/>
         <line num="1" count="6" type="stmt"/>
         <line num="3" count="2688" type="stmt"/>
         <line num="10" count="6" type="stmt"/>
@@ -167,12 +167,12 @@
         <line num="23" count="6" type="stmt"/>
         <line num="29" count="6" type="stmt"/>
         <line num="31" count="1820" type="stmt"/>
-        <line num="33" count="2939" type="stmt"/>
-        <line num="34" count="7864" type="cond" truecount="1" falsecount="0"/>
-        <line num="35" count="1548" type="stmt"/>
-        <line num="39" count="272" type="stmt"/>
+        <line num="33" count="2924" type="stmt"/>
+        <line num="34" count="7806" type="cond" truecount="1" falsecount="0"/>
+        <line num="35" count="1547" type="stmt"/>
+        <line num="39" count="273" type="stmt"/>
         <line num="46" count="6" type="stmt"/>
-        <line num="47" count="100272" type="stmt"/>
+        <line num="47" count="100270" type="stmt"/>
         <line num="50" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="51" count="6" type="stmt"/>
         <line num="52" count="6" type="stmt"/>
@@ -214,7 +214,7 @@
         <line num="256" count="1820" type="stmt"/>
         <line num="257" count="1820" type="stmt"/>
         <line num="258" count="1820" type="stmt"/>
-        <line num="265" count="693" type="stmt"/>
+        <line num="265" count="694" type="stmt"/>
         <line num="272" count="2158" type="stmt"/>
         <line num="279" count="226" type="stmt"/>
         <line num="289" count="1820" type="stmt"/>
@@ -248,13 +248,13 @@
         <line num="333" count="29120" type="cond" truecount="1" falsecount="0"/>
         <line num="334" count="9258" type="stmt"/>
         <line num="336" count="19862" type="cond" truecount="2" falsecount="0"/>
-        <line num="337" count="16528" type="stmt"/>
-        <line num="338" count="16528" type="stmt"/>
-        <line num="339" count="16528" type="stmt"/>
-        <line num="340" count="16528" type="stmt"/>
-        <line num="343" count="3334" type="stmt"/>
-        <line num="344" count="3334" type="stmt"/>
-        <line num="345" count="3334" type="stmt"/>
+        <line num="337" count="16520" type="stmt"/>
+        <line num="338" count="16520" type="stmt"/>
+        <line num="339" count="16520" type="stmt"/>
+        <line num="340" count="16520" type="stmt"/>
+        <line num="343" count="3342" type="stmt"/>
+        <line num="344" count="3342" type="stmt"/>
+        <line num="345" count="3342" type="stmt"/>
         <line num="349" count="768" type="stmt"/>
         <line num="350" count="7280" type="stmt"/>
         <line num="351" count="7280" type="stmt"/>
@@ -266,8 +266,8 @@
         <line num="359" count="306" type="stmt"/>
         <line num="361" count="306" type="stmt"/>
         <line num="362" count="306" type="stmt"/>
-        <line num="363" count="431" type="stmt"/>
-        <line num="364" count="431" type="stmt"/>
+        <line num="363" count="420" type="stmt"/>
+        <line num="364" count="420" type="stmt"/>
         <line num="367" count="306" type="stmt"/>
         <line num="372" count="174" type="stmt"/>
         <line num="373" count="174" type="stmt"/>
@@ -317,7 +317,7 @@
         <line num="467" count="15" type="stmt"/>
         <line num="472" count="15" type="stmt"/>
         <line num="477" count="15" type="cond" truecount="2" falsecount="0"/>
-        <line num="478" count="1" type="stmt"/>
+        <line num="478" count="0" type="stmt"/>
         <line num="484" count="15" type="stmt"/>
         <line num="485" count="15" type="stmt"/>
         <line num="489" count="32" type="stmt"/>
