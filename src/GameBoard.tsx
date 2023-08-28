@@ -4,7 +4,7 @@ import { Gesture, GestureDetector, gestureHandlerRootHOC } from "react-native-ge
 import GameInfoBar from "./GameInfoBar"
 import Grid, { Direction } from "./grid"
 import { observer } from "mobx-react-lite"
-import { appStyles, gameOverStyles, tileBackgroundColours, tileTextColours } from "./AppStyles"
+import { appStyles, gameOverStyles, tileBackgroundColours, tileTextColours } from "../AppStyles"
 
 type tileNumber_t = keyof typeof tileBackgroundColours;
 

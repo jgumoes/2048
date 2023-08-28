@@ -1,4 +1,4 @@
-import Grid from "../../grid";
+import Grid from "../../src/grid";
 
 /**
  * overides placeNewTile to not place new tiles

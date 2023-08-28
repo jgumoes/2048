@@ -1,10 +1,10 @@
 import { act, render, screen } from '@testing-library/react-native'
-import { Direction } from '../grid';
+import { Direction } from '../src/grid';
 import { OnlyPlace2Grid as Grid } from './helpers/gridMocks';
 import importedTestGrids from './helpers/testGrids'
-import GameInfoBar from '../GameInfoBar';
+import GameInfoBar from '../src/GameInfoBar';
 
-jest.mock('../SVGIcons', () => {
+jest.mock('../src/SVGIcons', () => {
   return{
     ResetSquare: () => {
       return <view />

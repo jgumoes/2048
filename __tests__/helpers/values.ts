@@ -1,4 +1,4 @@
-import { Direction } from "../../grid"
+import { Direction } from "../../src/grid"
 
 export const numberTestsArray = ["0", "1", "2", "3"]
 export const directionValueArray = [

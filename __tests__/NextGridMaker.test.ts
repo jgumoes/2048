@@ -1,4 +1,4 @@
-import { NextGridMaker, Direction, emptyGrid, chooseA0 } from "../grid";
+import { NextGridMaker, Direction, emptyGrid, chooseA0 } from "../src/grid";
 import importedTestGrids from './helpers/testGrids'
 
 // Note: beforeAll should be used to instantiate the NextGridMaker classes
