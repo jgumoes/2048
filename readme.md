@@ -15,4 +15,8 @@ TODO: maybe all 4 directions should be pre-calculated, and the class just hands 
 
 After swiping, a new tile needs to be placed in an empty space (represented by 0s). I could just run a random number generator repeatedly until the coordinates it creates point to a 0 in the grid, or I could know where the zeros are and randomly select one of those locations. I prefer the latter as it bounds the maximum time taken to find a valid location, as opposed to random which could be technically infinite and the time taken will increase as the grid fills.
 
-I tried a couple of different ways of finding a location, and timed the results for comparison, but they were all within 2nS so I just went with the one I liked the most.
+I tried a couple of different ways of finding a location, and timed the results for comparison, but they were all within 2 nS so I just went with the one I liked the most.
+
+## Testing
+
+Testing is done using Jest, and React Native testing Library is used to test user interactions such as button presses. Unfortunately, React Native Gesture Handler does not work in testing environments and any documentation is for the old api and therefore ~2+ years out of date, so I've had to mock out the entire library for UI testing to work. This means that users swiping the grid has not been directly tested, only through calling the swipe() method on the testing Grid instance.

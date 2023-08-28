@@ -1,12 +1,12 @@
 import { act, render, screen } from '@testing-library/react-native'
 
-import Grid, { Direction, colorTestGrid } from '../src/grid';
-import { OnlyPlace2Grid } from './helpers/gridMocks';
+import { Direction, colorTestGrid } from '../src/grid';
+import { OnlyPlace2Grid as Grid } from './helpers/gridMocks';
 import importedTestGrids from './helpers/testGrids'
 
-import GameBoard, { GridView4 } from '../src/GameBoard';
+import { GridView4 } from '../src/GameBoard';
 import { View } from 'react-native';
-import { directionValueArray } from './helpers/values';
+import { directionValueArray, makeSnapshot } from './helpers/helperValuesAndFunctions';
 
 jest.mock('../src/SVGIcons', () => {
   return{
@@ -57,13 +57,10 @@ describe('GridView4', () => {
   test('updates when props update', () => {
     const testGrid = new Grid({grid: importedTestGrids.numberedInputs[0]})
     render(<GridView4 grid={testGrid} />)
-    const screenA = screen.toJSON()
+    const screenA = makeSnapshot(screen)
     act(()=>{testGrid.swipe(Direction.left)})
-    console.log(screen.toJSON())
-    expect(screenA).not.toStrictEqual(screen.toJSON())
+    expect(screenA).not.toStrictEqual(makeSnapshot(screen))
   })
-
-  test.todo('updates when user swipes')
 })
 
 describe('GameLost overlay renders', () => {
@@ -89,7 +86,6 @@ describe('GameLost overlay renders', () => {
     expect(screen.toJSON()).toMatchSnapshot()
   })
 
-  test.todo('when user swipes %s into an end game')
   test.todo('after animations')
 })
 

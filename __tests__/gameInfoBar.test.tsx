@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react-native'
+import { act, render, screen, userEvent } from '@testing-library/react-native'
 import { Direction } from '../src/grid';
 import { OnlyPlace2Grid as Grid } from './helpers/gridMocks';
 import importedTestGrids from './helpers/testGrids'
@@ -51,21 +51,28 @@ test('score displays and updates correctly', () => {
 
 describe('undo button', () => {
   let testGrid: Grid;
-  const startingCount = 5
+  const startingUndoCount = 5
   const startingScore = 42069
   beforeEach(()=>{
-    testGrid = new Grid({grid: importedTestGrids.numberedInputs[0], undoCount: startingCount, score: startingScore})
+    testGrid = new Grid({grid: importedTestGrids.numberedInputs[0], undoCount: startingUndoCount, score: startingScore})
   })
   describe('increments undo count', () => {
   
     test('when props are update', () => {
       render(<GameInfoBar grid={testGrid} /> )
-      expect(screen.queryByText(`Undo Count: ${startingCount}`)).toBeOnTheScreen()
+      expect(screen.queryByText(`Undo Count: ${startingUndoCount}`)).toBeOnTheScreen()
       act(()=>{testGrid.swipe(Direction.left); testGrid.undo();})
-      expect(screen.queryByText(`Undo Count: ${startingCount + 1}`)).toBeOnTheScreen()
+      expect(screen.queryByText(`Undo Count: ${startingUndoCount + 1}`)).toBeOnTheScreen()
     })
 
-    test.todo('when button is pressed')
+    test('when button is pressed', async () => {
+      render(<GameInfoBar grid={testGrid} /> )
+      expect(screen.getByText(`Undo Count: ${startingUndoCount}`)).toBeOnTheScreen()
+      const user = userEvent.setup()
+      act(()=>{testGrid.swipe(Direction.left)})
+      await user.press(screen.getByTestId("undoButton"))
+      expect(screen.getByText(`Undo Count: ${startingUndoCount + 1}`)).toBeOnTheScreen()
+    })
   })
 
   describe('returns score to previous value', () => {
@@ -77,7 +84,14 @@ describe('undo button', () => {
       expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
     })
 
-    test.todo('when button is pressed')
+    test('when button is pressed', async () => {
+      render(<GameInfoBar grid={testGrid} /> )
+      expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
+      const user = userEvent.setup()
+      act(()=>{testGrid.swipe(Direction.left)})
+      await user.press(screen.getByTestId("undoButton"))
+      expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
+    })
   })
 })
 
@@ -97,7 +111,29 @@ describe('resetting the game resets the back button count and score', () => {
     expect(screen.queryByText(`Score: 0`)).toBeOnTheScreen()
     expect(screen.queryByText(`Undo Count: 0`)).toBeOnTheScreen()
   })
-  test.todo('when button is pressed and confirmed')
+  test('when button is pressed and confirmed', async () => {
+    render(<GameInfoBar grid={testGrid} />)
+    expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
+    expect(screen.queryByText(`Undo Count: ${startingCount}`)).toBeOnTheScreen()
+    const user = userEvent.setup()
+    await user.press(screen.getByTestId('resetButton'))
+    const confirmReset = screen.getByText("yes")
+    await user.press(confirmReset)
+    expect(screen.queryByText(`Score: 0`)).toBeOnTheScreen()
+    expect(screen.queryByText(`Undo Count: 0`)).toBeOnTheScreen()
+  })
+
+  test("but not when 'no' button is pressed", async () => {
+    render(<GameInfoBar grid={testGrid} />)
+    expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
+    expect(screen.queryByText(`Undo Count: ${startingCount}`)).toBeOnTheScreen()
+    const user = userEvent.setup()
+    await user.press(screen.getByTestId('resetButton'))
+    const doNotConfirmReset = screen.getByText("no")
+    await user.press(doNotConfirmReset)
+    expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
+    expect(screen.queryByText(`Undo Count: ${startingCount}`)).toBeOnTheScreen()
+  })
 })
 
 test.todo('highscore changes depending on undo count') // highscore must be implemented first lol

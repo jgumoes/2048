@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { gridSides } from './GameBoard';
 import { observer } from 'mobx-react-lite';
 
-const WrappedResetBoardModal = ({onYes, onNo}: {onYes: () => void, onNo: () => void}) => {
+const ResetBoardModal = ({onYes, onNo}: {onYes: () => void, onNo: () => void}) => {
   return(
     <View style={styles.resetBoardModal}>
       <Text style={styles.resetBoardModalText}>Are you sure you want to reset?</Text>
@@ -23,7 +23,10 @@ const WrappedResetBoardModal = ({onYes, onNo}: {onYes: () => void, onNo: () => v
 
 const GameInfoBar = observer(({grid}: {grid: Grid}) => {
   const [showResetBoardModal, setShowResetBoardModal] = useState(false)
-  const onResetSquarePress = () => setShowResetBoardModal(true)
+  const onResetSquarePress = () => {
+    if(!grid.isGameOver){setShowResetBoardModal(true)}
+    else{grid.reset()}
+  }
 
   const componentHeight = gridSides()/5
   console.log('gridSides', gridSides())
@@ -39,7 +42,7 @@ const GameInfoBar = observer(({grid}: {grid: Grid}) => {
         visible={showResetBoardModal}
         onRequestClose={() => setShowResetBoardModal(false)}
       >
-        <WrappedResetBoardModal onNo={onNoCallback} onYes={onYesCallback} />
+        <ResetBoardModal onNo={onNoCallback} onYes={onYesCallback} />
       </Modal>
       <View style={styles.scoresContainer}>
         <Text style={[{fontSize: scoreFontSize}, styles.scoresText]} >Score: {grid.currentScore}</Text>

@@ -1,7 +1,7 @@
 import Grid, { Direction, colorTestGrid, emptyGrid } from "../src/grid";
 import { ControlledPlaceGrid, NoPlaceGrid } from "./helpers/gridMocks";
 import importedTestGrids from './helpers/testGrids'
-import { directionValueArray, numberTestsArray } from "./helpers/values";
+import { directionValueArray, numberTestsArray } from "./helpers/helperValuesAndFunctions";
 
 /* note: a good test grid should include the following:
   0. it should be swipable in every direction, and the resulting grid should also be swipable in every direction
