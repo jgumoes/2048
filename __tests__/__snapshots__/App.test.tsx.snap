@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders 1`] = `
+<RCTSafeAreaView
+  style={
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "rgb(251, 248, 239)",
+        "flex": 1,
+        "justifyContent": "center",
+      },
+    ]
+  }
+/>
+`;
