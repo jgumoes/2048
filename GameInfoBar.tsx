@@ -1,31 +1,33 @@
-import { Text, View, Modal, StyleSheet } from 'react-native';
+import { Text, View, Modal, StyleSheet, Pressable } from 'react-native';
 import Grid from './grid';
-import { RectButton, gestureHandlerRootHOC } from 'react-native-gesture-handler';
-import ResetSquare from './assets/restart-square.svg'
-import UndoIcon from './assets/undo.svg'
+import { ResetSquare, UndoIcon } from './SVGIcons'
 import React, { useState } from 'react';
+import { gridSides } from './GameBoard';
+import { observer } from 'mobx-react-lite';
 
-const ResetBoardModal = ({onYes, onNo}: {onYes: () => void, onNo: () => void}) => {
+const WrappedResetBoardModal = ({onYes, onNo}: {onYes: () => void, onNo: () => void}) => {
   return(
     <View style={styles.resetBoardModal}>
       <Text style={styles.resetBoardModalText}>Are you sure you want to reset?</Text>
       <View>
-        <RectButton onPress={onNo}>
+        <Pressable onPress={onNo}>
         <Text style={styles.resetBoardModalText}>no</Text>
-        </RectButton>
-        <RectButton onPress={onYes}>
+        </Pressable>
+        <Pressable onPress={onYes}>
         <Text style={styles.resetBoardModalText}>yes</Text>
-        </RectButton>
+        </Pressable>
       </View>
     </View>
   )
 }
 
-const WrappedResetBoardModal = gestureHandlerRootHOC(ResetBoardModal)
-
-export default function GameInfoBar({grid}: {grid: Grid}) {
+const GameInfoBar = observer(({grid}: {grid: Grid}) => {
   const [showResetBoardModal, setShowResetBoardModal] = useState(false)
   const onResetSquarePress = () => setShowResetBoardModal(true)
+
+  const componentHeight = gridSides()/5
+  console.log('gridSides', gridSides())
+  const scoreFontSize = (30 / 475) * gridSides()
 
   const onNoCallback = () => {console.log('user pressed no'); setShowResetBoardModal(false);}
   const onYesCallback = ()=> {console.log('user pressed yes'); grid.reset(); setShowResetBoardModal(false);}
@@ -39,24 +41,34 @@ export default function GameInfoBar({grid}: {grid: Grid}) {
       >
         <WrappedResetBoardModal onNo={onNoCallback} onYes={onYesCallback} />
       </Modal>
-      <View>
-        <Text>Score: {grid.currentScore}</Text>
-        <Text>Undo Button Count: {grid.undoCount}</Text>
+      <View style={styles.scoresContainer}>
+        <Text style={[{fontSize: scoreFontSize}, styles.scoresText]} >Score: {grid.currentScore}</Text>
+        <Text style={[{fontSize: scoreFontSize}, styles.scoresText]} >Undo Count: {grid.undoCount}</Text>
       </View>
-      <RectButton onPress={()=>{grid.undo()}} >
-        {/* <Text>{grid.undoCount}</Text> */}
-        <UndoIcon width={100} height={100} />
-      </RectButton>
-      <RectButton onPress={onResetSquarePress} >
-        <ResetSquare width={100} height={100} />
-      </RectButton>
+      <View style={[styles.buttonsContainer]} >
+        <Pressable
+          testID='undoButton'
+          onPress={()=>{grid.undo()}}
+        >
+          <UndoIcon width={componentHeight} height={componentHeight} />
+        </Pressable>
+        <Pressable
+          testID='resetButton'
+          onPress={onResetSquarePress}
+        >
+          <ResetSquare width={componentHeight} height={componentHeight} />
+        </Pressable>
+      </View>
     </View>
   )
-}
+})
+
+export default GameInfoBar
 
 const styles = StyleSheet.create({
   gameInfoBar: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   resetBoardModal: {
     justifyContent: 'center',
@@ -68,12 +80,14 @@ const styles = StyleSheet.create({
   resetBoardModalText: {
     fontSize: 30
   },
-  backButtonContainer: {
-    flexDirection: "row",
-    alignItems: 'center',
-    // borderColor: '#1C274C',
-    borderColor: '#000000',
-    borderWidth: 10,
-    borderStyle: 'solid',
+  scoresContainer: {
+    justifyContent: 'space-around'
+  },
+  scoresText: {
+    color: '#1C274C'
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   }
 })

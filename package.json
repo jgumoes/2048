@@ -31,6 +31,7 @@
     "@babel/preset-env": "^7.22.10",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@expo/ngrok": "^4.1.0",
     "@relmify/jest-serializer-strip-ansi": "^1.0.2",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react-native": "^12.2.2",

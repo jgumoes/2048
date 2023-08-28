@@ -54,8 +54,8 @@ describe('initial grid', () => {
     expect(testGrid.undoCount).toBe(22)
   })
 
-  test('can be initialised with only gridSize', () => {
-    const testGrid = new Grid({gridSize: 4})
+  test('creates a starting grid when initialised with gridSize', () => {
+    const testGrid = new Grid({gridSize: 4, score: 20000, undoCount: 47})
     expect(testGrid.currentScore).toBe(0)
     expect(testGrid.undoCount).toBe(0)
     expect(testGrid.oldGrid).toStrictEqual([[]])

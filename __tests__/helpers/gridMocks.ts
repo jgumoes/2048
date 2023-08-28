@@ -23,3 +23,12 @@ export class ControlledPlaceGrid extends Grid{
     this.placeTileCalls += 1
   }
 }
+
+/**
+ * Only places tile 2, never four. Use for maintaining conistency in snapshot tests
+ */
+export class OnlyPlace2Grid extends Grid{
+  placeNewTile(newTileLocation: {'x': number, 'y': number}) {
+    this._activeGrid[newTileLocation.y][newTileLocation.x] = 2
+  }
+}

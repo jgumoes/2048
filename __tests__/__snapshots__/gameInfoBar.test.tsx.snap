@@ -5,6 +5,7 @@ exports[`GameInfoBar renders 1`] = `
   style={
     {
       "flexDirection": "row",
+      "justifyContent": "space-between",
     }
   }
 >
@@ -15,11 +16,122 @@ exports[`GameInfoBar renders 1`] = `
     transparent={true}
     visible={false}
   />
-  <View>
-    <Text>
+  <View
+    style={
+      {
+        "justifyContent": "space-around",
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "fontSize": 45,
+          },
+          {
+            "color": "#1C274C",
+          },
+        ]
+      }
+    >
       Score: 
       0
     </Text>
+    <Text
+      style={
+        [
+          {
+            "fontSize": 45,
+          },
+          {
+            "color": "#1C274C",
+          },
+        ]
+      }
+    >
+      Undo Count: 
+      0
+    </Text>
+  </View>
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      testID="undoButton"
+    >
+      <view />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      testID="resetButton"
+    >
+      <view />
+    </View>
   </View>
 </View>
 `;
@@ -29,6 +141,7 @@ exports[`score displays and updates correctly 1`] = `
   style={
     {
       "flexDirection": "row",
+      "justifyContent": "space-between",
     }
   }
 >
@@ -39,11 +152,122 @@ exports[`score displays and updates correctly 1`] = `
     transparent={true}
     visible={false}
   />
-  <View>
-    <Text>
+  <View
+    style={
+      {
+        "justifyContent": "space-around",
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "fontSize": 45,
+          },
+          {
+            "color": "#1C274C",
+          },
+        ]
+      }
+    >
       Score: 
       40200
     </Text>
+    <Text
+      style={
+        [
+          {
+            "fontSize": 45,
+          },
+          {
+            "color": "#1C274C",
+          },
+        ]
+      }
+    >
+      Undo Count: 
+      0
+    </Text>
+  </View>
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      testID="undoButton"
+    >
+      <view />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      testID="resetButton"
+    >
+      <view />
+    </View>
   </View>
 </View>
 `;
@@ -53,6 +277,7 @@ exports[`score displays and updates correctly 2`] = `
   style={
     {
       "flexDirection": "row",
+      "justifyContent": "space-between",
     }
   }
 >
@@ -63,11 +288,122 @@ exports[`score displays and updates correctly 2`] = `
     transparent={true}
     visible={false}
   />
-  <View>
-    <Text>
+  <View
+    style={
+      {
+        "justifyContent": "space-around",
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "fontSize": 45,
+          },
+          {
+            "color": "#1C274C",
+          },
+        ]
+      }
+    >
       Score: 
       40300
     </Text>
+    <Text
+      style={
+        [
+          {
+            "fontSize": 45,
+          },
+          {
+            "color": "#1C274C",
+          },
+        ]
+      }
+    >
+      Undo Count: 
+      0
+    </Text>
+  </View>
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      testID="undoButton"
+    >
+      <view />
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      testID="resetButton"
+    >
+      <view />
+    </View>
   </View>
 </View>
 `;

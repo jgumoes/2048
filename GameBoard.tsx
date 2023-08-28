@@ -24,8 +24,8 @@ function Tile({value, gridSides}:{value: number, gridSides: number}) {
   )
 }
 
-function EndGameOverlay({gridSides}: {gridSides: number}) {
-  const fontSize = gridSides * 70 / 530
+function EndGameOverlay() {
+  const fontSize = gridSides() * 70 / 530
   return(
     <View style={gameOverStyles.overlay}>
       <Text style={[gameOverStyles.text, {fontSize: fontSize}]}>Game Over</Text>
@@ -33,42 +33,48 @@ function EndGameOverlay({gridSides}: {gridSides: number}) {
   )
 }
 
+export const gridSides = () => {
+  const sidesX = useWindowDimensions().width * 0.95
+  const sidesY = useWindowDimensions().height * 0.7
+  return sidesX < sidesY ? sidesX : sidesY
+}
+
 /**
  * Creates and views a 4x4 grid
  * @param param0 
  * @returns 
  */
-export const GridView4 = observer(({grid}: {grid: Grid}) => {
+export const NakedGridView4 = observer(({grid}: {grid: Grid}) => {
   
-  const sidesX = useWindowDimensions().width * 0.95
-  const sidesY = useWindowDimensions().height * 0.7
-  const gridSides =  sidesX < sidesY ? sidesX : sidesY
-  console.log("window sides: ", sidesX, sidesY)
-  console.log("gridSides: ", gridSides)
-  console.log("is game over: ", grid.isGameOver)
+  // const sidesX = useWindowDimensions().width * 0.95
+  // const sidesY = useWindowDimensions().height * 0.7
+  // const gridSides =  sidesX < sidesY ? sidesX : sidesY
+  // console.log("window sides: ", sidesX, sidesY)
+  // console.log("gridSides: ", gridSides)
+  // console.log("is game over: ", grid.isGameOver)
 
   return(
-    <View style={[{height: gridSides, width: gridSides}]}>
-      {grid.isGameOver && <EndGameOverlay gridSides={gridSides} />}
-      <View style={[appStyles.gridView, {height: gridSides, width: gridSides}]}>
+    <View style={[{height: gridSides(), width: gridSides()}]}>
+      {grid.isGameOver && <EndGameOverlay />}
+      <View style={[appStyles.gridView, {height: gridSides(), width: gridSides()}]}>
         <View style={appStyles.gridRow}>
-          {grid.activeGrid[0].map((value, index) => <Tile value={value} gridSides={gridSides} key={'0' + index} />)}
+          {grid.activeGrid[0].map((value, index) => <Tile value={value} gridSides={gridSides()} key={'0' + index} />)}
         </View>
         <View style={appStyles.gridRow}>
-          {grid.activeGrid[1].map((value, index) => <Tile value={value} gridSides={gridSides} key={'1' + index} />)}
+          {grid.activeGrid[1].map((value, index) => <Tile value={value} gridSides={gridSides()} key={'1' + index} />)}
         </View>
         <View style={appStyles.gridRow}>
-          {grid.activeGrid[2].map((value, index) => <Tile value={value} gridSides={gridSides} key={'2' + index} />)}
+          {grid.activeGrid[2].map((value, index) => <Tile value={value} gridSides={gridSides()} key={'2' + index} />)}
         </View>
         <View style={appStyles.gridRow}>
-          {grid.activeGrid[3].map((value, index) => <Tile value={value} gridSides={gridSides} key={'3' + index} />)}
+          {grid.activeGrid[3].map((value, index) => <Tile value={value} gridSides={gridSides()} key={'3' + index} />)}
         </View>
       </View>
     </View>
   )
 })
 
-export const WrappedGridView4 = gestureHandlerRootHOC(GridView4)
+export const GridView4 = gestureHandlerRootHOC(NakedGridView4)
 
 function findSwipeDirection({dx, dy}:{dx: number, dy:number}) {
   if(Math.abs(dx) > Math.abs(dy)){
@@ -114,7 +120,7 @@ export default function GameBoard({grid}: {grid: Grid}) {
     <View>
       <GameInfoBar grid={grid} />
       <GestureDetector  gesture={swipeResponder}>
-        <WrappedGridView4 grid={grid}/>
+        <GridView4 grid={grid}/>
       </GestureDetector >
     </View>
   )

@@ -1,11 +1,22 @@
 import { act, render, screen } from '@testing-library/react-native'
 
-import Grid, { Direction, colorTestGrid } from '../grid';
+import { Direction, colorTestGrid } from '../grid';
+import { OnlyPlace2Grid as Grid } from './helpers/gridMocks';
 import importedTestGrids from './helpers/testGrids'
 
-import GameBoard, { WrappedGridView4 } from '../GameBoard';
-import { View } from 'react-native';
+import GameBoard from '../GameBoard';
 import { directionValueArray } from './helpers/values';
+
+jest.mock('../SVGIcons', () => {
+  return{
+    ResetSquare: () => {
+      return <view />
+    },
+    UndoIcon: () => {
+      return <view />
+    }
+  }
+})
 
 jest.mock('react-native-gesture-handler', () => {
   return {
@@ -20,52 +31,20 @@ jest.mock('react-native-gesture-handler', () => {
         }
       })
     },
+    GestureDetector: () => {
+      return(<view />)
+    }
   };
 });
 
-
-describe('GridView4', () => {
-  function TestWrapper({children}:{children: JSX.Element}) {
-    return(
-      <View style={[{height: 530, width: 530}]} >
-        {children}
-      </View>
-    )
-  }
+describe('GameBoard', () => {
+  const testScore = 40200
+  const testUndoCount = 3
+  let testGrid: Grid
+  beforeEach(()=>{
+    testGrid = new Grid({grid: importedTestGrids.numberedInputs[0], score: testScore, undoCount: testUndoCount})
+  })
   test('renders', () => {
-    const testGrid = new Grid({grid: colorTestGrid()});
-    render(<WrappedGridView4 grid={testGrid} />, {wrapper: TestWrapper});
-    expect(screen.toJSON()).toMatchSnapshot()
-    expect(screen.toJSON()).not.toBeNull()
-  })
-
-  test('renders EndGameOverlay', () => {
-    const testGrid = new Grid({grid: importedTestGrids.gameOverInputs.noSwipe})
-    render(<WrappedGridView4 grid={testGrid} />, {wrapper: TestWrapper})
-    expect(screen.getByText("Game Over")).toBeOnTheScreen()
-    expect(screen.getByText("Game Over")).toBeOnTheScreen()
-  })
-
-  test.each(directionValueArray)('renders EndGameOverlay when swiping %s into an end game', (direction) => {
-    // this only tests that the screen renders new prop values
-    // it doesn't test actual reactivity
-    const testGrid = new Grid({grid: importedTestGrids.gameOverInputs[direction]})
-    const {rerender} = render(<WrappedGridView4 grid={testGrid} />, {wrapper: TestWrapper})
-    expect(screen.toJSON()).not.toContain("Game Over")
-    expect(screen.toJSON()).toMatchSnapshot()
-    act(() => {testGrid.swipe(direction)})
-    rerender(<WrappedGridView4 grid={testGrid} />)
-    expect(screen.getByText("Game Over")).toBeOnTheScreen()
-    expect(screen.toJSON()).toMatchSnapshot()
-  })
-
-  test.todo('renders winner overlay when 2048 is reached')
-})
-
-describe.skip('GameBoard', () => {
-  // trying to get this to work was a fucking nightmare and I give up
-  test('renders', () => {
-    const testGrid = new Grid({grid: colorTestGrid(), score: 69420})
     render(
         <GameBoard grid={testGrid} />
       )
@@ -73,9 +52,41 @@ describe.skip('GameBoard', () => {
     expect(screen.toJSON()).not.toBeNull()
   })
 
-  test.todo('displays Game Over overlay correctly when swiping x')
-  test.todo('shows GameWon overlay when 2048 is reached')
-  test.todo('updates score when swiping x')
-  test.todo('resets when reset button is pressed and confirmed')
-  test.todo("doesn't reset when reset button is pressed but not confirmed")
+  test('updates score when Grid receives swipe command', () => {
+    render(<GameBoard grid={testGrid} />)
+    expect(screen.getByText(`Score: ${testScore}`)).toBeOnTheScreen()
+    expect(screen.toJSON()).toMatchSnapshot();
+    act(() => {testGrid.swipe(Direction.left)})
+    const secondTestScore = testScore + importedTestGrids.scores.left[0]
+    expect(screen.getByText(`Score: ${secondTestScore}`)).toBeOnTheScreen()
+    expect(screen.toJSON()).toMatchSnapshot()
+  })
+  
+  test.todo('updates score when user swipes x')
+
+  test.todo('updates undo count when Undo button is pressed')
+
+  test.todo('updates undo count correctly when Undo button is pressed multiple times')
+})
+
+describe('ResetGame overlay', () => {
+  // interactive only; no testing through props updates
+  test.todo('is rendered when Reset button is pressed')
+  test.todo('resets board when Yes button is pressed') // remember the score and undo count
+  test.todo("doesn't reset board when No button is pressed") // remember the score and undo count
+})
+
+describe('GameWon overlay', () => {
+  // interactive only; no testing through props updates
+  test.todo('is rendered when 2048 is reached')
+  test.todo('disapears after a second')
+  test.todo('disapears when tapped')
+  test.todo("doesn't render when initialised with a grid containing 2048")
+  test.todo("only renders the first time when 2048 is reached, user presses back, the swipes to reach 2048 again")
+})
+
+describe('ShameUser overlay', ()=>{
+  // interactive only; no testing through props updates
+  test.todo('renders when Undo button is pressed')
+  test.todo('disappears after on second')
 })

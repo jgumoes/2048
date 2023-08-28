@@ -1,4 +1,4 @@
-import {action, makeObservable, observable} from "mobx"
+import {action, computed, makeObservable, observable} from "mobx"
 
 export const emptyGrid = () => [
   [ 0, 0, 0, 0], 
@@ -389,7 +389,14 @@ class Grid {
    * @param gridSize defaults to 4. if grid is given, grid.length is used instead
    */
   constructor(params: {grid?: number[][], score?: number, gridSize?: number, undoCount?: number} = {score: 0, gridSize: 4, undoCount: 0}) {
-    if(params.grid === undefined){
+    if(params.gridSize !== undefined){
+      this.gridSize = params.gridSize
+      this._activeGrid.replace(emptyGrid())
+      this.fillInitialGrid()
+      params.score = 0
+      params.undoCount = 0
+    }
+    else if(params.grid === undefined){
       this.gridSize = params.gridSize || 4
       this._activeGrid.replace(emptyGrid())
       this.fillInitialGrid()
@@ -413,18 +420,23 @@ class Grid {
 
     this._allowUndo = false;
     
-    makeObservable<this, "updateActiveGrid" | "testForGameOver" | "_activeGrid" | "_isGameOver" | "placeNewTile">(this, {
+    makeObservable<this, "updateActiveGrid" | "testForGameOver" | "_activeGrid" | "_isGameOver" | "placeNewTile" | "_undoButtonCount" | "_currentScore">(this, {
       _activeGrid: observable,
       updateActiveGrid: action,
       testForGameOver: action,
       _isGameOver: observable,
       reset: action,
       undo: action,
-      placeNewTile: action
+      placeNewTile: action,
+      _undoButtonCount: observable,
+      undoCount: computed,
+      _currentScore: observable,
+      currentScore: computed,
+      swipe: action
     })
   }
 
-  public get undoCount(){
+  public get undoCount(): number{
     return this._undoButtonCount
   }
   public undo = () =>{

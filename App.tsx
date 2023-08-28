@@ -8,7 +8,7 @@ import GameBoard from './GameBoard';
 
 export default function App() {
   // const [grid, setGrid] = useState(new Grid({gridSize: 4}))
-  const [grid, setGrid] = useState(new Grid({grid: colorTestGrid()}))
+  const [grid, setGrid] = useState(new Grid({grid: colorTestGrid(), undoCount: 5}))
   
   return (
     <SafeAreaView style={[appStyles.container]}>
