@@ -503,6 +503,14 @@ class Grid {
   }
   
   /**
+   * or, has 2048 been reached?
+   */
+  public get isGameWon() : boolean {
+    return this._activeGrid.flat().some(value => value >= 2048)
+  }
+  
+
+  /**
    * Updates the active grid in this class
    * @param grid the new active grid
    */
@@ -531,6 +539,12 @@ class Grid {
     }
     this._isGameOver = ! gameStillPlayable
   }
+
+  
+  public get isUndoAllowed() : boolean {
+    return this._allowUndo
+  }
+  
 
   /**
    * Swipe the grid in a direction.

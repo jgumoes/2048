@@ -229,6 +229,28 @@ describe.each(directionValueArray)("when swiping %s into a losing game", (direct
   })
 })
 
+describe('isGameWon', () =>{
+  test.each(directionValueArray)('becomes true when swiping %s into a winning game', (direction) => {
+    const testGrid = new Grid({grid: importedTestGrids.gameWonInputs.swipeToWin})
+    expect(testGrid.isGameWon).toBe(false)
+    testGrid.swipe(direction)
+    expect(testGrid.isGameWon).toBe(true)
+  })
+
+  test("is true 2048 isn't on the board but has been passed", () => {
+    const testGrid = new Grid({grid: importedTestGrids.gameWonInputs.alreadyWon})
+    expect(testGrid.isGameWon).toBe(true)
+  })
+
+  test("remains true when game is lost", () => {
+    const testGrid = new Grid({grid: colorTestGrid()})
+    expect(testGrid.isGameWon).toBe(true)
+    expect(testGrid.isGameOver).toBe(false)
+    testGrid.swipe(Direction.left)
+    expect(testGrid.isGameWon).toBe(true)
+    expect(testGrid.isGameOver).toBe(true)
+  })
+})
 describe('reseting the grid', ()=>{
 
   let testGrid: ControlledPlaceGrid
@@ -288,20 +310,36 @@ describe.each([
       grid: initialGrid,
       score: initialScore
     })
-    testGrid.swipe(Direction.left)
-    for(let i = 0; i < count; i++){ testGrid.undo() }
   })
 
   test("grid reverts to previous grid", () => {
+    expect(testGrid.isUndoAllowed).toBe(false)
+    testGrid.swipe(Direction.left)
+    expect(testGrid.isUndoAllowed).toBe(true)
+    for(let i = 0; i < count; i++){ testGrid.undo() }
     expect(testGrid.activeGrid).toStrictEqual(initialGrid)
+    expect(testGrid.isUndoAllowed).toBe(false)
   })
 
   test("score reverts to previous score", () =>{
+    expect(testGrid.isUndoAllowed).toBe(false)
+    testGrid.swipe(Direction.left)
+    expect(testGrid.isUndoAllowed).toBe(true)
+    for(let i = 0; i < count; i++){ testGrid.undo() }
     expect(testGrid.currentScore).toBe(initialScore)
+    expect(testGrid.isUndoAllowed).toBe(false)
   })
 
   test("backButtonCount increases by 1", () =>{
+    expect(testGrid.isUndoAllowed).toBe(false)
+    testGrid.swipe(Direction.left)
+    expect(testGrid.isUndoAllowed).toBe(true)
+    for(let i = 0; i < count; i++){
+      testGrid.undo()
+      expect(testGrid.isUndoAllowed).toBe(false)
+    }
     expect(testGrid.undoCount).toBe(1)
+    expect(testGrid.isUndoAllowed).toBe(false)
   })
 
   test("nothing happens when the grid is fresh", ()=>{
@@ -310,10 +348,12 @@ describe.each([
       grid: initialGrid,
       score: initialScore
     })
+    expect(testGrid.isUndoAllowed).toBe(false)
     for(let i = 0; i < count; i++){ testGrid.undo() }
     expect(testGrid.activeGrid).toStrictEqual(initialGrid)
     expect(testGrid.currentScore).toBe(initialScore)
     expect(testGrid.undoCount).toBe(0)
+    expect(testGrid.isUndoAllowed).toBe(false)
   })
 })
 
