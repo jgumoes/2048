@@ -81,7 +81,6 @@ type directionVariables_t = {
   }
 }
 
-
 type NewGridDirectionVariables_t = {
   [index in Direction]: directionVariables_t
 }
@@ -464,21 +463,23 @@ class Grid {
   }
 
   private fillInitialGrid = () => {
-    const z1 = {
-      x: chooseA0(gridSize),
-      y: chooseA0(gridSize)
+    const gridVolume = gridSize * gridSize
+    let i1 = chooseA0(gridVolume)
+    let i2 = chooseA0(gridVolume - 1)
+
+    if(i2 >= i1){
+      // add back the index position of i1
+      i2 += 1
+    }
+
+    let z1 = {
+      x: i1 % gridSize,
+      y: Math.floor(i1/gridSize)
     }
 
     let z2 = {
-      x: chooseA0(gridSize),
-      y: chooseA0(gridSize)
-    }
-
-    while((z1.x === z2.x) && (z1.y === z2.y)){
-      z2 = {
-        x: chooseA0(gridSize),
-        y: chooseA0(gridSize)
-      }
+      x: i2 % gridSize,
+      y: Math.floor(i2/gridSize)
     }
 
     this.placeNewTile(z1)
