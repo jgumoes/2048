@@ -9,13 +9,6 @@ exports[`GameInfoBar renders 1`] = `
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    transparent={true}
-    visible={false}
-  />
   <View
     style={
       {
@@ -145,13 +138,6 @@ exports[`score displays and updates correctly 1`] = `
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    transparent={true}
-    visible={false}
-  />
   <View
     style={
       {
@@ -281,13 +267,6 @@ exports[`score displays and updates correctly 2`] = `
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    transparent={true}
-    visible={false}
-  />
   <View
     style={
       {

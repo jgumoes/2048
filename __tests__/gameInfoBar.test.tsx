@@ -1,6 +1,6 @@
 import { act, render, screen, userEvent } from '@testing-library/react-native'
-import { Direction } from '../src/grid';
-import { OnlyPlace2Grid as Grid } from './helpers/gridMocks';
+import Grid, { Direction } from '../src/grid';
+// import { OnlyPlace2Grid as Grid } from './helpers/gridMocks';
 import importedTestGrids from './helpers/testGrids'
 import GameInfoBar from '../src/GameInfoBar';
 
@@ -92,47 +92,6 @@ describe('undo button', () => {
       await user.press(screen.getByTestId("undoButton"))
       expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
     })
-  })
-})
-
-describe('resetting the game resets the back button count and score', () => {
-  let testGrid: Grid;
-  const startingCount = 5
-  const startingScore = 42069
-  beforeEach(()=>{
-    testGrid = new Grid({grid: importedTestGrids.numberedInputs[0], undoCount: startingCount, score: startingScore})
-  })
-
-  test('when props are updated', () => {
-    render(<GameInfoBar grid={testGrid} />)
-    expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
-    expect(screen.queryByText(`Undo Count: ${startingCount}`)).toBeOnTheScreen()
-    act(()=>testGrid.reset())
-    expect(screen.queryByText(`Score: 0`)).toBeOnTheScreen()
-    expect(screen.queryByText(`Undo Count: 0`)).toBeOnTheScreen()
-  })
-  test('when button is pressed and confirmed', async () => {
-    render(<GameInfoBar grid={testGrid} />)
-    expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
-    expect(screen.queryByText(`Undo Count: ${startingCount}`)).toBeOnTheScreen()
-    const user = userEvent.setup()
-    await user.press(screen.getByTestId('resetButton'))
-    const confirmReset = screen.getByText("yes")
-    await user.press(confirmReset)
-    expect(screen.queryByText(`Score: 0`)).toBeOnTheScreen()
-    expect(screen.queryByText(`Undo Count: 0`)).toBeOnTheScreen()
-  })
-
-  test("but not when 'no' button is pressed", async () => {
-    render(<GameInfoBar grid={testGrid} />)
-    expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
-    expect(screen.queryByText(`Undo Count: ${startingCount}`)).toBeOnTheScreen()
-    const user = userEvent.setup()
-    await user.press(screen.getByTestId('resetButton'))
-    const doNotConfirmReset = screen.getByText("no")
-    await user.press(doNotConfirmReset)
-    expect(screen.queryByText(`Score: ${startingScore}`)).toBeOnTheScreen()
-    expect(screen.queryByText(`Undo Count: ${startingCount}`)).toBeOnTheScreen()
   })
 })
 

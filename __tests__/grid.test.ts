@@ -17,13 +17,13 @@ import { directionValueArray, numberTestsArray } from "./helpers/helperValuesAnd
 
 describe('initial grid', () => {
   test('is not empty', () => {
-    let grid = new Grid({gridSize: 4});
+    const grid = new Grid({gridSize: 4});
 
     const closeResult = emptyGrid()
-    var closeZeros = 16;
-    var gridZeros = 0;
-    for(var y = 0; y < grid.gridSize; y++) {
-      for(var x = 0; x < grid.gridSize; x++){
+    const closeZeros = 16;
+    let gridZeros = 0;
+    for(let y = 0; y < grid.gridSize; y++) {
+      for(let x = 0; x < grid.gridSize; x++){
         if(closeResult[y][x] !== 0){
           // all non-zero values in closeResult should match activeGrid 
           expect(grid.activeGrid[y][x]).toEqual(closeResult[y][x])
@@ -43,7 +43,7 @@ describe('initial grid', () => {
 
   test('can have an end game grid', () => {
     // shouldn't happen, but more reliable to make sure
-    let testGrid = new Grid({grid: importedTestGrids.gameOverInputs.noSwipe})
+    const testGrid = new Grid({grid: importedTestGrids.gameOverInputs.noSwipe})
     expect(testGrid.isGameOver).toBe(true)
   })
 
@@ -69,7 +69,7 @@ describe.each(directionValueArray)('%s swiping once moves and merges test grids'
   
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
-    let grid = new NoPlaceGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
+    const grid = new NoPlaceGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
     grid.swipe(direction)
     expect(grid.activeGrid).toStrictEqual(resultGrids[index as keyof typeof resultGrids])
   })
@@ -77,7 +77,7 @@ describe.each(directionValueArray)('%s swiping once moves and merges test grids'
   const scores = importedTestGrids.scores[direction]
   test.each(numberTestsArray)('and increases the score by the correct amount: testGrid %s', (index)=>{
     const startingScore = Math.floor(Math.random() * 100)
-    let testGrid = new NoPlaceGrid({
+    const testGrid = new NoPlaceGrid({
       grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs],
       score: startingScore
     });
@@ -87,7 +87,7 @@ describe.each(directionValueArray)('%s swiping once moves and merges test grids'
   })
 
   test.each(["0", "1", "2", "3"])("but doesn't change backButtonCount", (index) => {
-    let testGrid = new NoPlaceGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
+    const testGrid = new NoPlaceGrid({grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs]});
     const backButtonCount = testGrid.undoCount
     testGrid.swipe(direction)
     expect(testGrid.undoCount).toBe(backButtonCount)
@@ -105,7 +105,7 @@ describe.each(directionValueArray)('(double swipe) grid moves and merges correct
     [Direction.up, "2"],
     [Direction.down, "3"]
   ])("then %s", (direction2, index) => {
-    let grid = new NoPlaceGrid({grid: inputGrids[index as keyof typeof inputGrids]});
+    const grid = new NoPlaceGrid({grid: inputGrids[index as keyof typeof inputGrids]});
     grid.swipe(direction)
     grid.swipe(direction2)
     expect(grid.activeGrid).toStrictEqual(resultGrids[direction2 as keyof typeof resultGrids])
@@ -119,7 +119,7 @@ describe.each(directionValueArray)('(double swipe) grid moves and merges correct
     [Direction.down, "3"]
   ])('and increases the score by the correct amount: testGrid %s', (direction2, index)=>{
     const startingScore = Math.floor(Math.random() * 100)
-    let testGrid = new NoPlaceGrid({
+    const testGrid = new NoPlaceGrid({
       grid: importedTestGrids.numberedInputs[index as keyof typeof importedTestGrids.numberedInputs],
       score: startingScore
     });
@@ -135,7 +135,7 @@ describe.each(directionValueArray)('(double swipe) grid moves and merges correct
     [Direction.up, "2"],
     [Direction.down, "3"]
   ])("and %s but doesn't change backButtonCount", (direction2, index)=>{
-    let testGrid = new NoPlaceGrid({grid: inputGrids[index as keyof typeof inputGrids]});
+    const testGrid = new NoPlaceGrid({grid: inputGrids[index as keyof typeof inputGrids]});
     const backButtonCount = testGrid.undoCount
     testGrid.swipe(direction)
     testGrid.swipe(direction2)
@@ -148,15 +148,15 @@ describe.each(directionValueArray)('2 or 4 should replace a zero after moving an
   const resultGrids = importedTestGrids.resultGrids[direction]
 
   test.each(["0", "1", "2", "3"])('testGrid %s', (index) => {
-    let grid = new Grid({grid: inputGrids[index as keyof typeof inputGrids]});
+    const grid = new Grid({grid: inputGrids[index as keyof typeof inputGrids]});
     grid.swipe(direction)
 
     const closeResult = resultGrids[index as keyof typeof resultGrids]
-    var closeZeros = 0;
-    var gridZeros = 0;
-    var newTileValue = 0;
-    for(var y = 0; y < grid.gridSize; y++) {
-      for(var x = 0; x< grid.gridSize; x++){
+    let closeZeros = 0;
+    let gridZeros = 0;
+    let newTileValue = 0;
+    for(let y = 0; y < grid.gridSize; y++) {
+      for(let x = 0; x< grid.gridSize; x++){
         if(closeResult[y][x] !== 0){
           // all non-zero values in closeResult should match activeGrid 
           expect(grid.activeGrid[y][x]).toEqual(closeResult[y][x])

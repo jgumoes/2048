@@ -8,7 +8,7 @@ export const emptyGrid = () => [
 ]
 
 export const colorTestGrid =() => {
-  let grid = emptyGrid();
+  const grid = emptyGrid();
   let number = 0
   for(let y = 0; y < 4; y++){
     for(let x = 0; x<4; x++){
@@ -91,6 +91,7 @@ const NewGridDirectionVariables: NewGridDirectionVariables_t = {
       "x": 1,
       "y": 0,
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "startingIndex": (gridSize) => {
       return {
         "x": 0,
@@ -145,6 +146,7 @@ const NewGridDirectionVariables: NewGridDirectionVariables_t = {
       "x": 0,
       "y": 1,
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     "startingIndex": (gridSize) => {
       return {
         "x": 0,
@@ -288,34 +290,34 @@ export class NextGridMaker {
     this.resetGrid();
     switch (this.direction) {
       case Direction.left:
-        for(var y = 0; y < gridSize; y++){
-          for(var x = 0; x < gridSize; x++){
+        for(let y = 0; y < gridSize; y++){
+          for(let x = 0; x < gridSize; x++){
             this.addNumber(grid[y][x])
           }
           this.nextLine()
         }
         break;
       case Direction.right:
-        for(var y = 0; y < gridSize; y++){
-          var xLimit = gridSize - 1
-          for(var x = 0; x <= xLimit; x++){
+        for(let y = 0; y < gridSize; y++){
+          const xLimit = gridSize - 1
+          for(let x = 0; x <= xLimit; x++){
             this.addNumber(grid[y][xLimit - x])
           }
           this.nextLine()
         }
         break;
       case Direction.up:
-        for(var x = 0; x < gridSize; x++){
-          for(var y = 0; y < gridSize; y++){
+        for(let x = 0; x < gridSize; x++){
+          for(let y = 0; y < gridSize; y++){
             this.addNumber(grid[y][x])
           }
           this.nextLine()
         }
         break;
       case Direction.down:
-        for(var x = 0; x < gridSize; x++){
-          var yLimit = gridSize - 1
-          for(var y = 0; y <= yLimit; y++){
+        for(let x = 0; x < gridSize; x++){
+          const yLimit = gridSize - 1
+          for(let y = 0; y <= yLimit; y++){
             this.addNumber(grid[yLimit - y][x])
           }
           this.nextLine()
@@ -464,7 +466,7 @@ class Grid {
 
   private fillInitialGrid = () => {
     const gridVolume = gridSize * gridSize
-    let i1 = chooseA0(gridVolume)
+    const i1 = chooseA0(gridVolume)
     let i2 = chooseA0(gridVolume - 1)
 
     if(i2 >= i1){
@@ -472,12 +474,12 @@ class Grid {
       i2 += 1
     }
 
-    let z1 = {
+    const z1 = {
       x: i1 % gridSize,
       y: Math.floor(i1/gridSize)
     }
 
-    let z2 = {
+    const z2 = {
       x: i2 % gridSize,
       y: Math.floor(i2/gridSize)
     }

@@ -16,14 +16,14 @@ const swipeForGameWonGrid = () => [
 export default function App() {
   // const [grid, setGrid] = useState(new Grid({gridSize: 4}))
   // const [grid, setGrid] = useState(new Grid({grid: colorTestGrid(), undoCount: 5}))
-  const [grid, setGrid] = useState(() => {
+  const [grid] = useState(() => {
     const newGrid = new Grid({grid: swipeForGameWonGrid()})
     // const newGrid = new Grid({grid: colorTestGrid(), score: 42069, undoCount: 5})
     // const newGrid = new Grid({grid: [
-    //   [ 8, 8, 4, 2], 
-    //   [ 4, 4, 2, 4], 
-    //   [ 2, 2, 4, 2], 
-    //   [ 0, 4, 2, 4]
+    //   [ 16, 8, 4, 2], 
+    //   [ 2, 4, 2, 4], 
+    //   [ 4, 2, 4, 2], 
+    //   [ 32, 4, 2, 4]
     // ]})
     // GridOverlayState.primeGameWon = newGrid.isGameWon
     return newGrid

@@ -32,3 +32,19 @@ export class OnlyPlace2Grid extends Grid{
     this._activeGrid[newTileLocation.y][newTileLocation.x] = 2
   }
 }
+
+/**
+ * place tile 2 at the first found 0. this creates 
+ */
+export class Place2AtFirst0 extends Grid{
+  protected placeNewTile(newTileLocation: { x: number; y: number; }): void {
+    for(let y = 0; y < this.gridSize; y++){
+      for(let x = 0; x < this.gridSize; x++){
+        if(this._activeGrid[y][x] === 0){
+          this._activeGrid[y][x] === 2
+          return
+        }
+      }
+    }
+  }
+}

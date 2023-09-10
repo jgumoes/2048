@@ -155,6 +155,125 @@ exports[`App renders 1`] = `
         >
           <View
             style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "grey",
+                "borderRadius": 10,
+                "height": "100%",
+                "justifyContent": "center",
+                "opacity": 0.8,
+                "position": "absolute",
+                "width": "100%",
+                "zIndex": 100,
+              }
+            }
+            testID="GridOverlay"
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "white",
+                  },
+                  {
+                    "fontSize": 94.10377358490567,
+                  },
+                ]
+              }
+            >
+              Game Over
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "white",
+                  },
+                  {
+                    "fontSize": 94.10377358490567,
+                  },
+                ]
+              }
+            >
+              play again?
+            </Text>
+            <View
+              testID="ConfirmResetButtons"
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text>
+                  no
+                </Text>
+              </View>
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+              >
+                <Text>
+                  yes
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
               [
                 {
                   "alignSelf": "center",
@@ -189,7 +308,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(245, 149, 99)",
                     },
                   ]
                 }
@@ -201,14 +320,16 @@ exports[`App renders 1`] = `
                         "textAlign": "center",
                       },
                       {
-                        "color": "rgb(119, 110, 101)",
+                        "color": "rgb(249, 246, 241)",
                       },
                       {
                         "fontSize": 58.16326530612245,
                       },
                     ]
                   }
-                />
+                >
+                  16
+                </Text>
               </View>
               <View
                 style={
@@ -221,7 +342,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(242, 177, 121)",
                     },
                   ]
                 }
@@ -233,14 +354,16 @@ exports[`App renders 1`] = `
                         "textAlign": "center",
                       },
                       {
-                        "color": "rgb(119, 110, 101)",
+                        "color": "rgb(249, 246, 241)",
                       },
                       {
                         "fontSize": 58.16326530612245,
                       },
                     ]
                   }
-                />
+                >
+                  8
+                </Text>
               </View>
               <View
                 style={
@@ -253,7 +376,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(236, 224, 200)",
                     },
                   ]
                 }
@@ -272,7 +395,9 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
+                >
+                  4
+                </Text>
               </View>
               <View
                 style={
@@ -285,7 +410,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(238, 228, 218)",
                     },
                   ]
                 }
@@ -304,7 +429,9 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
+                >
+                  2
+                </Text>
               </View>
             </View>
             <View
@@ -327,7 +454,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(238, 228, 218)",
                     },
                   ]
                 }
@@ -346,40 +473,8 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "white",
-                      "borderRadius": 10,
-                      "justifyContent": "center",
-                      "textAlign": "center",
-                      "width": "22%",
-                    },
-                    {
-                      "backgroundColor": "rgb(237, 197, 63)",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "textAlign": "center",
-                      },
-                      {
-                        "color": "rgb(249, 246, 241)",
-                      },
-                      {
-                        "fontSize": 58.16326530612245,
-                      },
-                    ]
-                  }
                 >
-                  1024
+                  2
                 </Text>
               </View>
               <View
@@ -393,41 +488,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(237, 197, 63)",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "textAlign": "center",
-                      },
-                      {
-                        "color": "rgb(249, 246, 241)",
-                      },
-                      {
-                        "fontSize": 58.16326530612245,
-                      },
-                    ]
-                  }
-                >
-                  1024
-                </Text>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "white",
-                      "borderRadius": 10,
-                      "justifyContent": "center",
-                      "textAlign": "center",
-                      "width": "22%",
-                    },
-                    {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(236, 224, 200)",
                     },
                   ]
                 }
@@ -446,7 +507,77 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
+                >
+                  4
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "white",
+                      "borderRadius": 10,
+                      "justifyContent": "center",
+                      "textAlign": "center",
+                      "width": "22%",
+                    },
+                    {
+                      "backgroundColor": "rgb(238, 228, 218)",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "center",
+                      },
+                      {
+                        "color": "rgb(119, 110, 101)",
+                      },
+                      {
+                        "fontSize": 58.16326530612245,
+                      },
+                    ]
+                  }
+                >
+                  2
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "white",
+                      "borderRadius": 10,
+                      "justifyContent": "center",
+                      "textAlign": "center",
+                      "width": "22%",
+                    },
+                    {
+                      "backgroundColor": "rgb(236, 224, 200)",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "center",
+                      },
+                      {
+                        "color": "rgb(119, 110, 101)",
+                      },
+                      {
+                        "fontSize": 58.16326530612245,
+                      },
+                    ]
+                  }
+                >
+                  4
+                </Text>
               </View>
             </View>
             <View
@@ -469,7 +600,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(236, 224, 200)",
                     },
                   ]
                 }
@@ -488,40 +619,8 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "white",
-                      "borderRadius": 10,
-                      "justifyContent": "center",
-                      "textAlign": "center",
-                      "width": "22%",
-                    },
-                    {
-                      "backgroundColor": "rgb(237, 197, 63)",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "textAlign": "center",
-                      },
-                      {
-                        "color": "rgb(249, 246, 241)",
-                      },
-                      {
-                        "fontSize": 58.16326530612245,
-                      },
-                    ]
-                  }
                 >
-                  1024
+                  4
                 </Text>
               </View>
               <View
@@ -535,41 +634,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(237, 197, 63)",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "textAlign": "center",
-                      },
-                      {
-                        "color": "rgb(249, 246, 241)",
-                      },
-                      {
-                        "fontSize": 58.16326530612245,
-                      },
-                    ]
-                  }
-                >
-                  1024
-                </Text>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "white",
-                      "borderRadius": 10,
-                      "justifyContent": "center",
-                      "textAlign": "center",
-                      "width": "22%",
-                    },
-                    {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(238, 228, 218)",
                     },
                   ]
                 }
@@ -588,7 +653,77 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
+                >
+                  2
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "white",
+                      "borderRadius": 10,
+                      "justifyContent": "center",
+                      "textAlign": "center",
+                      "width": "22%",
+                    },
+                    {
+                      "backgroundColor": "rgb(236, 224, 200)",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "center",
+                      },
+                      {
+                        "color": "rgb(119, 110, 101)",
+                      },
+                      {
+                        "fontSize": 58.16326530612245,
+                      },
+                    ]
+                  }
+                >
+                  4
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "white",
+                      "borderRadius": 10,
+                      "justifyContent": "center",
+                      "textAlign": "center",
+                      "width": "22%",
+                    },
+                    {
+                      "backgroundColor": "rgb(238, 228, 218)",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "textAlign": "center",
+                      },
+                      {
+                        "color": "rgb(119, 110, 101)",
+                      },
+                      {
+                        "fontSize": 58.16326530612245,
+                      },
+                    ]
+                  }
+                >
+                  2
+                </Text>
               </View>
             </View>
             <View
@@ -611,7 +746,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(245, 124, 95)",
                     },
                   ]
                 }
@@ -623,14 +758,16 @@ exports[`App renders 1`] = `
                         "textAlign": "center",
                       },
                       {
-                        "color": "rgb(119, 110, 101)",
+                        "color": "rgb(249, 246, 241)",
                       },
                       {
                         "fontSize": 58.16326530612245,
                       },
                     ]
                   }
-                />
+                >
+                  32
+                </Text>
               </View>
               <View
                 style={
@@ -643,7 +780,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(236, 224, 200)",
                     },
                   ]
                 }
@@ -662,7 +799,9 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
+                >
+                  4
+                </Text>
               </View>
               <View
                 style={
@@ -675,7 +814,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(238, 228, 218)",
                     },
                   ]
                 }
@@ -694,7 +833,9 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
+                >
+                  2
+                </Text>
               </View>
               <View
                 style={
@@ -707,7 +848,7 @@ exports[`App renders 1`] = `
                       "width": "22%",
                     },
                     {
-                      "backgroundColor": "rgb(214, 205, 196)",
+                      "backgroundColor": "rgb(236, 224, 200)",
                     },
                   ]
                 }
@@ -726,7 +867,9 @@ exports[`App renders 1`] = `
                       },
                     ]
                   }
-                />
+                >
+                  4
+                </Text>
               </View>
             </View>
           </View>
