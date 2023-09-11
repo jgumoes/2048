@@ -1,11 +1,11 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
-import Grid from './grid';
+import Grid from '../src/grid';
 import { ResetSquare, UndoIcon } from './SVGIcons'
 import React from 'react';
 import { gridSides } from './GameBoard';
 import { observer } from 'mobx-react-lite';
-import { GridOverlayState, overlayStates } from './overlayState';
-import { testIDs } from './globalValues';
+import { GridOverlayState, overlayStates } from '../src/overlayState';
+import { testIDs } from '../src/globalValues';
 
 const GameInfoBar = observer(({grid}: {grid: Grid}) => {
   const onResetSquarePress = () => {

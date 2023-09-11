@@ -3,42 +3,11 @@ import { act, render, screen, userEvent, waitFor, waitForElementToBeRemoved } fr
 import Grid, { Direction, colorTestGrid } from '../src/grid';
 import importedTestGrids from './helpers/testGrids'
 
-import GameBoard, { overlayText } from '../src/GameBoard';
+import GameBoard from '../components/GameBoard';
 import { directionValueArray } from './helpers/helperValuesAndFunctions';
 import { GridOverlayState } from '../src/overlayState';
 import { overlayTimeouts, testIDs } from '../src/globalValues';
-
-jest.spyOn(global.Math, 'random').mockReturnValue(0);
-
-jest.mock('../src/SVGIcons', () => {
-  return{
-    ResetSquare: () => {
-      return <view />
-    },
-    UndoIcon: () => {
-      return <view />
-    }
-  }
-})
-
-jest.mock('react-native-gesture-handler', () => {
-  return {
-    gestureHandlerRootHOC: (element: JSX.Element) => element,
-    Gesture: {
-      Pan: jest.fn().mockImplementation(() => {
-        return new class {
-          minDistance = jest.fn().mockReturnThis()
-          maxPointers = jest.fn().mockReturnThis()
-          onBegin = jest.fn().mockReturnThis()
-          onStart = jest.fn().mockReturnThis()
-        }
-      })
-    },
-    GestureDetector: ({children}: {children: JSX.Element}) => {
-      return(<view>{children}</view>)
-    }
-  };
-});
+import { overlayText } from '../components/GridOverlay';
 
 describe('GridOverlayState is hidden', ()=>{
   let isBeforeEachUsed: boolean;

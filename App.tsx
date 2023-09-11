@@ -5,7 +5,7 @@ import Grid, { colorTestGrid } from './src/grid';
 import React, { useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { appStyles } from './AppStyles';
-import GameBoard from './src/GameBoard';
+import GameBoard from './components/GameBoard';
 
 const swipeForGameWonGrid = () => [
   [ 0, 0, 0, 0], 

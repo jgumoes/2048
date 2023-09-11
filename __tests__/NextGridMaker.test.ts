@@ -41,6 +41,7 @@ describe.each(describeDirectionArray)('when swipping %s:', (direction) => {
 describe.each(describeDirectionArray)('newTileLocation only produces valid locations when swipping %s', (direction) => {
   const resultGrids = importedTestGrids.resultGrids[direction]
   let testGrid: NextGridMaker;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let numberOfZeros: number;
   let zeroIndex: number;
   beforeEach(()=>{
